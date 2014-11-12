@@ -1,0 +1,201 @@
+/* $Id: basic.css,v 1.2.4.3 2009/03/20 23:35:58 pasqualle Exp $ */
+
+  
+
+/*@jbernal*/
+/*div[id|="block-quicktabs"] {*/
+/*#block-quicktabs-1 {*/
+/*
+	@selector - .block-quicktabs
+	
+	@description - tile the appropriate background image for quicktabs to match the background for the content area.  Some alternate selectors are described above.
+*/
+
+.block-quicktabs {
+	background-image:url('../images/ckeditor_background.gif');
+	background-position:left top;
+	background-repeat:repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+	@file
+		+ style copied from /sites/all/modules/quicktabs/tabstyles/basic
+		+ this was originally two css files but I've combined into one file here.
+	
+	@template - quicktabs-style-basic
+		+ all relevant elements are specified with the .quicktabs-style-basic selector
+*/
+
+
+	rtl styles here --
+.quicktabs_main.quicktabs-style-basic{
+  border:1px solid #aaa;
+}
+ul.quicktabs_tabs.quicktabs-style-basic{
+  border-bottom:none;
+  padding:0 0 0 5px;
+}
+ul.quicktabs_tabs.quicktabs-style-basic li{
+  float:right;
+  margin:0 0 0 3px;
+}
+
+
+
+/* define the wrapper for a set of tabs
+	+ and create a border-bottom separating the tabs from the content below them
+*/
+ul.quicktabs_tabs.quicktabs-style-basic {
+  padding:0 5px 0 0;
+  font:bold 12px/19px Verdana !important;
+  font-weight:bold;
+  height:27px;
+  margin:0;
+  border-right:none;
+  border-bottom:1px solid #aaa;
+  z-index:100;
+}
+
+
+ul.quicktabs_tabs.quicktabs-style-basic a{
+  font:bold 12px/19px Verdana !important;
+  text-decoration:none;
+  color:#aaa;
+}
+ul.quicktabs_tabs.quicktabs-style-basic a:hover{
+  color:#555  !important;
+}
+ul.quicktabs_tabs.quicktabs-style-basic li{
+  border:1px solid #e5e5e5;
+  border-bottom:none;
+  padding:2px 5px;
+  margin:0 3px 0 0;
+  position:relative;
+}
+ul.quicktabs_tabs.quicktabs-style-basic li:hover{
+  border:1px solid #ccc;
+  border-bottom:none;
+}
+ul.quicktabs_tabs.quicktabs-style-basic li.active{
+  border:1px solid #aaa;
+  border-bottom:1px solid #fff;
+  background-color:#fff;
+}
+ul.quicktabs_tabs.quicktabs-style-basic li.active a{
+  color:#027AC6;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+	Below are the overrides for the Document Archive Quicktab
+ */
+
+ 
+.quicktabs_main.quicktabs-style-basic{
+  background-color:#fff;
+	background-image:url('../images/ckeditor_background.gif');
+	background-position:left top;
+	background-repeat:repeat;
+  border:1px solid #aaa;
+  border-top:none;
+  padding:10px;
+  clear:both;
+}
+
+/* @jbernal
+	@description - adjust margin-top and padding-top to accommodate the IE box-model flaws
+*/
+.quicktabs_main.quicktabs-style-basic {
+	margin-top:-4px;
+	padding-top:4px;
+	border-bottom:1px solid #aaa !important;
+}
+
+
+/* @jbernal */
+.quicktabs_main .quicktabs_main {
+	margin-top:-1px;/*-2px;*/
+	padding-top:3px;/*2px;*/
+	border-bottom:1px solid #aaa !important;
+}
+
+
+
+/* @jbernal */
+div.quicktabs_wrapper{
+	border-right:none; border-left:none; border-bottom:none;
+	border-bottom-width:0px;
+	border-right-width:0px;
+	border-left-width:0px;
+	padding:0px;
+	/*@jbernal*/border-bottom:none; border-left:none; border-right:none;
+}
+
+
+ul.quicktabs_tabs.quicktabs-style-basic li{
+	background-color:#D5CB96;
+	border-color:#333333 #333333 -moz-use-text-color;
+	border-style:solid solid none;
+	border-width:1px 1px 0;
+	color:#333333;
+	display:block;
+	float:left;
+	padding:4px 10px;
+	text-decoration:none;
+	margin:0px;
+	margin-right:-2px;
+	position:relative;
+}
+
+ul.quicktabs_tabs.quicktabs-style-basic a{
+  font:bold 12px/19px Verdana !important;
+  text-decoration:none;
+  color:#333;
+}
+
+ul.quicktabs_tabs.quicktabs-style-basic li.active{
+  border:1px solid #aaa;
+  border-bottom:1px solid #fff;
+  background-color:#016AB3;
+border-color:#333333 #333333 -moz-use-text-color;
+border-style:solid solid none;
+border-width:1px 1px 0;
+}
+
+ul.quicktabs_tabs.quicktabs-style-basic li.active a{
+/*background-color:#016AB3 !important;*/
+color:#FFFFFF !important;
+}
+
+ul.quicktabs_tabs.quicktabs-style-basic li:hover{
+	color: #FFFFFF;
+	background-color: #687B9F;
+border-color:#333333 #333333 -moz-use-text-color;
+border-style:solid solid none;
+border-width:1px 1px 0;
+}
+
+ul.quicktabs_tabs.quicktabs-style-basic a:hover{
+  color:#fff  !important;
+}
+

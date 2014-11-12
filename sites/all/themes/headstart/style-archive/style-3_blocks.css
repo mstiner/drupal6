@@ -1,0 +1,64 @@
+/**
+ @Section: Block Styles
+ @Template: block.tpl.php
+ @Description: format the title and other elements in Drupal Blocks
+ */
+
+/*
+ @Description: this declaration is only valid for the administrative layout
+ */
+
+
+/*.block-nice_menus .title {
+	display:block;
+}*/
+
+#block-block-3 .title, #block-block-4 .title {
+	display:none;
+}
+
+#block-block-1 {
+	margin-bottom:15px;
+}
+
+
+
+
+
+
+/**
+ @Title - Quick Links Menu
+ @Type - Drupal Menu
+ @Administer - Drupal Administration, Site Building, Blocks
+ */
+#block-menu-menu-quicklinks {
+	width:40%; float:left;
+	padding-right:10%;
+	margin-top:5px;
+	text-align:left;
+}
+ 
+#block-menu-menu-quicklinks .title {
+	color:#C5161C; font-size:1.6em;
+}
+
+#block-menu-menu-quicklinks .menu li {
+	padding-bottom:3px; border-bottom:1px solid #ccc;
+	color:#C5161C; font-size:1.4em;
+	list-style-image:url('images/bullet-arrow-trans-orange.png');
+}
+
+#block-menu-menu-quicklinks .menu a {
+	color:#C5161C; font-size:1.0em;
+	text-decoration:underline;
+}
+
+
+/**
+ @Title - User Login Block
+ @Type - Drupal Block
+ @Administer - Drupal Administration, Site Building, Blocks
+ */
+#user-login-form {
+	text-align:left;
+}

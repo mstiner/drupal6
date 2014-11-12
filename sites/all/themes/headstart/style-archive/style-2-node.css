@@ -1,0 +1,74 @@
+/**
+ @Section: Node Styles
+ 
+*/
+
+
+/**
+ @Template Type - Node
+ */
+ 
+.node .content {
+	font-size:1.0em; line-height:1.4em;
+	margin-bottom:1.2em;
+}
+
+.node .content p {
+	font-size:1.2em;
+	line-height:2.1em;
+}
+
+.node .title a {
+	color:#016AB3;
+	text-decoration:none;
+}
+
+.node .title, .node h2 {
+	color:#016AB3;
+}
+
+.node h2 {
+	font-size:2.2em; line-height:2.0em;
+}
+
+.node .links {
+	display:inline;
+}
+
+a.read-more {
+	color:#c4161c; font-size:1.2em;
+}
+
+
+/*
+	Node block-level elements
+ */
+ 
+.node h1 {
+	color:#016AB3;
+	font-size:2.2em;
+	margin:0;
+}
+
+
+
+/*
+	Announcement titles, also present in the Views section
+ */
+.node h3.title {
+font-size:1em;
+margin:5px 0 0;
+color:#000;
+}
+
+
+/*
+	Did you know?, Quick Links headings
+ */
+.node h4 {
+color:#C5161C;
+font-size:1em;
+margin:5px 0 10px;
+}
+
+

@@ -1,0 +1,22 @@
+#block-menu-menu-clone-navigation ul li {
+	font-size:10pt;
+}
+
+
+
+
+.block-user {
+	font-size:1.2em;
+}
+
+.block-user a {
+	text-decoration:none;
+}
+
+.block-user a:hover {
+	text-decoration:underline;  
+}
+
+.block-user .title {
+	text-align:left;  
+}

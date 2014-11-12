@@ -1,0 +1,12 @@
+; $Id: image_ref.info,v 0.5 2009/09/08 08:23:23 danyalejandro Exp $
+name = Image Browser reference
+description = Allows to reference an image node through the Image Browser module.
+core = 6.x
+package = "CCK"
+dependencies[] = imagebrowser
+dependencies[] = content
+
+version = "6.x-0.1"
+core = "6.x"
+project = "image_ref"
+datestamp = "1228343443"

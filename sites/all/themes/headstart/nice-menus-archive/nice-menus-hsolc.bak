@@ -1,0 +1,89 @@
+<?php /* included files at end-of-file */ ?>
+<?php header('Content-type: text/css'); ?>
+
+/* $Id: nice_menus_default.css,v 1.6 2007/10/29 16:38:28 add1sun Exp $ */
+/*
+  This is the default layout template for nice menus, and will provide
+  a starting point for the look of your menus. To customize, it's
+  recommended to create a custom CSS file using this file as a template,
+  then configure the module to use your custom CSS file
+  (this is done in the global settings tab of the theme administration.)
+
+  To help understand the CSS, the HTML looks like this, where
+    x is a number;
+    TYPE is down/left/right;
+    PATH is the menu path such as node/343;
+    MID is the menu id such as 33):
+  <ul id='nice-menu-x' class='nice-menu nice-menu-TYPE'>
+    <li id='menu-MID' class='menu-path-PATH'><a href='#'>This is a menu item</a></li>
+    <li class='menuparent menu-path-PATH'><a href='#'>A submenu</a>
+      <ul...><li...>...</li>
+      </ul>
+    </li>
+    ...
+  </ul>
+
+  If you have more than one nice-menu and want to target a particular one,
+  use its id (e.g. ul#nice-menu-2).
+
+  See README.txt and the handbook page (http://drupal.org/node/185543)
+  for some CSS customization examples.
+*/
+
+/******************************
+ Global CSS for ALL menu types
+******************************/
+.nice-menu {
+	background-color:#016AB3;
+}
+
+
+
+
+ul.nice-menu,
+ul.nice-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #777;
+}
+
+ul.nice-menu li {
+  border: 1px solid #777;
+  border-top: 0;
+  float: left;
+  /*background-color: #666;*/
+  /* Additional overrides to deal with Garland theme. */
+  margin: 0;
+  background-image: none;
+  font-size:10pt;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+ul.nice-menu a {
+  padding: 0.3em 5px 0.3em 5px;
+  color:#fff;
+  text-decoration:none;
+}
+
+ul.nice-menu a:hover {
+	text-decoration:none;
+}
+
+ul.nice-menu ul
+{
+  top: 1.8em;
+  left: -1px;
+  border: 0;
+  border-top: 1px solid #777;
+  margin-right: 0;
+}
+
+ul.nice-menu ul li {
+  width: 8.5em;
+}
+
+<?php
+include('nice-menus-hsolc-down.css');
+?>

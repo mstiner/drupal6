@@ -1,0 +1,263 @@
+/**
+ @Section: Node Styles
+
+*/
+/*.node ol {
+	margin-left:35px;
+}
+*/
+
+
+
+.node ol, .node ul {
+	margin-left:2.5em;
+}
+
+.node ol ol, .node ul ul {
+	margin-left:2.0em;
+}
+
+.block .node ol, .block .node ul {
+	margin:0px; padding:0px;
+}
+
+.node ol li {
+    list-style-type:decimal;
+}
+
+.node ol li ol li {
+	list-style-type:lower-alpha;
+}
+
+/*.node ul {
+	margin-left:1.4em;
+
+}*/
+
+.node ul li {
+	/*removed line-height declaration but we don't know how this will affect othe parts of the site... it shouldn't since it's inside the .node selector */
+	/*line-height:1.4em;
+	padding-bottom:0.8em;*/
+	list-style-type:disc;
+}
+
+
+
+
+/**
+ @Section: Lists
+ */
+td h3, td ul { color:#333333; background-color:transparent; vertical-align:top; }
+/*.node .content li { margin-left:19px; list-style-type:circle; }
+.node .content .square li { list-style-type:square; }
+.node .content .circle li { list-style-type:circle; }
+*/
+
+
+
+
+
+/**
+ @Template Type - Node
+ */
+
+/*.node {
+	font-size:1.0em; line-height:1.4em;
+	margin-bottom:1.2em;
+}*/
+
+.node .content p {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.6em;
+	padding: 0px;
+	margin-top: 0.0em;
+	margin-right: 0px;
+	margin-bottom: 1.2em;
+	margin-left: 0px;
+}
+
+#content-left .node .content p {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.6em;
+	padding: 0px;
+	margin:0px;
+}
+
+#content-left .node .title {
+	margin-top:1.2em;
+}
+
+.read-more {
+	margin:0px; margin-top:-10px; padding-top:-10px;
+}
+
+#quicklinks {
+	background-image:url('../images/arrow-trans-orange.png');
+	background-position:left center;
+	line-height:14px;
+	background-repeat:no-repeat;
+	border-bottom:1px solid #CCCCCC;
+	padding-bottom:6px;
+	padding-top:6px;
+	padding-left:10px;
+	margin-bottom:3px;
+	margin-top:3px;
+	width:160px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#quicklinks a:link {
+	color:#C5161C;
+	font-weight:normal;
+	text-decoration: none;
+}
+#quicklinks a:visited {
+	color:#C5161C;
+	font-weight:normal;
+	text-decoration: none;
+}
+#quicklinks a:hover {
+	color:#00F;
+	font-weight:normal;
+	text-decoration: none;
+}
+
+
+
+.node .content .rteindent1 {
+	margin-left:2.0em;
+}
+
+.node .title a {
+	color:#016AB3;
+	text-decoration:none;
+}
+
+.node .links {
+	display:inline;
+}
+
+/*.node a, .node a:link, .node a:visited, a.read-more {
+	color:#c4161c;
+}
+
+.node a:hover {
+	color:#016ab3;
+}
+*/
+.node a {
+	color:#c4161c;
+}
+
+
+/*
+	Node block-level elements
+ */
+
+.node h1 {
+	color:#016AB3;
+	font-size:2.2em;
+	margin:0;
+}
+h1.title {
+	color:#c4161c;
+	font-size:2.2em;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 20;
+	margin-left: 0;
+}
+
+
+.node .title, .node h2, h2 {
+	color:#016AB3;
+}
+
+.node h2, h2 {
+	font-size:2.2em;
+	line-height:1.2em;
+	padding: 0px;
+	margin-top:0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+div[id|="block"] .title {
+	margin-top:0px !important;
+}
+
+.node h2 + p {
+	margin-top:0px !important;
+}
+/*
+	Announcement titles, also present in the Views section
+ */
+.node h3.title {
+	font-size:1em;
+	margin:5px 0 0;
+}
+
+.node h3 {
+	font-size: 1.6em;
+	color: #666666;
+	/*margin-bottom: 6px; too much space below this heading */
+	margin-top: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #666666;
+	padding-bottom: 4px;
+}
+
+
+/*
+	Did you know?, Quick Links headings
+ */
+.node h4 {
+	color:#C5161C;
+	font-size:1em;
+	margin:5px 0 10px;
+}
+
+
+.node table {
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-left-color: #789DB3;
+}
+.node table td {
+	vertical-align: top;
+	padding: 7px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #789DB3;
+	border-right-color: #789DB3;
+	border-bottom-color: #789DB3;
+}
+.node h5 {
+	color:#058d9f;
+	font-size:1.2em;
+	margin-bottom:0px;
+	margin-top:3px;
+}
+
+
+.node .content p:first-child {
+	margin-top:0px;
+}
+
+.view-did-you-know .node .content p:first-child {
+	margin-top:15px;
+}

@@ -1,0 +1,132 @@
+ <!-- To help understand the CSS, the HTML looks like this, where
+    x is a number;
+    TYPE is down/left/right;
+    PATH is the menu path such as node/343;
+    MID is the menu id such as 33):-->
+    
+    
+<html>
+	<head><title>Nice Menu Demo</title>
+	
+	<script src="scripts/nice_menus_dropdown.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="nice_menus.css" />
+	<link rel="stylesheet" type="text/css" href="nice_menus_default.css" />
+   </head>
+<!--  
+  <ul id='nice-menu-1' class='nice-menu nice-menu-down'>
+    <li id='menu-MID' class='menu-path-PATH'><a href='#'>This is a menu item</a></li>
+    <li class='menuparent menu-path-PATH'><a href='#'>A submenu</a>
+      <ul id='nice-menu-1' class='nice-menu nice-menu-right'>
+		<li id='menu-MID' class='menu-path-PATH'><a href='#'>This is a menu item</a></li>
+		<li class='menuparent menu-path-PATH'><a href='#'>A submenu</a>
+		  <ul id='nice-menu-1' class='nice-menu nice-menu-down'>
+			<li id='menu-MID' class='menu-path-PATH'><a href='#'>This is a menu item</a></li>
+		<li>
+      </ul>
+    </li>
+  </ul>
+-->  
+  
+  		<ul id='nice-menu-1' class='nice-menu nice-menu-down'>
+			<li class="menu-path-PATH"><a href="index.html" title="Home">Home</a></li>
+			<li class="menuparent menu-path-PATH"><a href="#" title="Products">Products</a>
+				<ul class='nice-menu nice-menu-right'>
+					<li class="menu-path-PATH"><a href="#" title="Hydrophilic Grids">Hydrophilic Grids</a></li>
+					<li class="menuparent menu-path-PATH"><a href="nanogrids.html" title="NanoGrids">NanoGrids</a>
+						<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="NanoBasic">NanoBasic</a></li>
+							<li class="menu-path-PATH"><a href="grids_nanoplus.html" title="NanoPlus">NanoPlus</a></li>
+							<li class="menu-path-PATH"><a href="#" title="NanoMinus">NanoMinus</a></li>
+							<li class="menu-path-PATH"><a href="#" title="NanoNeutral">NanoNeutral</a></li>
+							<li class="menu-path-PATH"><a href="#" title="NanoOxide">NanoOxide</a></li>
+						</ul>
+					</li>
+					<li class="menuparent menu-path-PATH"><a href="#" title="BioGrids">BioGrids</a>
+						<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="BioLysine">BioLysine</a></li>
+							<li class="menu-path-PATH"><a href="#" title="BioPlus">BioPlus</a></li>
+							<li class="menu-path-PATH"><a href="#" title="BioMinus">BioMinus</a></li>
+							<li class="menu-path-PATH"><a href="#" title="BioNeutral">BioNeutral</a></li>
+							<li class="menu-path-PATH"><a href="#" title="BioHydrophobic">BioHydrophobic</a></li>
+						</ul>
+					</li>
+					<li class="menuparent menu-path-PATH"><a href="#" title="Functionalized Grids">Functionalized Grids</a>
+						<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="Amine">Amine</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Carboxylate">Carboxylate</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Hydroxyl">Hydroxyl</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Thiol">Thiol</a></li>
+							<li class="menu-path-PATH"><a href="#" title="PEG">PEG</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Epoxide">Epoxide</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Alkene">Alkene</a></li>
+						</ul>
+					</li>
+					<li class="menuparent menu-path-PATH"><a href="#" title="SMART Grid Kits">SMART Grid Kits</a>
+						<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="gold_kit.html" title="SMART Gold Kit">SMART Gold Kit</a></li>
+							<li class="menu-path-PATH"><a href="sghk.html" title="Handling Kit">Handling Kit</a></li>
+						</ul>
+					</li>
+					<li class="menuparent menu-path-PATH"><a href="#" title="Accessories">Accessories</a>
+						<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="Tweezers">Tweezers</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Handling Kit">Handling Kit</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Tack Strips">Tack Strips</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Grid Boxes">Grid Boxes</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		<li class="menuparent menu-path-PATH"><a href="#" title="Technology">Technology</a>
+			<ul class='nice-menu nice-menu-right'>
+				<li class="menu-path-PATH"><a href="#" title="SMART Grids">SMART Grids</a></li>
+				<li class="menuparent menu-path-PATH"><a href="#" title="LinkedON">LinkedON</a>
+					<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="LinkedON Antimicrobials">Antimicrobials</a></li>
+							<li class="menu-path-PATH"><a href="#" title="LinkedON Silver">Silver</a></li>
+							<li class="menu-path-PATH"><a href="#" title="LinkedON Gold">Gold</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="menuparent menu-path-PATH"><a href="#" title="Resources">Resources</a>
+			<ul class='nice-menu nice-menu-right'>
+				<li class="menuparent menu-path-PATH"><a href="#" title="White Papers">White Papers</a>
+					<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="Paper 1">Paper 1</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Paper 2">Paper 2</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Paper 3">Paper 3</a></li>
+					</ul>
+				</li>
+				<li class="menuparent menu-path-PATH"><a href="#" title="Videos">Usage Videos</a>
+					<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="Usage &amp; Handling">Usage &amp; Handling</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Sample Preparation">Sample Preparation</a></li>
+					</ul>
+				</li>
+				<li class="menu-path-PATH"><a href="#" title="Correlative Analysis">Correlative Analysis</a></li>
+				<li class="menu-path-PATH"><a href="#" title="Grid Case Maps">Grid Case Maps</a></li>
+			</ul>
+		<li class="menuparent menu-path-PATH"><a href="#" title="News">News</a>
+			<ul class='nice-menu nice-menu-right'>
+				<li class="menu-path-PATH"><a href="#" title="Company News">Company News</a></li>
+				<li class="menu-path-PATH"><a href="#" title="Newsletter">Grid Newsletter</a></li>
+				<li class="menuparent menu-path-PATH"><a href="#" title="Newsletter Archives">Newsletter Archives</a>
+					<ul class="nice-menu nice-menu-down">
+							<li class="menu-path-PATH"><a href="#" title="Newsletter 1">Newsletter 1</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Newsletter 2">Newsletter 2</a></li>
+							<li class="menu-path-PATH"><a href="#" title="Newsletter 3">Newsletter 3</a></li>
+					</ul>
+				</li>
+				<li class="menu-path-PATH"><a href="#" title="Newsletter Signup">Newsletter Signup</a></li>
+			</ul>
+		<li class="menuparent menu-path-PATH"><a href="company.html" title="Company">Company</a>
+			<ul class='nice-menu nice-menu-right'>
+				<li class="menu-path-PATH"><a href="company.html" title="About Dune Sciences">About Dune</a></li>
+				<li class="menu-path-PATH"><a href="management.html" title="Management">Management</a></li>
+				<li class="menu-path-PATH"><a href="facilities.html" title="Facilities">Facilities</a></li>
+				<li class="menu-path-PATH"><a href="contact.html" title="Employment">Employment</a></li>
+			</ul>
+		</li>
+		<li class="menu-path-PATH"><a href="contact.html" title="Contact">Contact</a></li>
+		</ul>

@@ -1,0 +1,117 @@
+/**
+ @Title - Announcements
+ @Type - Drupal View
+ @Administer - Drupal Administration, Site Building, Blocks; Views
+ */
+#block-views-announcements-block_1 .title {
+	color:#016AB3;
+	font-size:1.9em;
+	line-height:1.9em;
+}
+
+#block-views-announcements-block_1 .views-row .title {
+	color:#000;
+	font-size:1.6em; line-height:1.0em;
+}
+
+
+#block-views-announcements-block_1 .views-field-title {
+	font-size:1.6em;
+	font-weight:bold;
+}
+
+#block-views-announcements-block_1 .views-field-title a {
+	text-decoration:none;
+	color:#000;
+}
+
+#block-views-announcements-block_1 .views-row {
+	margin-bottom:1.0em;
+}
+
+#block-views-announcements-block_1 .views-field-body {
+	font-size:1.2em;
+	line-height:1.6em;
+}
+
+
+
+
+
+
+/**
+ @Title - Did You Know?
+ @Type - Drupal Block View
+ */
+#block-views-did_you_know-block_1 {
+	width:50%; float:left;
+	padding-top:5px;
+	background-image:url('images/view-block-factoids.png');
+	background-repeat:no-repeat;
+}
+
+#block-views-did_you_know-block_1 .title {
+	margin-left:10px;
+	color:#C5161C; font-size:1.6em;
+	text-align:left;
+}
+
+.view-did-you-know .view-content p {
+	width:80%;
+	padding-left:6%; padding-right:14%;
+	margin-top:15px;
+	color:#058D9D; font-family:Verdana,Geneva,sans-serif;
+	font-size:1.3em;
+	line-height:1.6em;
+	font-weight:400;
+}
+
+
+
+
+/**
+ Here we defined some style for all table-based views.  That way we have consistent presentation for each of the table-based views.
+ */
+
+.views-table {
+	width:85%;
+	font-size:1.2em; font-family:Arial,Helvetica,sans-serif;
+	color:#333;
+}
+
+.views-table thead tr {
+	border-top-style:none;
+	border-top-width:0px;
+	height:0px;
+}
+
+.views-table thead tr th {
+	border-bottom-color:#000000;
+	border-bottom-style:none;
+	border-bottom-width:0px;
+}
+
+.views-table tr, .views-table tr.odd, views-table tr.even {
+	border-top:1px solid #D5CB96;
+	border-bottom:0px solid #D5CB96;
+	background-color:transparent;
+}
+
+.views-table tbody {
+	border:0px solid #fff;
+}
+
+.views-table caption {
+	font-size:1.4em;
+	font-weight:bold;
+	text-align:left;
+}
+
+.views-table td {
+	padding-top:3px; padding-bottom:10px;
+
+}
+
+.views-table a.red {
+	color:red;
+}

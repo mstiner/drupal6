@@ -1,0 +1,4 @@
+; $Id$
+name = Wysiwyig hack module
+description = A module to hack Wysiwyg.
+core = 6.x

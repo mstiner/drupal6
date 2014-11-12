@@ -1,0 +1,1 @@
+update node_revisions set body=concat('<div class="column column-style-single column-left column-larger">',body) where vid=399;

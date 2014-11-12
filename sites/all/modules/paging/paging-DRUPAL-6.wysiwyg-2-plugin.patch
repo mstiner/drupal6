@@ -1,0 +1,28 @@
+? .DS_Store
+? pagebreak.tar.gz
+? paging-DRUPAL-5.wysiwyg-plugin.patch.txt
+? paging-DRUPAL-6.wysiwyg-2-plugin.patch.txt
+? plugins
+? wysiwyg
+? wysiwyg2.patch
+Index: paging.module
+===================================================================
+RCS file: /cvs/drupal-contrib/contributions/modules/paging/paging.module,v
+retrieving revision 1.45
+diff -u -p -r1.45 paging.module
+--- paging.module	19 Apr 2009 11:29:35 -0000	1.45
++++ paging.module	7 Jul 2009 22:44:29 -0000
+@@ -913,3 +913,13 @@ $(document).ready(function() {
+ function theme_paging_drop_down_option($url_chunk = NULL, $page_name = NULL, $page_no = NULL, $selected = NULL) {
+   return '<option' . ($selected ? ' selected=""' : '') . ' value="' . $url_chunk . '">' . $page_name . '</option>';
+ }
++
++/**
++ * Implementation of hook_wysiwyg_include_directory().
++ */
++function paging_wysiwyg_include_directory($type) {
++  switch ($type) {
++    case 'plugins':
++      return 'wysiwyg';
++  }
++}

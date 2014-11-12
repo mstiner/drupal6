@@ -1,0 +1,6 @@
+/** this section is for all block level elements that resize outside of node content, that is, outside of any content created by the user
+**/
+
+p {
+	margin-bottom:1.0em;
+}

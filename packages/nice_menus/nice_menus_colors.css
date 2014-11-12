@@ -1,0 +1,33 @@
+
+
+
+
+
+/**
+@ li - all menu items
+**/
+ul.nice-menu li
+
+
+{
+	//background: #bbb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ul.nice-menu li:hover, ul.nice-menu li.ie-over {
+	background: #eee;
+}
+
+ul.nice-menu a {
+	text-decoration:none;
+}

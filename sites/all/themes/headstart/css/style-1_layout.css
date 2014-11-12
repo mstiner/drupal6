@@ -1,0 +1,331 @@
+* { margin:0; padding:0; }
+
+
+
+
+
+body {
+	background-color:#D5CB96;
+	background-image:url("../images/background.jpg");
+	background-repeat:repeat-x;
+	color:#000000;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:62.5%;
+	margin:20px;
+	padding:0;
+	margin:0 auto;
+}
+
+
+#masthead {
+	height:113px;
+	margin:0 auto;
+	padding:0;
+	/*width:994px;*//* add 50px here? see below @margin-left:-50px */
+	width:1044px;
+}
+
+
+#masthead .content {
+	background-image:url("../images/masthead-logo.png");
+	background-repeat:no-repeat;
+	font-family:Georgia,"Times New Roman",Times,serif;
+	font-size:1.5em;
+	height:115px;
+	/*margin-left:-50px;*/
+	padding-right:125px;
+	text-transform:uppercase;
+}
+
+
+/**
+	Style for the search box
+ */
+
+/* the entire search box as exposed in the page.tpl.php */
+#searchbox {
+	width:180px;
+	/*margin-right:66px;*/
+	float:right;
+	height:25px;
+	margin-top:40px;
+}
+
+
+
+#search {
+	text-align:baseline;
+}
+
+
+
+#edit-search-theme-form-1 {
+	width:140px; height:25px;
+	margin:0px; padding:0px;
+	border-bottom-width:0px; border-top-width:0px;
+	padding-left:6px;/* this padding may actually chop off the background-image in IE */
+	background-image:url("../images/search_box.png"); background-color:transparent;
+	border:none;
+	background-position:left bottom;
+	background-repeat:no-repeat;
+	vertical-align:text-bottom;
+	font-size:0.8em;
+	line-height:2.0em;
+}
+
+
+
+
+#input-image {
+	display:inline;
+	vertical-align:text-bottom; text-align:left; margin-left:-4px;
+	/*border-bottom:1px solid transparent;*/
+}
+
+
+/* deprecated code */
+/*#header {
+	background-image:url("../images/top.png");
+	background-repeat:no-repeat;
+	color:#C4161C;
+	height:133px;
+	margin:0 auto;
+	width:1120px;
+}
+*/
+
+
+
+
+
+#admin {
+	display:block; width:150px;
+	position:absolute; top:150px; right:15px;
+	/*padding:8px;*/
+}
+
+#top_rounded {
+	display:block; width:910px; height:29px;
+	margin:0 auto;
+	background-image:url('../images/drop-shadow-box-top.png'); /*910px X 29px*/
+	background-position:top left;
+}
+
+
+#image-rotator {
+	display:block;
+	height:228px !important;
+	padding:0px;
+	margin:0px;
+	
+}
+
+
+
+#wrapper {
+	width:910px; /* must correlate to the width of the background-image, below */
+	background-image:url("../images/drop-shadow-box-content.png");/*910px X 33px*/
+	background-repeat:repeat-y;
+	background-position:left top;
+	text-align:center;
+	margin:0 auto;
+
+}
+
+
+
+
+
+
+#content {
+font-size:1.2em;
+	width: 830px;
+	padding: 0px;
+	padding-left:40px; padding-right:40px;
+	padding-top:20px;
+	margin:0 auto;
+	/*overflow: auto;*/
+	overflow: hidden;
+	z-index:101;
+}
+
+/**
+	Here we can achieve the two-column effect without using tables
+ */ 
+#content-wrapper {
+	width:890px;
+	padding-left:10px; padding-right:10px;
+}
+
+
+#content-wrapper-front {
+	margin-top:25px;
+	width:900px;
+	padding-left:10px; padding-right:10px;
+	border-collapse: separate;
+}
+
+
+#content-wrapper-front tbody {
+	border-top:none;
+}
+
+#column1 {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 380px;
+	float: left;
+	border-right:1px solid #cccc99;
+	z-index:101;	
+}
+
+#column2 {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 380px;
+	float: left;
+	z-index:101;
+}
+
+
+
+/* styles for larger left columns */
+
+.column.column-left.column-larger {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 600px;
+	float: left;
+}
+
+
+.column.column-right.column-smaller {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 160px;
+	float: left;
+}
+
+
+
+/* styles for larger right columns */
+
+.column.column-left.column-smaller {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 160px;
+	float: left;
+}
+
+
+.column.column-right.column-larger {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 600px;
+	float: left;
+}
+
+
+/* styles for equal columns */
+
+.column.column-left {
+	padding-bottom: 20px;
+	padding-right: 25px;
+	width: 385px;
+	float: left;
+}
+
+.column.column-right {
+	padding-bottom: 20px;
+	padding-left: 25px;
+	width: 385px;
+	float: left;
+}
+
+
+/* styles for single columns pages */
+
+.column.column-style-single.column-left.column-larger {
+	padding-bottom: 20px;
+	/*padding-right: 20px; padding-left: 20px;*/
+	width: 100%;
+	float: left;
+	border:none;
+}
+
+
+.column.column-style-single.column-right.column-smaller {
+	padding-bottom: 20px;
+	padding:0px;
+	width: 0px;
+	float: left;
+}
+
+
+/* add the border */
+
+.column.column-left {
+	border-right:1px solid #cccc99;
+}
+
+
+
+
+
+
+
+
+
+
+
+#content, #secondary_content {
+	vertical-align:top; text-align:left;
+}
+
+
+#content-left {
+font-size:1.2em;
+	text-align:left;
+	width: 380px;
+	padding: 0px;
+	padding-left:40px; padding-right:20px; padding-top:0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	overflow: auto;
+	border-right:1px solid #cccc99;
+}
+
+#content_right {
+	width: 380px;
+	vertical-align:top;
+	text-align:left;
+	padding-top:0px;
+	padding-left:20px;
+}
+
+
+  
+
+#clear-both {
+	clear:both;
+	height:1px;
+}
+
+
+
+
+/**
+ @Div id=footer
+ */
+#footer {
+	display:block;
+	width:910px; height:55px;
+	margin:0 auto;
+	color:#000; font-family:Arial, sans-serif; text-align:center; padding-top:6px;
+	background-image:url('../images/drop-shadow-box-bottom.png'); background-position:left top; background-repeat:no-repeat;
+	padding-bottom:6px;
+}
+
+#footer a { color:#999999; text-decoration:none; }
+
+#footer a:hover { color:#CCCCCC; text-decoration:underline; }

@@ -1,0 +1,48 @@
+; $Id: headstart.info ,v 1.4 2007/06/08 05:50:57 dries Exp $
+name = "Head Start"
+description = Table-based multi-column theme with a marine and ash color scheme.
+version = VERSION
+core = 6.x
+engine = phptemplate
+
+; Information added by drupal.org packaging script on 2009-12-16
+version = "6.16"
+project = "drupal"
+datestamp = "1260996916"
+
+
+regions[header] = Header
+regions[staff_menu] = Staff Menu
+regions[left] = Left Sidebar
+regions[right_sidebar] = Right Sidebar
+regions[admin] = Admin Area
+regions[admin_menu] = Admin Menu
+regions[above_content] = Above Content
+regions[content] = Content
+regions[content_right] = Homepage Content Right
+regions[footer] = Footer
+
+; Add a stylesheet for all media
+stylesheets[all][] = style.css
+stylesheets[all][] = css/style-1_layout.css
+stylesheets[all][] = css/style-2-node.css
+stylesheets[all][] = css/style-2-block-elements.css
+stylesheets[all][] = css/style-3_blocks.css
+stylesheets[all][] = css/style-4-views.css
+stylesheets[all][] = css/style-5-ckeditor.css
+stylesheets[all][] = css/style-6-tabs-basic.css
+stylesheets[all][] = css/style-7-menus.css
+stylesheets[all][] = css/style-8-admin.css
+stylesheets[all][] = css/style-9-system.css
+stylesheets[all][] = css/style-20-modules.css
+
+; Add a stylesheets for screen and projector media
+;stylesheets[screen, projector][] = theScreenProjectorStyle.css
+
+; Add a stylesheet for print media
+;// uncommenting the line below fouls up the css on the Drupal site
+stylesheets[print][] = print.css
+
+
+
+;scripts[] = external_links.js

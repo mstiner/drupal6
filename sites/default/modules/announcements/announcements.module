@@ -1,0 +1,285 @@
+<?php
+
+// $Id$
+/**
+ * @file
+ * Lets users add private annotations to nodes
+ *
+ * Adds a text field when a node is displayed
+ * so that authenticated users may make notes.
+ */
+ 
+
+
+/**
+ * Implementation of hook_init().
+ *
+ * $_GET['q'] should be set by drupal_init_path() already,
+ * but some users have reported that it may not be.
+ * Just to be safe, reinitialize it if it's not already set.
+ */
+function announcements_init() {
+  if (!$_GET['q']) {
+    drupal_init_path();
+  }
+  $no_cache_pages = "app/announcements*";//$_GET['q'];
+  $add_js_css_pages = "app/announcements/*";//1\napp/thinkables/2\n";
+
+  // If the current page is one we want to exclude from the cache,
+  // set the page caching to false temporarily.
+  if (strlen($add_js_css_pages) && drupal_match_path($_GET['q'], $add_js_pages)) {
+	  // drupal_add_js(drupal_get_path('theme', 'tinman') .'/js/thinkables_uc_ajax_add_to_cart_form.js','module','before_scripts',false,false,false);
+  } /*else {
+	  drupal_add_js(drupal_get_path('theme', 'tinman') .'/js/thinkables_uc_ajax_add_to_cart_form.js','theme','before_scripts',false,false,false);
+  }
+  */
+
+  // If the current page is one we want to exclude from the cache,
+  // set the page caching to false temporarily.
+  if (strlen($no_cache_pages) && drupal_match_path($_GET['q'], $no_cache_pages)) {
+    $GLOBALS['conf']['cache'] = 0;
+    return;
+  }
+}
+
+/*  http://drupal.stackexchange.com/questions/6667/how-to-prevent-displaying-the-theme-on-a-custom-page-callback-in-hook-menu
+function custom_callback() {
+  echo 'success';
+  module_invoke_all('exit');
+  exit();
+}
+*/
+
+
+ /**
+  * Implementation of hook_menu()
+  */
+function announcements_menu() {
+	/*$items['admin/announcements'] = array(
+		'title' => 'Thinkables',
+		'description' => 'Adjust Thinkables options.',
+		'position' => 'right',
+		'weight' => -5,
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('administer site configuration'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+	);
+	*/
+	
+	$items['admin/announcements/settings'] = array(
+		'title' => 'Announcements settings',
+		'description' => 'Change how HSOLC Announcements behave.',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('announcements_admin_settings'),
+		'access arguments' => array('administer site configuration'),
+		'type' => MENU_NORMAL_ITEM,
+		'file' => 'announcements.admin.inc'
+	);//end of array $items
+	
+	$items['app/announcements'] = array(
+		'title' => 'HSOLC Announcements',
+		'description' => 'Head Start of Lane County Announcements.',
+		'position' => 'right',
+		'weight' => -5,
+		'page callback' => 'announcements_get_announcements',
+		'page arguments' => array( 3 ),
+		'access callback' => true,
+		'type' => MENU_CALLBACK
+	);
+	
+	return $items;
+}
+
+
+
+/**
+ * Implementation of hook_init().
+ *
+ * $_GET['q'] should be set by drupal_init_path() already,
+ * but some users have reported that it may not be.
+ * Just to be safe, reinitialize it if it's not already set.
+
+function announcements_init() {
+
+  if (!$_GET['q']) {
+    drupal_init_path();
+  }
+  $no_cache_pages = "app/thinkables/*";//$_GET['q'];
+  $add_js_pages = "app/thinkables/*";//1\napp/thinkables/2\n";
+
+  // If the current page is one we want to exclude from the cache,
+  // set the page caching to false temporarily.
+  if (strlen($add_js_pages) && drupal_match_path($_GET['q'], $add_js_pages)) {
+	  drupal_add_js(drupal_get_path('theme', 'tinman') .'/js/thinkables_uc_ajax_add_to_cart_form.js','module','before_scripts',false,false,false);
+  } else {
+	  drupal_add_js(drupal_get_path('theme', 'tinman') .'/js/thinkables_uc_ajax_add_to_cart_form.js','theme','before_scripts',false,false,false);
+  }
+  
+	drupal_add_js(drupal_get_path('theme', 'tinman') . '/js/colorbox-init.js','theme','header',false,false,false);
+	drupal_add_js(drupal_get_path('theme', 'tinman') .'/js/utilities.js','theme','before_scripts',false,false,false);
+  
+  // If the current page is one we want to exclude from the cache,
+  // set the page caching to false temporarily.
+  if (strlen($no_cache_pages) && drupal_match_path($_GET['q'], $no_cache_pages)) {
+    $GLOBALS['conf']['cache'] = 0;
+    return;
+  }
+}
+ */
+
+
+
+
+function announcements_link_alter( &$links, $node, $comment ) {
+	if (!in_array($node->type, array('announcement'))) {
+		return;
+	}
+	/*
+  foreach ($links as $module => $link) {
+    if (strstr($module, 'taxonomy_term')) {
+      // Link back to the forum and not the taxonomy term page
+      $links[$module]['href'] = str_replace('taxonomy/term', 'forum', $link['href']);
+    }
+  }
+  */
+	if( $links['upload_attachments'] ) {
+		// tail( $node->files );
+		$f = array_pop( $node->files );
+		$links['upload_attachments']['href'] = $f->filepath;
+		$links['upload_attachments']['attributes'] = array('title' => t('Open this attachment.'));
+	}
+}
+
+/**
+ * Implementation of hook_nodeapi()
+*/
+function announcements_nodeapi(&$node, $op, $teaser, $page) {
+		// Abort if this node is not one of the types we should annotate.
+	if (!in_array($node->type, array('announcement'))) {
+		return;
+	}
+	switch ($op) {
+	
+		case 'load':
+			break;
+
+		// The 'view' operation means the node is about to be displayed.
+		case 'view':
+			if( $node->is_announcement ) {
+				unset($node->content['#pre_render']);
+				if( !empty( $node->field_date[0]["value"] ) )
+					$effective_date = '<h5 class="cck cck-field-date">'.date('F j, Y',strtotime($node->field_date[0]["value"])).'</h5>';
+				$node->content['effective_date'] = array(
+					'#value' => $effective_date,
+					'#weight' => -999,
+					// '#printed' => false,
+				);
+				
+			}
+			if( $teaser = true && $node->image_attach[0] && $node->nid == 3126) {
+
+				tail( array_keys( get_object_vars($node) ));
+				tail( $node->files );
+				$node->content['#content_extra_fields']['body_field']['#weight'] = 999;
+				$node->content['body']['#weight'] = 999;
+//				tail( $node->content);
+				/*$node->content['image_attach']['#value'] = "<img src='/{$node->image_attach[0]->images['_original']}' />";
+				
+				$node->content['image_attach']['#value'] = '<a href="/'.$node->path .'">'.
+					theme('imagecache',
+					'teaser_image',
+					$node->image_attach[0]->images['_original'],
+					'Head Start of Lane County announcement photo',//alt
+					'View more information on this announcement.',//title
+					array('class'=>array('imagecache','teaser_image'))//attributes
+				) . '</a>';
+				*/
+			}
+			// tail( $node->content );
+			// unset( $node->content['add_to_cart'] );
+			// $node->content['annotation_form'] = array(
+			//	'#value' => drupal_get_form('annotate_entry_form', $node),
+			//	'#weight' => 10
+			//);
+
+			break;
+	}//end switch
+}//end announcements_nodeapi
+
+
+
+function announcements_get_announcements() {
+	$args = func_get_args();
+	ttail( $args, 'announcements');
+	
+	// Generate an AnnouncementType representing what kind of announcements should be displayed
+	$type = empty($args[0]) ? AnnouncementType::AnnouncementTypePublic : $args[0];
+	$AnnouncementType = AnnouncementType::GetAnnoucementType($type);
+	
+	// Sql should be querying based on a Vid/Tid per the AnnouncementType
+	$Sql = getAnnouncementsQueryByAnnouncementType($AnnouncementType);
+	
+	$Results = db_query( $Sql );
+	//if( !$results// 
+	// drupal_set_message( 'No products have been promoted to the homepage.', 'warning', false);
+	
+	$markup = array();
+	$output = '';
+	while( $Result = db_fetch_array($Results) ) {
+		$node = node_load( $Result['nid'], null, true );
+		$node->is_announcement = true;
+		$markup[$node->nid] = node_view( $node, true, false, true );
+		//if(++$index==2) tail( $node );
+	}
+
+	$output .= implode('', $markup);
+
+	//tail( $output );
+	return $output;
+}
+class AnnouncementType
+{
+	const AnnouncementTypePublic = "public";
+	const AnnouncementTypeStaff = "staff";
+	const AnnouncementTypeFoo = "foo";
+	private $AnnouncementType;
+	
+	private function __construct( $AnnouncementTypeString )
+	{
+		$this->AnnouncementType = $AnnouncementTypeString;
+	}
+	
+	public static function GetAnnoucementType( /*String*/ $TypeString = null)
+	{
+		switch($TypeString)
+		{
+			case self::AnnouncementTypeStaff:
+				return new AnnouncementType(self::AnnouncementTypeStaff);
+				break;
+			case self::AnnouncementTypePublic:
+				return new AnnouncementType(self::AnnouncementTypePublic);
+			default:
+				throw new Exception('Invalid announcement type specified.');
+		}
+	}
+	public function getType()
+	{
+		return $this->AnnouncementType;
+	}
+}
+function getAnnouncementsQueryByAnnouncementType( AnnouncementType $AnnouncementType )
+{
+	if( $AnnouncementType->getType() == AnnouncementType::AnnouncementTypePublic )
+	{
+		$sql = 'SELECT n.nid FROM {node} n JOIN {content_field_announcement_type} t ON(n.nid=t.nid) WHERE type="announcement" AND field_announcement_type_value="public" AND status=1 ORDER BY created DESC LIMIT 25';		
+	}
+	elseif( $AnnouncementType->getType() == AnnouncementType::AnnouncementTypeStaff )
+	{
+		$sql = 'SELECT n.nid FROM {node} n JOIN {content_field_announcement_type} t ON(n.nid=t.nid) WHERE type="announcement" AND field_announcement_type_value="staff" AND status=1 ORDER BY created DESC LIMIT 25';	
+	}
+
+	//$results = taxonomy_select_nodes($tids, $operator = 'or', $depth = 0, $pager = FALSE, $order = 'tn.tid, n.sticky DESC, n.created DESC');
+
+	return $sql;
+}

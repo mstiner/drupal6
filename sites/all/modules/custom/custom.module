@@ -1,0 +1,80 @@
+<?php
+/**
+* Display help and module information
+* @param path which path of the site we're displaying help
+* @param arg array that holds the current path as would be returned from arg() function
+* @return help text for the path
+*/
+function custom_help($path, $arg) {
+  $output = '';  //declare your output variable
+  switch ($path) {
+    case "admin/help#custom":
+      $output = '<p>'.  t("Help us hack the WYSIWYG module.") .'</p>';
+      break;
+  }
+  return $output;
+} // function custom_help
+
+/**
+* Return an array of native editor plugins.
+*
+* Only to be used for native (internal) editor plugins.
+*
+* @see hook_wysiwyg_include_directory()
+*
+* @param $editor
+*   The internal name of the currently processed editor.
+* @param $version
+*   The version of the currently processed editor.
+*
+* @return
+*   An associative array having internal plugin names as keys and an array of
+*   plugin meta-information as values.
+*/
+/*function custom_wysiwyg_plugin($editor, $version) {
+  switch ($editor) {
+    case 'ckeditor':
+        return array(
+          'pagebreak' => array(
+					// A URL to the plugin's homepage.
+					'url' => 'http://drupalcode.org/viewvc/drupal/contributions/modules/fckeditor/plugins/drupalpagebreak',
+					// The full path to the native editor plugin.
+					// REMOVE/COMMENT THIS ROW IF YOU PUT THE PLUGIN IN FCKEDITOR'S STANDARD PLUGIN FOLDER.
+					//'path' => drupal_get_path('module', 'custom') . '/drupalbreaks/',
+					'path' => '/drupal/sites/all/modules/custom/drupalbreaks/',
+					// A list of buttons provided by this native plugin. The key has to
+					// match the corresponding JavaScript implementation. The value is
+					// is displayed on the editor configuration form only.
+					'buttons' => array(
+					  'DrupalPageBreak' => t('Page Break')
+					),
+            ),
+            // Boolean whether the editor needs to load this plugin. When TRUE,
+            // the editor will automatically load the plugin based on the 'path'
+            // variable provided. If FALSE, the plugin either does not need to
+            // be loaded or is already loaded by something else on the page.
+            // Most plugins should define TRUE here.
+            'load' => TRUE
+            // Boolean whether this plugin is a native plugin, i.e. shipped with
+            // the editor. Definition must be ommitted for plugins provided by
+            // other modules.
+            // UNCOMMENT THE BELOW LINE IF YOU PUT THE PLUGIN IN FCKEDITOR'S STANDARD PLUGIN FOLDER.
+				//'internal' => TRUE,
+        );
+        
+  }
+}
+*/
+
+
+function custom_wysiwyg_editor_settings_alter(&$settings, &$context) {
+  if($context['profile']->editor == 'ckeditor') {
+//$settings['enterMode'] = 2;
+//$settings['bodyClass'] = 'node';
+//$settings['bodyId'] = 'ckeditor_content';
+//$settings['startupOutlineBlocks'] = TRUE;
+$settings['customConfig'] = '/drupal/themes/nptieducation/ckeditor.config.2.js';
+//$settings['buttons'][0][] = 'Templates';
+//$settings['templates_files'] = [ '/drupal/themes/nptieducation/ckeditor_templates.js' ];
+  }
+}

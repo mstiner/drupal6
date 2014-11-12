@@ -1,0 +1,5 @@
+; $Id$
+name = Announcements
+description = "Controls the Announcements application and related pages."
+core = 6.x
+package = Clickpdx modules

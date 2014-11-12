@@ -1,0 +1,43 @@
+
+
+#pimg {
+	display:block; float:right;
+}
+
+#header p {
+	margin-left:2.5em; padding-top:0.5em;
+}
+
+
+
+
+
+
+
+
+
+
+/** body elements **/
+
+.center {
+	width:860px;
+}
+
+
+
+
+
+/**
+ @Section: Views styles
+
+
+**/
+
+td .views-admin-links ul.links li a {
+	background-color:#fff; padding:3px; color:#666;
+	font-size:10pt;
+}
+
+#block-nice_menus-1 .title {
+	display:none;
+}

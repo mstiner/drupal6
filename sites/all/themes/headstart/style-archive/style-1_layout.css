@@ -1,0 +1,274 @@
+* { margin:0; padding:0; }
+
+
+
+
+
+body {
+	background-color:#D5CB96;
+	background-image:url("images/background.jpg");
+	background-repeat:repeat-x;
+	color:#000000;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:62.5%;
+	margin:20px;
+	padding:0;
+	margin:0 auto;
+}
+
+
+
+
+
+#masthead {
+height:113px;
+margin:0 auto;
+padding:0;
+/*width:994px;*//* add 50px here? see below @margin-left:-50px */
+width:1044px;
+}
+#masthead .content {
+background-image:url("images/masthead-logo.png");
+background-repeat:no-repeat;
+font-family:Georgia,"Times New Roman",Times,serif;
+font-size:1.5em;
+height:115px;
+/*margin-left:-50px;*/
+text-transform:uppercase;
+}
+#searchbox {
+background-image:url("images/search.png");
+background-position:right center;
+background-repeat:no-repeat;
+float:right;
+height:25px;
+margin-right:106px;
+margin-top:40px;
+width:200px;
+}
+
+
+
+/* deprecated code */
+/*#header {
+	background-image:url("images/top.png");
+	background-repeat:no-repeat;
+	color:#C4161C;
+	height:133px;
+	margin:0 auto;
+	width:1120px;
+}
+*/
+
+
+
+
+
+#admin {
+	display:block; width:150px;
+	position:absolute; top:150px; right:15px;
+	/*padding:8px;*/
+}
+
+#top_rounded {
+	display:block; width:910px; height:29px;
+	margin:0 auto;
+	background-image:url('images/drop-shadow-box-top.png'); /*910px X 29px*/
+	background-position:top left;
+}
+
+
+#image-rotator {
+	display:block;
+}
+
+
+
+#wrapper {
+	width:910px; /* must correlate to the width of the background-image, below */
+	background-image:url("images/drop-shadow-box-content.png");/*910px X 33px*/
+	background-repeat:repeat-y;
+	background-position:left top;
+	text-align:center;
+	margin:0 auto;
+
+}
+
+
+
+
+
+
+#content {
+	width: 830px;
+	padding: 0px;
+	padding-left:40px; padding-right:40px;
+	padding-top:20px;
+	margin:0 auto;
+	/*overflow: auto;*/
+	overflow: hidden;
+}
+
+/**
+	Here we can achieve the two-column effect without using tables
+ */ 
+#content-wrapper {
+	width:890px;
+	padding-left:50px; padding-right:10px;
+}
+#content-wrapper tbody {
+	border-top:none;
+}
+
+#column1 {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 380px;
+	float: left;
+	border-right:1px solid #cccc99;
+}
+
+#column2 {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 380px;
+	float: left;
+}
+
+
+
+/* styles for larger left columns */
+
+.column.column-left.column-larger {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 600px;
+	float: left;
+}
+
+
+.column.column-right.column-smaller {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 160px;
+	float: left;
+}
+
+
+
+/* styles for larger right columns */
+
+.column.column-left.column-smaller {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 160px;
+	float: left;
+}
+
+
+.column.column-right.column-larger {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 600px;
+	float: left;
+}
+
+
+/* styles for equal columns */
+
+.column.column-left {
+	padding-bottom: 20px;
+	padding-right: 20px;
+	width: 380px;
+	float: left;
+}
+
+.column.column-right {
+	padding-bottom: 20px;
+	padding-left: 20px;
+	width: 380px;
+	float: left;
+}
+
+
+/* styles for single columns pages */
+
+.column.column-style-single.column-left.column-larger {
+	padding-bottom: 20px;
+	padding-right: 20px; padding-left: 20px;
+	width: 760px;
+	float: left;
+}
+
+
+.column.column-style-single.column-right.column-smaller {
+	padding-bottom: 20px;
+	padding-left: 0px;
+	width: 0px;
+	float: left;
+}
+
+
+/* add the border */
+
+.column.column-left {
+	border-right:1px solid #cccc99;
+}
+
+
+
+
+
+
+
+
+
+
+
+#content, #secondary_content {
+	vertical-align:top; text-align:left;
+}
+
+
+#content-left {
+	width: 380px;
+	/*height:200px;
+	margin-right: auto;
+	//margin-left: auto;
+	//position: relative;*/
+	padding: 0px;
+	padding-left:40px; padding-right:40px; padding-top:20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	overflow: auto;
+}
+
+#content_right {
+	vertical-align:top;
+	text-align:left;
+	padding-top:20px;
+}
+
+
+  
+
+
+
+
+
+
+/**
+ @Div id=footer
+ */
+#footer {
+	display:block;
+	width:910px; height:55px;
+	margin:0 auto;
+	color:#999999; font-family:Arial, sans-serif; text-align:center; padding-top:6px;
+	background-image:url('images/drop-shadow-box-bottom.png'); background-position:left top; background-repeat:no-repeat;
+	padding-bottom:6px;
+}
+
+#footer a { color:#999999; text-decoration:none; }
+
+#footer a:hover { color:#CCCCCC; text-decoration:underline; }

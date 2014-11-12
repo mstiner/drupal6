@@ -1,0 +1,503 @@
+<?php
+// $Id: image_ref.info,v 0.5 2009/09/08 08:23:23 danyalejandro Exp $
+require_once('image_ref.inc'); //Utility functions
+
+function image_ref_field_info() {
+  return array(
+    'image_ref_number' => array(
+      'label' => t('Image reference'),
+      'description' => t('Allows to reference an image node using Image Browser.')
+	),
+  );
+}
+
+function image_ref_install() {
+  content_notify('install', 'image_ref');
+}
+function image_ref_uninstall() {
+  content_notify('uninstall', 'image_ref');
+}
+function image_ref_enable() {
+  content_notify('enable', 'image_ref');
+}
+function image_ref_disable() {
+  content_notify('disable', 'image_ref');
+}
+
+
+/**
+ * Implementación de hook_field_settings().
+ */
+function image_ref_field_settings($op, $field) {
+	switch ($op) {
+		case 'database columns':
+			$columnas['value'] = array('type' => 'int', 'sortable' => TRUE, 'not null' => FALSE); //Número del nodo imagen
+			$columnas['nombre_preset'] = array('type' => 'varchar', 'length' => 255, 'not null' => FALSE); //nombre del preset (image o imageCache)
+			$columnas['origen_preset'] = array('type' => 'varchar', 'length' => 255, 'sortable' => TRUE, 'not null' => FALSE); //Origen de la preset (image, imagecache)
+			$columnas['img_link_url'] = array('type' => 'varchar', 'length' => 255, 'not null' => FALSE); //link url elegido en el diálogo
+			$columnas['img_link_target'] = array('type' => 'varchar', 'length' => 255, 'not null' => FALSE); //target elegido en el diálogo
+			
+			return $columnas;
+			break;
+		case 'form':
+			$form = array();
+			
+			//get image size presets array
+			$arr_tamanos = ir_get_image_presets();
+			$arr_opc_tamanos = array();
+			$arr_opc_tamanos['0'] = t('Let user decide');
+			foreach($arr_tamanos as $val_tamano => $tit_tamano) {
+				$arr_opc_tamanos[$val_tamano] = $tit_tamano;
+			}
+			
+			$form['forzar_tamano'] = array(
+			'#type' => 'select',
+			'#options' => $arr_opc_tamanos,
+			'#title' => t('Force size preset'),
+			'#description' => t('Force the size preset used to display the image in the node view. Select "Let user decide" to use the preset selected by the user in the Image Browser window.'),
+			'#default_value' => isset($field['forzar_tamano']) ? $field['forzar_tamano'] : '0',
+			);
+			
+			$form['forzar_link_url'] = array(
+			'#type' => 'select',
+			'#options' => array(
+				0 => t('Let user decide'),
+				1 => t('Link to original image'),
+				2 => t('Link to image node'),
+			),
+			'#title' => t('Force image link'),
+			'#description' => t('Force the link surrounding the image in the node view. Select "Let user decide" to use the url selected by the user in the Image Browser window.'),
+			'#default_value' => isset($field['forzar_link_url']) ? $field['forzar_link_url'] : '0',
+			);
+			
+			$form['soporte_lightbox'] = array(
+			'#type' => 'select',
+			'#options' => array(
+				0 => t('No lightbox support'),
+				1 => t('Show contents in "image type" lightbox (lightbox)'),
+				2 => t('Show contents in "video type" lightbox (lightvideo)'),
+				3 => t('Show contents in "html snippet type" lightbox (lightmodal)'),
+				4 => t('Show contents in "frame type" lightbox (lightframe)')
+			),
+			'#title' => t('Lightbox support'),
+			'#description' => t('Allow the Lightbox2 module (if installed) to show the image link contents 
+			(as specified in the Image Browser dialog) when the image is clicked. Please use the suited 
+			lightbox type for your content. Also, verify that your Lightbox2 configuration supports such content.
+			For more information, check 
+			<a href="http://drupal.org/node/144488" target="newWindow">Lightbox2 documentation</a>.'),
+			'#default_value' => isset($field['soporte_lightbox']) ? $field['soporte_lightbox'] : '0',
+			);
+			
+			return $form;
+			break;
+		case 'save':
+			$values = array('forzar_tamano', 'forzar_link_url', 'soporte_lightbox');
+			return $values;
+			break;
+		case 'views data':
+			break;
+	}
+}
+
+/**
+ * Implementación de hook_field().
+ */
+function image_ref_field($op, &$node, $field, &$items, $teaser, $page) {
+	switch ($op) {
+		case 'sanitize':
+			foreach ($items as $delta => $item) {
+				foreach ( $item as $col => $dat ) {
+					$items[$delta]['safe_' . $col ] = check_plain($item[ $col ]);
+				}
+			}
+			break;
+	}
+}
+
+/**
+ * Implementación de hook_content_is_empty().
+ */
+function image_ref_content_is_empty($item, $field) {
+  if (empty($item['value']) && (string)$item['value'] !== '0') {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implementación de FAPI hook_elements().
+ */
+function image_ref_elements() {
+  return array(
+    'image_ref_selector' => array(
+      '#input' => TRUE,
+      '#columns' => array('value', 'nombre_preset', 'origen_preset', 'img_link_url', 'img_link_target'), '#delta' => 0,
+      '#process' => array('image_ref_selector_process'),
+    ),
+  );
+}
+
+/**
+ * Process an individual element.
+ *
+ * Build the form element. When creating a form using FAPI #process,
+ * note that $element['#value'] is already set.
+ *
+ * The $fields array is in $form['#field_info'][$element['#field_name']].
+ */
+function image_ref_selector_process($element, $edit, $form_state, $form) {
+  drupal_add_js('var ir_ibpath = "'. base_path() . 'imagebrowser/view/image";', 'inline'); //Necesitamos el path para el código javascript
+  drupal_add_js(drupal_get_path('module', 'image_ref') .'/image_ref_js.js');
+  
+  $field_name = $element['#field_name'];
+  $field = $form['#field_info'][$field_name];
+  
+  $field_key  = $element['#columns'][0];
+  $value = isset($element['#value'][$field_key]) ? $element['#value'][$field_key] : '';
+  $element[$field_key] = array(
+    '#type' => 'textfield',
+    '#title' => $element['#title'],
+    '#required' => $element['#required'],
+    '#default_value' => $value,
+  );
+  
+  $field_key  = $element['#columns'][1];
+  $value = isset($element['#value'][$field_key]) ? $element['#value'][$field_key] : '';
+  $element[$field_key] = array(
+    '#type' => 'textfield',
+    '#title' => $element['#title'],
+    '#required' => $element['#required'],
+    '#default_value' => $value,
+  );
+  
+  $field_key  = $element['#columns'][2];
+  $value = isset($element['#value'][$field_key]) ? $element['#value'][$field_key] : '';
+  $element[$field_key] = array(
+    '#type' => 'textfield',
+    '#title' => $element['#title'],
+    '#required' => $element['#required'],
+    '#default_value' => $value,
+  );
+  
+  $field_key  = $element['#columns'][3];
+  $value = isset($element['#value'][$field_key]) ? $element['#value'][$field_key] : '';
+  $element[$field_key] = array(
+    '#type' => 'textfield',
+    '#title' => $element['#title'],
+    '#required' => $element['#required'],
+    '#default_value' => $value,
+  );
+
+  $field_key  = $element['#columns'][4];
+  $value = isset($element['#value'][$field_key]) ? $element['#value'][$field_key] : '';
+  $element[$field_key] = array(
+    '#type' => 'textfield',
+    '#title' => $element['#title'],
+    '#required' => $element['#required'],
+    '#default_value' => $value,
+  );
+
+  // Make sure we don't wipe out element validation added elsewhere.
+  if (empty($element['#element_validate'])) {
+    $element['#element_validate'] = array();
+  }
+  
+  $element['#element_validate'][] = 'image_ref_number_validate';
+
+  // Used so that hook_field('validate') knows where to flag an error.
+  $element['_error_element'] = array(
+    '#type' => 'value',
+    '#value' => implode('][', array_merge($element['#parents'], array($field_key))),
+  );
+
+  return $element;
+}
+
+/**
+ * Implementación de hook_widget_info().
+ */
+function image_ref_widget_info() {
+  return array(
+    'image_ref_selector' => array(
+      'label' => t('Image Browser Selector'),
+      'field types' => array('image_ref_number'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'callbacks' => array(
+        'default value' => CONTENT_CALLBACK_DEFAULT,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implementación de hook_widget().
+ */
+function image_ref_widget(&$form, &$form_state, $field, $items, $delta = 0) {
+  $element = array(
+    '#type' => $field['widget']['type'],
+    '#default_value' => isset($items[$delta]) ? $items[$delta] : NULL,
+  );
+  return $element;
+}
+
+/**
+ * Implementación de hook_field_formatter_info().
+ */
+function image_ref_field_formatter_info() {
+  return array(
+    //solo mostrar imagen, sin link ni información
+	'default' => array(
+		'label' => t('Image only'),
+		'field types' => array('image_ref_number')
+		),
+	'generic' => array(
+		'label' => t('Generic'),
+		'field types' => array('image_ref_number')
+		),
+  );
+}
+
+/**
+ * Implementación de hook_theme().
+ */
+function image_ref_theme() {
+  return array(
+    'image_ref_selector' => array(
+		'arguments' => array('element')
+	),
+    'image_ref_formatter_default' => array(
+		'arguments' => array('element'),
+		'function' => 'theme_image_ref_formatter_generic'
+	),
+	'image_ref_formatter_generic' => array(
+		'arguments' => array('element'),
+		'function' => 'theme_image_ref_formatter_generic'
+	)
+  );
+}
+
+/*
+al oobjeto node se le pueden sacar:
+nid|type|language|uid|status|created|changed|comment|promote|moderate|sticky|tnid|translate|vid|revision_uid|title|body|teaser|log
+|revision_timestamp|format|name|picture|data|images|rebuild_images|field_im_creditos|last_comment_timestamp|last_comment_name
+|comment_count|taxonomy
+*/
+
+//Generic proxy formatter
+function theme_image_ref_formatter_generic($element) {
+	/*obtenemos los datos de la imagen que nos pueden ser útiles:
+	id_nodo_imagen, nombre_preset, origen_preset, url_imagen_selec, url_imagen_thumb, url_imagen_orig, url_destino
+	*/
+	$id_nodo_imagen = $element['#item']['value'];
+	$nombre_preset = $element['#item']['nombre_preset'];
+	$origen_preset = $element['#item']['origen_preset'];
+	$img_link_url = $element['#item']['img_link_url'];
+	$img_link_target = $element['#item']['img_link_target'];
+	
+	//obtenemos las configuraciones del campo
+	$field = content_fields($element['#field_name'], $element['#type_name']);
+	$forzar_tamano = $field['forzar_tamano'];
+	$soporte_lightbox = (int)$field['soporte_lightbox'];
+	$forzar_link_url = $field['forzar_link_url'];
+	
+	$node = node_load(array('type' => 'image', 'nid' => $id_nodo_imagen));
+	
+	if ($node) {
+		//forzamos el tamaño de imagen?
+		if($forzar_tamano != '0') {
+			$url_imagen = url(NULL, array('absolute' => TRUE)) . $node->images[$forzar_tamano];
+		}
+		else {
+			$url_imagen = url(NULL, array('absolute' => TRUE)) . $node->images[$nombre_preset];
+		}
+		
+		//forzamos el link?
+		switch($forzar_link_url) {
+			case 0: $url_destino = $img_link_url; //Let user decide
+				break;
+			case 1: $url_destino = url(NULL, array('absolute' => TRUE)) . $node->images['_original']; //Link to original image
+				break;
+			case 2: $url_destino = url(NULL, array('absolute' => TRUE)) . 'node/' . $id_nodo_imagen; //Link to image node
+				break;
+		}
+		
+		//retornamos la imagen formateada. Esta es la imagen que usualmente aparece en el nodo
+		$html_imagen = ''; //contiene la tag de la imagen
+		switch($origen_preset) {
+			case 'image':
+				$url_imagen = url(NULL, array('absolute' => TRUE)) . $node->images[$nombre_preset];
+				$html_imagen = '<img src="' . $url_imagen . '" alt="' . $node->title . '" />';
+				break;
+			case 'imagecache':
+				$url_imagen = '/' . $node->images['_original'];
+				$html_imagen = theme('imagecache', $nombre_preset, $url_imagen, $node->title);
+				break;
+			default:
+				$html_imagen = '';
+				break;
+		}
+		
+		//Si hay url de destino, agregamos el link (y el lightbox, si es necesario)
+		if($url_destino != '') {
+			$codigo_html = '<a href="' . $url_destino . '"';
+			if($img_link_target != '') {
+				$codigo_html .= ' target="' . $img_link_target . '" ';
+			}
+			switch($soporte_lightbox) {
+				case 1:	$codigo_html .= ' rel="lightbox[][' . $node->title . ']" class="lightbox"'; break; //imagen
+				case 2:	$codigo_html .= ' rel="lightvideo[]" class="lightbox"'; break; //video
+				case 3:	$codigo_html .= ' rel="lightmodal[]" class="lightbox"'; break; //html snippet
+				case 4:	$codigo_html .= ' rel="lightframe[]" class="lightbox"'; break; //todo lo demás incluidas webs externas
+				default: break;
+			}
+			$codigo_html .= '>' . $html_imagen . '</a>';
+			return $codigo_html;
+		}
+		else {
+			return $html_imagen;
+		}
+	}
+	else {
+		return '';
+	}
+}
+
+function theme_image_ref_formatter_default($element) {
+	$id_nodo_imagen = $element['#item']['value'];
+	$nombre_preset = $element['#item']['nombre_preset'];
+	$origen_preset = $element['#item']['origen_preset'];
+
+	$node = node_load(array('type' => 'image', 'nid' => $id_nodo_imagen));
+	
+	if ($node) {
+		
+	}
+	else {
+		return '';
+	}
+}
+
+
+/**
+ * FAPI validation of an individual integer element.
+ */
+function image_ref_number_validate($element, &$form_state) {
+  $field_name = $element['#field_name'];
+  $type_name = $element['#type_name'];
+  $field = content_fields($field_name, $type_name);
+  $field_key = $element['#columns'][0];
+  $value = $element['#value'][$field_key];
+
+  if (($element[$field_key]['#required'] || !empty($value))) {
+    $start = $value;
+    $value = preg_replace('@[^-0-9]@', '', $value);
+    if ($start != $value) {
+      $error_field = implode('][', $element['#parents']) .']['. $field_key;
+      form_set_error($error_field, t('Only numbers are allowed in %field.', array('%field' => t($field['widget']['label']))));
+    }
+    else {
+      form_set_value($element[$field_key], $value, $form_state);
+    }
+  }
+}
+
+
+
+/**
+ * FAPI theme for an individual element.
+ *
+ 
+ * theme and the HTML output lives in $element['#children'].
+ * Override this theme to make custom changes to the output.
+ *
+ * $element['#field_name'] contains the field name
+ * $element['#delta]  is the position of this element in the group
+ $element tiene los siguientes índices:
+ #type, #default_value, #title, #description, #required, #weight, #delta, #columns, #field_name, #type_name,
+ #post, #programmed, #tree, #parents, #array_parents, #processed, #attributes, #input, #process, #name, #id,
+ #value, value, #element_validate, _error_element, #defaults_loaded, #sorted, #children
+ */
+ 
+function theme_image_ref_selector($element) {
+	//return $element['#children'];
+	//Si el widget ya tenía un valor almacenado, obtener la descripción correspondiente
+	$descripcion_imagen = '';
+	$descripcion_ayuda = $element['#description'];
+	$id_nodo_imagen = $element['#value']['value'];
+	$img_link_url = $element['#value']['img_link_url'];
+	$nombre_preset = $element['#value']['nombre_preset'];
+	$origen_preset = $element['#value']['origen_preset'];
+	$img_link_target = $element['#value']['img_link_target'];
+	
+	$nombre_campo = $element['#field_name'];
+	
+	if($id_nodo_imagen != '') {
+		$node = node_load(array('type' => 'image', 'nid' => $id_nodo_imagen));
+		
+		$titulo = check_plain($node->title);
+		//if(strlen($titulo) > 18) {$titulo = substr($titulo, 0, 18) . '...';}
+		
+		$ancho = ''; $alto = '';
+		if($origen_preset == 'image') {
+			$imagen = imageapi_image_open($node->images[$nombre_preset]);
+			$ancho = check_plain($imagen->info['width']);
+			$alto = check_plain($imagen->info['height']);
+		}
+		else if ($origen_preset == 'imagecache') {
+			
+			$imagecache_path = imagecache_create_path($nombre_preset, $node->images['_original']);
+			if ($image = image_get_info($imagecache_path)) {
+				$ancho = $image['width'];
+				$alto = $image['height'];
+				
+			}
+		}
+		
+		$descripcion_imagen = '(' . $ancho . ' x ' . $alto . ' px) (' . $nombre_preset . ')';
+		if($img_link_url != '') {
+			$descripcion_imagen .= ' (<a href="' . $img_link_url . '" target="_blank">Link</a>)';
+		}
+	}
+	
+	//Preparamos la ayuda
+	$html_ayuda = '';
+	if($descripcion_ayuda != '') {
+		$html_ayuda = '<div class="description">' . $descripcion_ayuda . '</div>';
+	}
+	
+	return '
+	<div class="form-item">
+	<label>' . $element['#title'] . ':</label>
+		<div style="padding: 5px 5px 5px 5px; border: 1px solid #DDDDDD;">
+		<table border="0" cellpadding="0" cellspacing="0" style="margin: 0px; border-collapse: separate; line-height: 100%;">
+			<tr><td style="height: 20px; padding: 0px; width: 100%;">
+					<div id="ir_img_titulo" style="font-size: 12px; font-weight: bold;">' . $titulo . '</div>
+					<div id="ir_txt_ninguna" style="color: #999999;"><i>' . t('(None selected)') . '</i></div>
+				</td>
+				<td rowspan="3" style="padding: 0px 5px 0px 0px; text-align: center; vertical-align: middle;">
+					<div id="ir_gif_cargando" style="text-align: center; display: none; margin-top: 9px;"><img src="' . base_path() . drupal_get_path('module', 'image_ref') . '/cargando.gif" /></div>
+				</td>
+				<td rowspan="3" style="padding: 0px 10px 0px 0px; text-align: center; vertical-align: middle;">
+					<div id="ir_previsual" style="vertical-align: middle; text-align: center; padding: 0px;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td style="font-size: 11px; padding: 4px 0px 0px 0px;"><i id="ir_img_desc">' . $descripcion_imagen . '</i></td>
+			</tr>
+			<tr> 
+				<td style="vertical-align: bottom; padding: 10px 0px 0px 0px;">
+					<input type="hidden" id="ir_img_link_url" name="' . $nombre_campo . '[' . $element['#delta'] . '][img_link_url]"  value="' . $img_link_url . '"/>
+					<input type="hidden" id="ir_nombre_preset" name="' . $nombre_campo . '[' . $element['#delta'] . '][nombre_preset]"  value="' . $nombre_preset . '"/>
+					<input type="hidden" id="ir_origen_preset" name="' . $nombre_campo . '[' . $element['#delta'] . '][origen_preset]"  value="' . $origen_preset . '"/>
+					<input type="hidden" id="ir_img_link_target" name="' . $nombre_campo . '[' . $element['#delta'] . '][img_link_target]"  value="' . $img_link_target . '"/>
+					<input type="hidden" id="ir_id_imagen" name="' . $nombre_campo . '[' . $element['#delta'] . '][value]" value="' . $id_nodo_imagen . '" />
+					<input type="button" class="ir_bt_selecc" value="' . t('Select image...') . '" />&nbsp;
+					<input type="button" class="ir_bt_quitar" value="' . t('Remove image') . '" style="display: none;" />
+				</td>
+			</tr>
+		</table>
+		</div>
+		' . $html_ayuda . '
+	</div>';
+}
+?>

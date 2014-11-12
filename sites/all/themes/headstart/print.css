@@ -1,0 +1,13 @@
+/*#block-menu-menu-policies-menu {
+	display:none;
+}*/
+
+#policies-content {
+	width:100%;
+	font-size:14pt;
+}
+
+#policies-menu {
+	width:0%;
+	display:none;
+}

@@ -1,0 +1,1206 @@
+/*P,TH,TD,DIV,SELECT,INPUT[type=text],INPUT[type=password],INPUT[type=file],TEXTAREA,BUTTON{font-family:Tahoma,Arial,Helvetica,sans-serif;font-size:11px;}
+HTML{width:100%;height:100%;}
+BODY{width:100%;height:100%;margin:0;}
+FORM{margin:0;padding:0;}
+FIELDSET{border:1px solid #a7a194;padding:5px;margin:5px;}
+LEGEND{color:#000;overflow:hidden;white-space:nowrap;font-weight:bold;}
+INPUT[readonly]{color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
+TEXTAREA{padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+TEXTAREA[readonly]{color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
+input[type="checkbox"]{cursor:pointer;}
+input[type="text"],input[type="password"]{height:20px;padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+INPUT[disabled]{color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
+textarea{padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}*/
+.CompactTable{border-collapse:collapse;border-spacing:0;padding:0;}
+.fullSize{width:100%;height:100%;}
+.fullWidth{width:100%;}
+.fullHeight{height:100%;}
+.minSize{width:1px;height:1px;}
+.leftAlign{text-align:left;}
+.rightAlign{text-align:right;}
+.checkboxLabel{font-weight:bold;}
+.ToolbarBg{background-color:#bccbd6;}
+.ZmHead{font-size:15px;font-weight:bold;}
+.ZmSubHead{font-size:13px;}
+.ZmBigger{font-size:15px;font-weight:bold;}
+.ZmFinePrint{font-size:9px;}
+.ZmImportant{color:darkred;}
+.ZmFieldLabel{color:#000;overflow:hidden;white-space:nowrap;}
+.ZmFieldLabelLeft{color:#000;overflow:hidden;white-space:nowrap;text-align:left;}
+.ZmFieldLabelRight{color:#000;overflow:hidden;white-space:nowrap;text-align:right;}
+.ZmFieldLabelCenter{color:#000;overflow:hidden;white-space:nowrap;text-align:center;}
+ZmSectionLabel{color:#000;overflow:hidden;white-space:nowrap;border-bottom:1px solid #a7a194;font-size:15px;font-weight:bold;}
+.TextPadding{padding-left:3px;padding-right:3px;}
+.BigHeaderBg{border-bottom:1px solid #a7a194;padding-top:1px;background-color:#d7cfbe;height:36px;}
+.ZmOverride{background-color:#FFF6BF;padding:2px;}
+.ZmSelectedHeaderBg{background-color:#bccbd6!important;}
+.ZmGraphKey{background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #77736a;-moz-border-top-colors:#a7a194 #77736a;-moz-border-bottom-colors:#d7cfbe #a7a194;-moz-border-right-colors:#d7cfbe #a7a194;}
+.ZmGraphKeyHeader{background-color:#d7cfbe;font-size:13px;color:#000;padding-left:3px;padding-right:3px;text-align:left;font-weight:bold;vertical-align:middle;}
+.ZmGraphKeyBody{padding:5px;margin:5px;}
+.ZmGraphKeyColorBox{border:2px solid;-moz-border-left-colors:#a7a194 #77736a;-moz-border-top-colors:#a7a194 #77736a;-moz-border-bottom-colors:#d7cfbe #a7a194;-moz-border-right-colors:#d7cfbe #a7a194;width:16px;height:16px;}
+.ZmGraphKeyColorText{color:#000;white-space:nowrap;overflow:hidden;}
+.horizSep{height:1px!important;border-bottom:1px solid #a7a194;font-size:1px;line-height:1px;margin:5px 0;width:100%;}
+.vertSep{border-left:1px solid #a7a194;margin-left:3px;padding-right:3px;height:20px;}
+DIV.vSpace{margin:5px 0;}
+.AttLink:link,.AttLink:visited{color:darkblue;text-decoration:none;cursor:pointer;}
+.AttLink:hover{color:darkblue;text-decoration:underline;background-color:#e3da93;}
+.AttLink:active{color:darkgreen;text-decoration:underline;background-color:#e3da93;}
+.Row-selected .AttLink:link,.Row-selected .AttLink:active,.Row-selected .AttLink:visited{color:darkblue;text-decoration:none;cursor:pointer;}
+.AttLink:hover,.Row-selected .AttLink:hover{color:darkblue;text-decoration:underline;background-color:#e3da93;}
+.DragProxy{opacity:.7;}
+.notDroppable{border:2px solid red!important;background-color:#e3da93;opacity:.7;}
+.notDroppable-linux{border:2px solid red!important;background-color:#e3da93;}
+.droppable{border:2px solid green!important;background-color:#e3da93;opacity:.7;}
+.droppable-linux{border:2px solid green!important;background-color:#e3da93;}
+.DragProxyTextLabel{font-weight:bold;color:white;}
+.BusyOverlay table,.VeilOverlay table{opacity:.5;cursor:wait;background-color:transparent;}
+.BusyOverlay-linux table,.VeilOverlay-linux table{cursor:wait;background-color:transparent;}
+.VeilOverlay table{cursor:default!important;cursor:not-allowed!important;background-color:white;}
+.VeilOverlay-linux table{cursor:default!important;cursor:not-allowed!important;}
+.CurtainOverlay table{background-color:white;}
+.Row{height:18px;cursor:pointer;border-style:solid;border-width:1px 0;border-color:#f8f5ed;-moz-user-select:none;}
+.RowDouble{height:18px;cursor:pointer;border-style:solid;border-width:1px 0;border-color:#f8f5ed;-moz-user-select:none;height:36px;border-bottom-color:#CCC;padding-top:3px;}
+.Row TABLE,.RowDouble TABLE{table-layout:fixed;}
+.Row TD,.RowDouble TD{vertical-align:middle;white-space:nowrap;overflow:hidden;}
+.RowDouble TD{vertical-align:top;}
+.Row{background-color:#fefdfc;border-top-color:#fefdfc;}
+.RowOdd{background-color:#fbf9f4;border-top-color:#fbf9f4;}
+.selected,.Row-selected,.Row-selected-dragProxy,.Row-selected-disabled{background-color:#ffc!important;border-top-color:#ffc!important;}
+.Row-matched,.Row-matched-dragProxy{background-color:#e3da93;border-style:solid;border-width:1px 0;border-color:#fefdfc;}
+.Row-matched table,.Row-matched-drag table{table-layout:fixed;}
+.Row-focused{border:2px solid;-moz-border-left-colors:#b2b28e #ffffd1;-moz-border-top-colors:#b2b28e #ffffd1;-moz-border-bottom-colors:#7f7f66 #cccca3;-moz-border-right-colors:#7f7f66 #cccca3;border-width:1px 0;}
+.Row-selected-actioned{background-color:#e3da93!important;border-color:#e3da93!important;}
+.Row-dragProxy,.Row-matched-dragProxy{background-color:#e3da93!important;}
+.Row td{color:#000;}
+.RowOdd td{color:#000;}
+.selected td,.Row-selected td,.Row-selected-dragProxy td,.Row-selected-disabled td{color:#000;}
+.Row-matched td{color:#000;}
+.Row-focused td{color:#000;}
+.Row-selected-right td{color:#000;}
+.Row-dragProxy td,.Row-matched-dragProxy td{color:#000;}
+.Row td.Flag,.Row td.Attach,.Row td.Tag,.Row td.Icon,.Row td.Count,.Row-selected td.Flag,.Row-selected td.Attach,.Row-selected td.Tag,.Row-selected td.Icon,.Row-selected td.Count,.Row-dragProxy td.Flag,.Row-dragProxy td.Attach,.Row-dragProxy td.Tag,.Row-dragProxy td.Icon,.Row-dragProxy td.Count,.Row-selected-dragProxy td.Flag,.Row-selected-dragProxy td.Attach,.Row-selected-dragProxy td.Tag,.Row-selected-dragProxy td.Icon,.Row-selected-dragProxy td.Count,.Row-matched-dragProxy td.Flag,.Row-matched-dragProxy td.Attach,.Row-matched-dragProxy td.Tag,.Row-matched-dragProxy td.Icon,.Row-matched-dragProxy td.Count,.Row-dragProxy td.Flag,.Row-dragProxy td.Attach,.Row-dragProxy td.Tag,.Row-dragProxy td.Icon,.Row-dragProxy td.Count{text-align:center;}
+.RowDouble td.Count,.RowDouble-selected td.Count{text-align:right;}
+.Unread{color:#000;font-weight:bold;}
+.Trash{color:#5f5c54;text-decoration:line-through;}
+.ZmOverview{width:100%;height:100%;}
+.ZmOverviewContainer{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;}
+.ZmVoiceOverviewContainer .ZmOverview,.ZmOverviewContainer .ZmOverview,.dialogOverviewContainer .OverviewTree{height:auto;padding-left:16px;}
+.OverviewTree{width:100%;}
+.dialogOverview{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border:2px solid;-moz-border-left-colors:#a7a194 #77736a;-moz-border-top-colors:#a7a194 #77736a;-moz-border-bottom-colors:#d7cfbe #a7a194;-moz-border-right-colors:#d7cfbe #a7a194;padding:5px;height:200px;}
+.dialogOverviewContainer{background-color:#fdfcfa;}
+.dialogOverview td{color:#000;}
+.pickerOverview{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;height:100%;}
+.overviewHeader{cursor:default;background-color:#d7cfbe;border-bottom:1px solid #a7a194;color:#000;font-weight:bold;padding-top:1px;padding-bottom:1px;}
+.overviewHeader-Text,.overviewHeader-actioned,.overviewHeader-dragOver{color:#000;font-weight:bold;}
+.overviewHeader-selected{color:#000;font-weight:bold;background-color:#ddd!important;}
+.overviewHeader-selected-focused{color:#000;font-weight:bold;background-color:#bccbd6!important;}
+.overviewHeader .imageCell{padding-right:5px;white-space:nowrap;}
+.inlineIcon{font-family:Verdana;font-size:13px;}
+.TooltipHint{font-style:italic;text-align:center;white-space:nowrap;}
+.TooltipNotInAddrBook{white-space:nowrap;text-align:center;padding:8px 0 5px 0;}
+P,TH,TD,DIV,SPAN,SELECT,INPUT,TEXTAREA,BUTTON,A{font-family:Tahoma,Arial,Helvetica,sans-serif;}
+HTML{width:100%;height:100%;}
+BODY{background-color:#efe7d4;width:100%;height:100%;margin:0;}
+FORM{margin:0;padding:0;}
+.ZSplashScreen{background-color:#efe7d4;width:100%;height:100%;top:0;left:0;position:absolute;}
+#ZLoginPanel{position:relative;width:500;overflow:visible;padding:6px;-moz-border-radius:3px;background-color:#d7cfbe;border:2px solid;-moz-border-left-colors:#a7a194 #d7cfbe;-moz-border-top-colors:#a7a194 #d7cfbe;-moz-border-bottom-colors:#6b675f #b3ad9f;-moz-border-right-colors:#8f8a7f #b3ad9f;}
+#ZLoginBodyContainer{padding:4px;-moz-border-radius:3px;background-color:#f7f3e9;border:2px solid;-moz-border-left-colors:#6b675f #b3ad9f;-moz-border-top-colors:#6b675f #b3ad9f;-moz-border-bottom-colors:#a7a194 #d7cfbe;-moz-border-right-colors:#a7a194 #d7cfbe;background-color:#fbf9f4;padding-top:20px;}
+#ZLoginLicenseContainer{padding-top:5px;padding-bottom:5px;text-align:center;vertical-align:bottom;color:#5f5c54;font-size:9px;}
+#ZLoginClientLevelContainer{padding-top:5px;padding-bottom:5px;text-align:center;vertical-align:bottom;font-size:9px;}
+#ZLoginWhatsThisAnchor{font-size:9px;}
+#ZLoginBannerPanel{margin:10px;position:relative;}
+#ZLoginShortVersion{vertical-align:top;font-size:18px;font-weight:normal;color:#666;}
+#ZLoginAppName{margin-top:5px;margin-bottom:5px;width:95%;text-align:right;font-size:18px;font-weight:bold;}
+#ZLoginProductName{font-size:15px;font-weight:bold;width:100%;font-weight:normal;text-align:right;}
+#ZLoginLongVersion{color:#5f5c54;margin-top:3px;font-size:9px;width:100%;font-weight:normal;text-align:right;}
+#ZLoginErrorPanel{position:relative;left:10%;width:80%;margin-top:10px;margin-bottom:10px;padding:5px;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;background-color:#e3da93;}
+#ZLoginFormPanel{position:relative;left:5%;width:90%;}
+.zLoginLabelContainer{color:#000;overflow:hidden;white-space:nowrap;text-align:right;width:80px;}
+.zLoginCheckboxLabelContainer{color:#000;overflow:hidden;white-space:nowrap;}
+.zLoginField{width:100%;}
+#ZLoginLoadingPanel{position:relative;left:10%;width:80%;margin-top:10px;margin-bottom:10px;padding:5px;}
+#ZLoginSwitchMsg{padding-top:10px;}
+#ZLoginLoadingMsg{font-size:15px;font-weight:bold;}
+#ZLoginAboutPanel{position:relative;left:10%;width:80%;margin-top:10px;margin-bottom:10px;padding:5px;font-size:15px;}
+#ZLoginLicenseMsg{font-size:15px;font-weight:bold;}
+.ZLoginInfoMessage{-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;opacity:.95;border:2px solid;border-top:none;background-color:#dde5ea;border-color:#838e95;background-color:#FFB;border-color:gold;color:#000;width:80%;margin:10px;padding:5px;}
+.ZLoginSeparator{position:relative;width:100%;border-bottom:1px solid #a7a194;margin:10px 0;}
+.error{margin-top:10px;margin-bottom:10px;padding:5px;width:85%;background-color:#ffc;border:1px solid #7c7c94;text-align:left;}
+.focusBorder{border:1px dotted black;}
+.DwtButton{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#d7cfbe;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.DwtButton-hover{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#efe7d4;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.DwtButton-active{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #77736a;-moz-border-top-colors:#a7a194 #77736a;-moz-border-bottom-colors:#d7cfbe #a7a194;-moz-border-right-colors:#d7cfbe #a7a194;}
+.DwtButton-selected{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#fbf9f4!important;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.DwtButton-disabled{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:transparent;border:2px solid;-moz-border-left-colors:#d7cfbe transparent;-moz-border-top-colors:#d7cfbe transparent;-moz-border-bottom-colors:#d7cfbe transparent;-moz-border-right-colors:#d7cfbe transparent;cursor:default!important;cursor:not-allowed!important;}
+.DwtButton-active{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#dde5ea;border:2px solid;-moz-border-left-colors:#838e95 #c2d0da;-moz-border-top-colors:#838e95 #c2d0da;-moz-border-bottom-colors:#5e656b #96a2ab;-moz-border-right-colors:#5e656b #96a2ab;}
+.DwtButton-focused{height:24px;cursor:pointer;-moz-border-radius:1px;background-color:#ffc;border:2px solid;-moz-border-left-colors:#b2b28e #ffffd1;-moz-border-top-colors:#b2b28e #ffffd1;-moz-border-bottom-colors:#7f7f66 #cccca3;-moz-border-right-colors:#7f7f66 #cccca3;}
+.DwtButton .Text{text-align:center;color:#000;}
+.DwtButton-hover .Text{text-align:center;color:#000;}
+.DwtButton-active .Text{text-align:center;color:#000;}
+.DwtButton-selected .Text{text-align:center;color:#000;}
+.DwtButton-disabled .Text{text-align:center;color:#5f5c54;}
+.DwtButton-active .Text{text-align:center;color:#000;}
+.DwtButton-focused .Text{text-align:center;color:#000;}
+.ImgZimbraIcon{background:url("/zimbra/img/logo/ImgZimbraIcon.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgZimbraIcon_20{background:url("/zimbra/img/logo/ImgZimbraIcon_20.gif?v=100406181727") 0 0 no-repeat;width:20px!important;height:20px!important;overflow:hidden;}
+.ImgZimbraLogo_128{background:url("/zimbra/img/logo/ImgZimbraLogo_128.gif?v=100406181727") 0 0 no-repeat;width:128px!important;height:128px!important;overflow:hidden;}
+.ImgZimbraLogo_48{background:url("/zimbra/img/logo/ImgZimbraLogo_48.gif?v=100406181727") 0 0 no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgZimbraLogo_64{background:url("/zimbra/img/logo/ImgZimbraLogo_64.gif?v=100406181727") 0 0 no-repeat;width:64px!important;height:64px!important;overflow:hidden;}
+.favicon{background:url("/zimbra/img/logo/favicon.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPrefsHeader{background:url("/zimbra/img/prefs/ImgPrefsHeader.repeatx.gif?v=100406181727") 0 0 repeat-x;height:25px!important;overflow:hidden;}
+.ImgPrefsHeader_L{background:url("/zimbra/img/prefs/ImgPrefsHeader_L.gif?v=100406181727") 0 0 no-repeat;width:9px!important;height:25px!important;overflow:hidden;}
+.ImgPrefsHeader_R{background:url("/zimbra/img/prefs/ImgPrefsHeader_R.gif?v=100406181727") 0 0 no-repeat;width:9px!important;height:25px!important;overflow:hidden;}
+.ImgDataUnavailable{background:url("/zimbra/img/translate/ImgDataUnavailable.gif?v=100406181727") 0 0 no-repeat;width:186px!important;height:67px!important;overflow:hidden;}
+.apple .touch .icon{background:url('/zimbra/img/logo/apple-touch-icon.png?v=100406181727') 0 0 no-repeat;}
+.ImgCalendarFolderOverlay{background:url('/zimbra/img/overlays/ImgCalendarFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgContactsFolderOverlay{background:url('/zimbra/img/overlays/ImgContactsFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgEmailedContactsOverlay{background:url('/zimbra/img/overlays/ImgEmailedContactsOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgFolderOverlay{background:url('/zimbra/img/overlays/ImgFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgInboxOverlay{background:url('/zimbra/img/overlays/ImgInboxOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgMailFolderOverlay{background:url('/zimbra/img/overlays/ImgMailFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgNotebookOverlay{background:url('/zimbra/img/overlays/ImgNotebookOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgRSSOverlay{background:url('/zimbra/img/overlays/ImgRSSOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSectionOverlay{background:url('/zimbra/img/overlays/ImgSectionOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSentFolderOverlay{background:url('/zimbra/img/overlays/ImgSentFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedCalendarFolderOverlay{background:url('/zimbra/img/overlays/ImgSharedCalendarFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedContactsFolderOverlay{background:url('/zimbra/img/overlays/ImgSharedContactsFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedMailFolderOverlay{background:url('/zimbra/img/overlays/ImgSharedMailFolderOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedNotebookOverlay{background:url('/zimbra/img/overlays/ImgSharedNotebookOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedSectionOverlay{background:url('/zimbra/img/overlays/ImgSharedSectionOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgSharedTaskListOverlay{background:url('/zimbra/img/overlays/ImgSharedTaskListOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgTagOverlay{background:url('/zimbra/img/overlays/ImgTagOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgTaskListOverlay{background:url('/zimbra/img/overlays/ImgTaskListOverlay.png?v=100406181727') 0 0 no-repeat;}
+.ImgCellProperties{background:url("/zimbra/img/table.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteCol{background:url("/zimbra/img/table.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteRow{background:url("/zimbra/img/table.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteTable{background:url("/zimbra/img/table.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertColAfter{background:url("/zimbra/img/table.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertColBefore{background:url("/zimbra/img/table.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertRowAfter{background:url("/zimbra/img/table.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertRowBefore{background:url("/zimbra/img/table.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertTable{background:url("/zimbra/img/table.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMergeCells{background:url("/zimbra/img/table.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSplitCells{background:url("/zimbra/img/table.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSpreadSheet{background:url("/zimbra/img/table.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSum{background:url("/zimbra/img/table.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTable{background:url("/zimbra/img/table.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTableProperties{background:url("/zimbra/img/table.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountAll{background:url("/zimbra/img/offline.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountExchange{background:url("/zimbra/img/offline.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountGmail{background:url("/zimbra/img/offline/ImgAccountGmail.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountIMAP{background:url("/zimbra/img/offline/ImgAccountIMAP.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountPOP{background:url("/zimbra/img/offline/ImgAccountPOP.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountYahoo{background:url("/zimbra/img/offline.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountZimbra{background:url("/zimbra/img/offline.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGlobalSearchFolder{background:url("/zimbra/img/offline/ImgGlobalSearchFolder.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLocalFolders{background:url("/zimbra/img/offline/ImgLocalFolders.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAudioDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 0 no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgBriefcase_48{background:url("/zimbra/img/large/ImgBriefcase_48.gif?v=100406181727") 0 0 no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgDndMultiNo_48{background:url("/zimbra/img/large/ImgDndMultiNo_48.gif?v=100406181727") 0 0 no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgDndMultiYes_48{background:url("/zimbra/img/large/ImgDndMultiYes_48.gif?v=100406181727") 0 0 no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -192px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgExeDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -240px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgGenericDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -288px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgGroup_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -336px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgHtmlDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -384px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgImageDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -432px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMSExcelDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -480px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMSPowerpointDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -528px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMSProjectDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -576px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMSVisioDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -624px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMSWordDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -672px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgMessageDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -720px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgPDFDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -768px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgPerson_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -816px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgPresentation_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -864px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgUnknownDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -912px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgVideoDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -960px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgZSpreadSheet_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1008px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgZipDoc_48{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1056px no-repeat;width:48px!important;height:48px!important;overflow:hidden;}
+.ImgAlias_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1104px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgBriefcase_32{background:url("/zimbra/img/large/ImgBriefcase_32.gif?v=100406181727") 0 0 no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgCOS_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1168px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgDomain_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1200px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgGroup_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1232px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgLocation_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1264px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgPerson_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1296px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgQueue_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1328px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgResource_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1360px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgRightArrow_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1392px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgServer_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1424px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgLeftArrow_32{background:url("/zimbra/img/large.gif?v=100406181727") 0 -1456px no-repeat;width:32px!important;height:31px!important;overflow:hidden;}
+.ImgExternalLink{background:url("/zimbra/img/notes.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewNotebook{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewPage{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewSection{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNote{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNotebookMask{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPage{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSection{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSectionMask{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedNotebook{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedNotebookMask{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedPage{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedSection{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedSectionMask{background:url("/zimbra/img/notes.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMailFolderMask{background:url("/zimbra/img/mail.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:18px!important;overflow:hidden;}
+.ImgAddFilter{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -18px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAddSignature{background:url("/zimbra/img/mail/ImgAddSignature.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgArchiveFolder{background:url("/zimbra/img/mail/ImgArchiveFolder.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCompose{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -66px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteConversation{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -82px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteMessage{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -98px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDraftMsg{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -114px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEmptyFolder{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -130px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEnvelope{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -146px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEnvelopeGray{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -162px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMailFolder{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -178px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMailRule{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -194px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMailTo{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -210px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewGroup{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -226px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNotJunk{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -242px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgOutbox{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -258px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityHigh{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -274px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityLow{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -290px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityNormal{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -306px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRSSMask{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -322px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSend{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -338px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSendReceive{background:url("/zimbra/img/mail.gif?v=100406181727") 0 -354px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAudioDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgExeDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGenericDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHtmlDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImageDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMSExcelDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMSPowerpointDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMSProjectDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMSVisioDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMSWordDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMessageDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPDFDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPresentation{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUnknownDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgVideoDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -240px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgZSpreadSheet{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -256px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgZipDoc{background:url("/zimbra/img/doctypes.gif?v=100406181727") 0 -272px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBold{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderAll{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBottom{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBottomDouble{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBottomThick{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBox{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBoxDouble{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderBoxThick{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderCenter{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderH{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderHEdges{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderLeft{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderNone{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderRight{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderTop{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderTopBottomDouble{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -240px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderTopBottomThick{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -256px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderTopDoubleBottomDouble{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -272px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderTopThickBottomThick{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -288px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderV{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -304px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBorderVEdges{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -320px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBulletedList{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -336px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCamelCase{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -352px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCenterJustify{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -368px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFindReplace{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -384px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFontBackground{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -400px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFontBorder{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -416px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFontColor{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -432px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFullJustify{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -448px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHorizRule{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -464px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHtmlTools{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -480px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgIndent{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -496px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertImage{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -512px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInsertWeblink{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -528px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgItalics{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -544px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLeftJustify{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -560px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNumberedList{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -576px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgOutdent{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -592px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRightJustify{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -608px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStrikeThru{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -624px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSubscript{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -640px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSuperscript{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -656px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTextDirectionLTR{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -672px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTextDirectionRTL{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -688px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUnderline{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -704px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgWordCount{background:url("/zimbra/img/htmlEdit.gif?v=100406181727") 0 -720px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedTaskListMask{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:18px!important;overflow:hidden;}
+.ImgNewTask{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -18px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewTaskList{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -34px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedTaskList{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -50px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTask{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -66px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskCheckboxOverdue{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -82px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskHigh{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -98px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskListMask{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -114px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskLow{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -130px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskNormal{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -146px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskViewCompleted{background:url("/zimbra/img/tasks/ImgTaskViewCompleted.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskViewDeferred{background:url("/zimbra/img/tasks/ImgTaskViewDeferred.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskViewInProgress{background:url("/zimbra/img/tasks/ImgTaskViewInProgress.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskViewNotStarted{background:url("/zimbra/img/tasks/ImgTaskViewNotStarted.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskViewWaiting{background:url("/zimbra/img/tasks/ImgTaskViewWaiting.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTasksDisplayView{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -242px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTasksListView{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -258px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTasksSplitView{background:url("/zimbra/img/tasks.gif?v=100406181727") 0 -274px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgArchiveFolder{background:url("/zimbra/img/common.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCancel{background:url("/zimbra/img/common.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCheck{background:url("/zimbra/img/common.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgClose{background:url("/zimbra/img/common.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCloseGray{background:url("/zimbra/img/common.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCompleted{background:url("/zimbra/img/common.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgConnect{background:url("/zimbra/img/common.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCopy{background:url("/zimbra/img/common.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCopyFolder{background:url("/zimbra/img/common.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCut{background:url("/zimbra/img/common.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteFolder{background:url("/zimbra/img/common.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDisconnect{background:url("/zimbra/img/common.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFeedback{background:url("/zimbra/img/common.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGlobe{background:url("/zimbra/img/common.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHelpDocument{background:url("/zimbra/img/common.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgIconView{background:url("/zimbra/img/common.gif?v=100406181727") 0 -240px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMinus{background:url("/zimbra/img/common.gif?v=100406181727") 0 -256px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMobile{background:url("/zimbra/img/common/ImgMobile.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMobileWipe{background:url("/zimbra/img/common/ImgMobileWipe.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMobileWipeCancel{background:url("/zimbra/img/common/ImgMobileWipeCancel.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPaste{background:url("/zimbra/img/common/ImgPaste.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPurchaseOrder{background:url("/zimbra/img/common.gif?v=100406181727") 0 -336px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgQuestionMark{background:url("/zimbra/img/common.gif?v=100406181727") 0 -352px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRename{background:url("/zimbra/img/common.gif?v=100406181727") 0 -368px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSave{background:url("/zimbra/img/common.gif?v=100406181727") 0 -384px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSpellCheck{background:url("/zimbra/img/common.gif?v=100406181727") 0 -400px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSwitchFormat{background:url("/zimbra/img/common.gif?v=100406181727") 0 -416px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTelephone{background:url("/zimbra/img/common.gif?v=100406181727") 0 -432px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgURL{background:url("/zimbra/img/common.gif?v=100406181727") 0 -448px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgZimlet{background:url("/zimbra/img/common.gif?v=100406181727") 0 -464px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAdd{background:url("/zimbra/img/common.gif?v=100406181727") 0 -480px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ImgRemove{background:url("/zimbra/img/common.gif?v=100406181727") 0 -492px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ZFocused .ImgAdd{background:url("/zimbra/img/common.gif?v=100406181727") 0 -504px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ZFocused .ImgRemove{background:url("/zimbra/img/common.gif?v=100406181727") 0 -516px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ZHover .ImgAdd{background:url("/zimbra/img/common.gif?v=100406181727") 0 -528px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ZHover .ImgRemove{background:url("/zimbra/img/common.gif?v=100406181727") 0 -540px no-repeat;width:16px!important;height:12px!important;overflow:hidden;}
+.ImgApptException{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgApptMeeting{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgApptRecur{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgApptReminder{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAttendeesOptional{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAttendeesRequired{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCalListView{background:url("/zimbra/img/calendar/ImgCalListView.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCalendarFolder{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCalendarFolderMask{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDate{background:url("/zimbra/img/calendar/ImgDate.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDayView{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGroupSchedule{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLocation{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMeetingRequest{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMonthView{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNeedsAction{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -240px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewAppointment{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -256px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewResource{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -272px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewTime{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -288px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgResource{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -304px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedCalendarFolder{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -320px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSmallPadlock{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -336px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTime{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -352px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgWeekView{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -368px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgWorkWeekView{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -384px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCalInviteAccepted{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -400px no-repeat;width:19px!important;height:15px!important;overflow:hidden;}
+.ImgCalInviteDeclined{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -415px no-repeat;width:19px!important;height:15px!important;overflow:hidden;}
+.ImgCalInviteTentative{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -430px no-repeat;width:19px!important;height:15px!important;overflow:hidden;}
+.ImgSharedCalendarFolderMask{background:url("/zimbra/img/calendar.gif?v=100406181727") 0 -445px no-repeat;width:15px!important;height:15px!important;overflow:hidden;}
+.ImgCalendarDayGrid{background:url("/zimbra/img/calendar/ImgCalendarDayGrid.repeat.gif?v=100406181727") 0 0 repeat;overflow:hidden;}
+.ImgSharedContactsFolderMask{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:17px!important;overflow:hidden;}
+.ImgCardsView{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -17px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgContact{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -33px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgContactsFolder{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -49px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgContactsFolderMask{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -65px no-repeat;width:14px!important;height:16px!important;overflow:hidden;}
+.ImgContactsPicker{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -81px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEmailedContacts{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -97px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEmailedContactsMask{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -113px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGAL{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -129px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGroup{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -145px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewContact{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -161px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewContactsFolder{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -177px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPerson{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -193px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReadOnly{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -209px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedContact{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -225px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedContactsFolder{background:url("/zimbra/img/contacts.gif?v=100406181727") 0 -241px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBrokenHeartEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 0 no-repeat;width:18px!important;height:18px!important;overflow:hidden;}
+.ImgClownEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -18px no-repeat;width:28px!important;height:18px!important;overflow:hidden;}
+.ImgCryingEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -36px no-repeat;width:22px!important;height:18px!important;overflow:hidden;}
+.ImgDevilEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -54px no-repeat;width:18px!important;height:18px!important;overflow:hidden;}
+.ImgHappyEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -72px no-repeat;width:18px!important;height:18px!important;overflow:hidden;}
+.ImgPartyEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -90px no-repeat;width:29px!important;height:18px!important;overflow:hidden;}
+.ImgRotflEmoticon{background:url("/zimbra/img/im.gif?v=100406181727") 0 -108px no-repeat;width:29px!important;height:18px!important;overflow:hidden;}
+.ImgAllowUser{background:url("/zimbra/img/im.gif?v=100406181727") 0 -126px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBlockUser{background:url("/zimbra/img/im.gif?v=100406181727") 0 -142px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCloseWindow{background:url("/zimbra/img/im.gif?v=100406181727") 0 -158px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEndChat{background:url("/zimbra/img/im.gif?v=100406181727") 0 -174px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImFree2Chat{background:url("/zimbra/img/im.gif?v=100406181727") 0 -190px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImGroup{background:url("/zimbra/img/im.gif?v=100406181727") 0 -206px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImInvisible{background:url("/zimbra/img/im.gif?v=100406181727") 0 -222px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImportant{background:url("/zimbra/img/im.gif?v=100406181727") 0 -238px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMaximizeWindow{background:url("/zimbra/img/im.gif?v=100406181727") 0 -254px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMinimizeWindow{background:url("/zimbra/img/im.gif?v=100406181727") 0 -270px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStickyOff{background:url("/zimbra/img/im.gif?v=100406181727") 0 -286px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStickyOn{background:url("/zimbra/img/im.gif?v=100406181727") 0 -302px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTextFormat{background:url("/zimbra/img/im.gif?v=100406181727") 0 -318px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUnimportant{background:url("/zimbra/img/im.gif?v=100406181727") 0 -334px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.Img_ImYAvailable{background:url("/zimbra/img/im.gif?v=100406181727") 0 -350px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.Img_ImYCritical{background:url("/zimbra/img/im.gif?v=100406181727") 0 -366px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.Img_ImYUnavailable{background:url("/zimbra/img/im.gif?v=100406181727") 0 -382px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.Img_ImSmallAvailable{background:url("/zimbra/img/im.gif?v=100406181727") -16px -382px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.Img_ImSmallAway{background:url("/zimbra/img/im.gif?v=100406181727") 0 -398px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.Img_ImSmallDnD{background:url("/zimbra/img/im.gif?v=100406181727") -8px -398px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.Img_ImSmallExtendedAway{background:url("/zimbra/img/im.gif?v=100406181727") -16px -398px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.Img_ImSmallInvisible{background:url("/zimbra/img/im.gif?v=100406181727") 0 -406px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.Img_ImSmallUnavailable{background:url("/zimbra/img/im.gif?v=100406181727") -8px -406px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.ImgAddImage{background:url("/zimbra/img/docs.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAddSlide{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAddTextBox{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBarChart{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgColumnChart{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteSlide{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteTextBox{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDuplicateSlide{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLineChart{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPieChart{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRunSlides{background:url("/zimbra/img/docs.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAnsweredCalls{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCallManager{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMarkAsHeard{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMarkAsUnheard{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMissedCalls{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPlacedCalls{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPlayMessage{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPlayingMessage{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUnDelete{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgVoicemail{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgVoicemailApp{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgVolume{background:url("/zimbra/img/voicemail.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHorizontalSliderThumb{background:url("/zimbra/img/slider.gif?v=100406181727") 0 0 no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.ImgVerticalSliderThumb{background:url("/zimbra/img/slider.gif?v=100406181727") 0 -8px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.ImgCritical_32{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 0 no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgInformation_32{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -32px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgWarning_32{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -64px no-repeat;width:32px!important;height:32px!important;overflow:hidden;}
+.ImgCritical{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInformation{background:url("/zimbra/img/dwt.gif?v=100406181727") -16px -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRoundMinus{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRoundPlus{background:url("/zimbra/img/dwt.gif?v=100406181727") -16px -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSelectPullDownArrowSel{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -128px no-repeat;width:12px!important;height:16px!important;overflow:hidden;}
+.ImgSelectPullUpArrow{background:url("/zimbra/img/dwt.gif?v=100406181727") -12px -128px no-repeat;width:12px!important;height:16px!important;overflow:hidden;}
+.ImgSuccess{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgWarning{background:url("/zimbra/img/dwt.gif?v=100406181727") -16px -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDisable{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -160px no-repeat;width:14px!important;height:14px!important;overflow:hidden;}
+.ImgCritical_12{background:url("/zimbra/img/dwt.gif?v=100406181727") -14px -160px no-repeat;width:12px!important;height:12px!important;overflow:hidden;}
+.ImgHeaderCollapsed{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -174px no-repeat;width:11px!important;height:11px!important;overflow:hidden;}
+.ImgClearSearch{background:url("/zimbra/img/dwt.gif?v=100406181727") -11px -174px no-repeat;width:10px!important;height:10px!important;overflow:hidden;}
+.ImgDropDown{background:url("/zimbra/img/dwt.gif?v=100406181727") -21px -174px no-repeat;width:8px!important;height:8px!important;overflow:hidden;}
+.ImgColumnUpArrow{background:url("/zimbra/img/dwt.gif?v=100406181727") 0 -185px no-repeat;width:8px!important;height:7px!important;overflow:hidden;}
+.ImgDownArrowSmall{background:url("/zimbra/img/dwt.gif?v=100406181727") -8px -185px no-repeat;width:7px!important;height:4px!important;overflow:hidden;}
+.ImgUpArrowSmall{background:url("/zimbra/img/dwt.gif?v=100406181727") -15px -185px no-repeat;width:7px!important;height:4px!important;overflow:hidden;}
+.ImgInboxMask{background:url("/zimbra/img/startup.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:18px!important;overflow:hidden;}
+.ImgSentFolderMask{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -18px no-repeat;width:16px!important;height:18px!important;overflow:hidden;}
+.ImgSharedMailFolderMask{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -36px no-repeat;width:16px!important;height:17px!important;overflow:hidden;}
+.ImgAccordionClosed{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -53px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccordionOpened{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -69px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAddBuddy{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -85px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAppointment{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -101px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAttachment{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -117px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAttachmentRemove{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -133px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBlank_16{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -149px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCalendarApp{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -165px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCascade{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -181px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgChatFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -197px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCheckboxChecked{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -213px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCheckboxUnchecked{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -229px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgContactsApp{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -245px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgConversation{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -261px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgConversationView{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -277px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDelete{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -293px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeleteTag{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -309px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDraftFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -325px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEdit{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -341px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEditBadge{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -357px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgEnvelopeOpen{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -373px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFlagDis{background:url("/zimbra/img/startup/ImgFlagDis.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFlagRed{background:url("/zimbra/img/startup/ImgFlagRed.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -421px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgForward{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -437px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGALContact{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -453px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgHelp{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -469px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgIMAPAccount{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -485px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImAvailable{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -501px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImAway{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -517px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImBuddy{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -533px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImDnd{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -549px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImExtendedAway{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -565px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImStartChat{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -581px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgImUnavailable{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -597px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInbox{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -613px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgJunkMail{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -629px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLeftArrow{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -645px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgListView{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -661px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLogoff{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -677px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMailApp{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -693px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMessage{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -709px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMessageView{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -725px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMoveToFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -741px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatus{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -757px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusDraft{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -773px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusForward{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -789px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusRead{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -805px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusReply{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -821px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusSent{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -837px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusTrash{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -853px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgMsgStatusUnread{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -869px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgNewFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -885px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewMessage{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -901px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewTag{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -917px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNodeCollapsed{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -933px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNodeExpanded{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -949px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNodeMinus{background:url("/zimbra/img/startup/ImgNodeMinus.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNodePlus{background:url("/zimbra/img/startup/ImgNodePlus.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNoteApp{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -997px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNotebook{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1013px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgOffline{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1029px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgOpenInNewWindow{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1045px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPOPAccount{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1061px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPlus{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1077px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPreferences{background:url("/zimbra/img/startup/ImgPreferences.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPrint{background:url("/zimbra/img/startup/ImgPrint.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityHigh_list{background:url("/zimbra/img/startup.gif?v=100406181727") -16px -1109px no-repeat;width:8px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityLow_list{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1125px no-repeat;width:8px!important;height:16px!important;overflow:hidden;}
+.ImgPriorityNormal_list{background:url("/zimbra/img/startup.gif?v=100406181727") -8px -1125px no-repeat;width:8px!important;height:16px!important;overflow:hidden;}
+.ImgRSS{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1141px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReadMessage{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1157px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRefresh{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1173px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReply{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1189px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReplyAll{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1205px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRightArrow{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1221px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSearch{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1237px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSearchBuilder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1253px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSearchFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1269px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSelectPullDownArrow{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1285px no-repeat;width:12px!important;height:16px!important;overflow:hidden;}
+.ImgSelectPullDownArrowHover{background:url("/zimbra/img/startup.gif?v=100406181727") -12px -1285px no-repeat;width:12px!important;height:16px!important;overflow:hidden;}
+.ImgSentFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1301px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSharedMailFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1317px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgShortcut{background:url("/zimbra/img/startup/ImgShortcut.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSinglePane{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1349px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSpamFolder{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1365px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSplitPane{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1381px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSplitPaneOff{background:url("/zimbra/img/startup/ImgSplitPaneOff.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSplitPaneVertical{background:url("/zimbra/img/startup/ImgSplitPaneVertical.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTag{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1429px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagBlue{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1445px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagCyan{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1461px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagGreen{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1477px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagMask{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1493px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagOrange{background:url("/zimbra/img/startup/ImgTagOrange.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagPurple{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1525px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagRed{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1541px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagStack{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1557px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTagYellow{background:url("/zimbra/img/startup/ImgTagYellow.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTaskList{background:url("/zimbra/img/startup/ImgTaskList.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgTrash{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1605px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUnreadMessage{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1621px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgViewAll{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1637px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgWebSearch{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1653px no-repeat;width:26px!important;height:16px!important;overflow:hidden;}
+.ImgYahooBang{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1669px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ZHover .ImgEditBadge{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1685px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFolderMask{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1701px no-repeat;width:16px!important;height:14px!important;overflow:hidden;}
+.ImgHSash_thumb{background:url("/zimbra/img/startup.gif?v=100406181727") -16px -1701px no-repeat;width:6px!important;height:14px!important;overflow:hidden;}
+.ImgHeaderExpanded{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1715px no-repeat;width:11px!important;height:11px!important;overflow:hidden;}
+.ImgBlank_9{background:url("/zimbra/img/startup.gif?v=100406181727") -11px -1715px no-repeat;width:9px!important;height:9px!important;overflow:hidden;}
+.ImgFastFwdArrowSmall{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1726px no-repeat;width:10px!important;height:9px!important;overflow:hidden;}
+.ImgFastRevArrowSmall{background:url("/zimbra/img/startup.gif?v=100406181727") -10px -1726px no-repeat;width:10px!important;height:9px!important;overflow:hidden;}
+.ImgFwdArrowSmall{background:url("/zimbra/img/startup.gif?v=100406181727") -20px -1726px no-repeat;width:6px!important;height:9px!important;overflow:hidden;}
+.ImgMenuCheck{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1735px no-repeat;width:9px!important;height:9px!important;overflow:hidden;}
+.ImgMenuRadio{background:url("/zimbra/img/startup.gif?v=100406181727") -9px -1735px no-repeat;width:9px!important;height:9px!important;overflow:hidden;}
+.ImgRevArrowSmall{background:url("/zimbra/img/startup.gif?v=100406181727") -18px -1735px no-repeat;width:6px!important;height:9px!important;overflow:hidden;}
+.ImgColumnDownArrow{background:url("/zimbra/img/startup.gif?v=100406181727") 0 -1744px no-repeat;width:8px!important;height:7px!important;overflow:hidden;}
+.ImgVSash_thumb{background:url("/zimbra/img/startup.gif?v=100406181727") -8px -1744px no-repeat;width:14px!important;height:6px!important;overflow:hidden;}
+.ImgDocElement2{background:url("/zimbra/img/docelements.gif?v=100406181727") 0 0 no-repeat;width:54px!important;height:66px!important;overflow:hidden;}
+.ImgDocElement3{background:url("/zimbra/img/docelements/ImgDocElement3.gif?v=100406181727") 0 0 no-repeat;width:54px!important;height:66px!important;overflow:hidden;}
+.ImgFlagAE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagAL{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -11px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagAR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -22px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagAT{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -33px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagAU{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -44px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -55px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBG{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -66px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBH{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -77px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -88px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -99px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagBY{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -110px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -121px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCH{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -132px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCL{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -143px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCN{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -154px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -165px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagCZ{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -187px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagDE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -198px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagDK{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -209px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagDO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -220px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagDZ{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -231px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagEC{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -242px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagEE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -253px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagEG{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -264px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagES{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -275px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagFI{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -286px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagFR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -297px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagGB{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -308px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagGR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -319px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagGT{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -330px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagHK{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -341px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagHN{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -352px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagHR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -363px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagHU{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -374px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagID{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -385px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -396px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIL{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -407px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIN{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -418px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIQ{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -429px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIS{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -440px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagIT{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -451px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagJO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -462px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagJP{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -473px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagKR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -484px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagKW{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -495px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagLB{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -506px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagLT{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -517px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagLU{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -528px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagLV{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -539px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagLY{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -550px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagMA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -561px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagMK{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -572px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagMX{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -583px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagNI{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -594px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagNL{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -605px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagNO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -616px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagNZ{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -627px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagNone{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -638px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagOM{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -649px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -660px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -671px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPL{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -682px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -693px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPT{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -704px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagPY{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -715px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagQA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -726px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagRO{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -737px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagRU{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -748px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -759px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSD{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -770px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -781px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSI{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -792px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSK{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -803px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSV{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -814px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagSY{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -825px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagTH{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -836px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagTN{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -847px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagTR{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -858px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagTW{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -869px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagUA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -880px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagUS{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -891px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagUY{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -902px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagVE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -913px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagVN{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -924px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagYE{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -935px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgFlagZA{background:url("/zimbra/img/flags.gif?v=100406181727") 0 -946px no-repeat;width:16px!important;height:11px!important;overflow:hidden;}
+.ImgDownArrow{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFirstPage{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgLastPage{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNextPage{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPause{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPlay{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPreviousPage{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRedo{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -112px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUndo{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUpArrow{background:url("/zimbra/img/arrows.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgQuickTable1{background:url("/zimbra/img/docquicktables.gif?v=100406181727") 0 0 no-repeat;width:124px!important;height:47px!important;overflow:hidden;}
+.ImgQuickTable2{background:url("/zimbra/img/docquicktables.gif?v=100406181727") 0 -47px no-repeat;width:124px!important;height:47px!important;overflow:hidden;}
+.ImgQuickTable3{background:url("/zimbra/img/docquicktables.gif?v=100406181727") 0 -94px no-repeat;width:124px!important;height:47px!important;overflow:hidden;}
+.ImgQuickTable4{background:url("/zimbra/img/docquicktables.gif?v=100406181727") 0 -141px no-repeat;width:124px!important;height:47px!important;overflow:hidden;}
+.ImgAccount{background:url("/zimbra/img/admin.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountAlias{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -16px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAccountByDomain{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -32px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAdminExtension{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -48px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAdminUser{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -64px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgAuthWizard{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -80px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBackup{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -96px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgBulkProvision{background:url("/zimbra/img/admin/ImgBulkProvision.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCOS{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -128px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgCrossMailboxSearch{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -144px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDeploy{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -160px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDistributionList{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -176px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDistributionListGroup{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -192px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDomain{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -208px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDomainAdminUser{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -224px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDownloadGlobalConfig{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -240px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDownloadServerConfig{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -256px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDuplicateAccount{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -272px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDuplicateCOS{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -288px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgDuplicateServer{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -304px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgExpireSession{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -320px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFlushAllQueues{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -336px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFlushCache{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -352px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgFlushQueue{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -368px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGALWizard{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -384px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGlobalPermission{background:url("/zimbra/img/admin/ImgGlobalPermission.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgGlobalSettings{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -416px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgInstallCertificate{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -432px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMigrationWiz{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -448px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMoveAlias{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -464px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgMoveMailbox{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -480px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewAccount{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -496px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewAccountAlias{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -512px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewCOS{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -528px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgNewDistributionList{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -544px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgOverviewCertificate{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -560px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPadlock{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -576px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgPermission{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -592px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgProperties{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -608px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgQueue{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -624px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReadMailbox{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -640px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgReindexMailboxes{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -656px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRestoreMailbox{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -672px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgRightObject{background:url("/zimbra/img/admin/ImgRightObject.gif?v=100406181727") 0 0 no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSearchAll{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -704px no-repeat;width:20px!important;height:16px!important;overflow:hidden;}
+.ImgServer{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -720px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStatistics{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -736px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStatisticsByServer{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -752px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgStatus{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -768px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgSystemResource{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -784px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgToggleStatus{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -800px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUndeploy{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -816px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgUpdateLicense{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -832px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+.ImgViewCertificate{background:url("/zimbra/img/admin.gif?v=100406181727") 0 -848px no-repeat;width:16px!important;height:16px!important;overflow:hidden;}
+BODY{margin:0;}
+#skin_outer *{-moz-box-sizing:border-box;}
+.skin_table{width:100%;height:100%;}
+.skin_container{width:100%;height:100%;position:relative;}
+.skin_container_ad{width:100%;height:100%;position:relative;}
+#skin_outer{display:none;}
+#skin_tr_search_builder{display:none;}
+.skin_outer_ad{display:none;}
+#skin_outer{background-color:#efe7d4;}
+#skin_table_outer{padding:5px;}
+#skin_spacing_top_row{height:40px;}
+#skin_container_logo{width:170px;}
+#skin_spacing_search{width:100%;padding:0 10px 4px 8px;}
+#skin_container_search{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;-moz-border-radius:5px;height:31px;padding:3px 5px 2px 5px;}
+#skin_spacing_search_builder{padding-bottom:5px;}
+#skin_container_search_builder{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;height:225px;}
+#skin_container_search_builder_toolbar{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;-moz-border-radius-topleft:8px;-moz-border-radius-topright:8px;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding-top:0;}
+#skin_spacing_tree_top{text-align:center;}
+#skin_container_tree_top{height:30px;-moz-border-radius-topleft:8px;-moz-border-radius-topright:8px;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;background-color:#d7cfbe;border:solid #a7a194;border-width:1px;}
+#skin_container_links{padding:0 25px 0 35px;}
+#skin_container_username{height:auto;padding-top:2px;}
+#skin_container_username *{color:#000;}
+#skin_container_quota{height:auto;width:100%;}
+#skin_container_current_app{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;}
+#skin_container_adminlink{padding-right:7px;}
+#skin_td_switch_offline,#skin_container_help,#skin_container_logoff{white-space:nowrap;text-align:center;}
+#skin_container_help,#skin_container_logoff{padding-left:5px;padding-right:10px;}
+#skin_spacing_tree{height:100%;padding-bottom:5px;}
+#skin_container_tree{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;width:100%;height:100%;}
+#skin_tr_tree_footer{display:none;}
+#skin_container_tree_footer{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;height:135px;}
+#skin_container_tree_app_sash{width:8px;height:100%;}
+#skin_border_app_chooser{height:30px;-moz-border-radius-topleft:8px;-moz-border-radius-topright:8px;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;border:solid #a7a194;border-width:0 0 1px 0;}
+#skin_container_app_chooser{position:absolute;width:auto;z-index:1;height:30px;}
+#skin_container_app_top_toolbar{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;width:auto;}
+#skin_spacing_app_main{height:100%;}
+#skin_container_app_main{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;}
+#skin_container_top_ad{height:60px;}
+#skin_spacing_sidebar_ad{padding:10px 0 0 5px;}
+#skin_container_sidebar_ad{width:165px;}
+#skin_container_tree_top_ad{height:30px;}
+#skin_container_tree_bottom_ad{height:60px;}
+#skin_container_bottom_ad{height:40px;}
+#skin_td_tree{width:170px;}
+#skin_td_tree_app_sash{width:8px;}
+#skin_td_main{width:auto;}
+#skin_td_sidebar_ad{width:165px;}
+#skin_container_splash_screen{background-color:#efe7d4;position:absolute;left:0;top:0;width:100%;height:100%;z-index:90000000;}
+#ZLoginBodyContainer{padding:4px;-moz-border-radius:3px;background-color:#f7f3e9;border:2px solid;-moz-border-left-colors:#6b675f #b3ad9f;-moz-border-top-colors:#6b675f #b3ad9f;-moz-border-bottom-colors:#a7a194 #d7cfbe;-moz-border-right-colors:#a7a194 #d7cfbe;}
+#ZSplashPanel{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;width:600px;-moz-border-radius:8px;}
+#ZSplashBodyContainer{background-color:#dde5ea;-moz-border-radius-topleft:0;-moz-border-radius-topright:0;-moz-border-radius-bottomleft:8px;-moz-border-radius-bottomright:8px;}
+.ImgAppBanner{background-image:url(/zimbra/skins/_base/logos/AppBanner.png);width:120px;height:35px;}
+.ImgLoginBanner{background-image:url(/zimbra/skins/_base/logos/LoginBanner.png);width:450px;height:100px;}
+.DwtVerticalSash div{position:relative;top:1px;margin-top:0;}
+.UserInfoLink{width:100%;text-align:left;white-space:nowrap;}
+.ZmPicker .ZToolbar{border-bottom:1px solid #a7a194;padding-top:1px;background-color:#d7cfbe;}
+.BannerTextUser{font-weight:bold;overflow:hidden!important;}
+.BannerTextUserOffline{text-align:left!important;padding:0 3px;font-weight:bold;}
+.ZmAppChooser{margin:0!important;}
+.ZAppTabBorder{-moz-border-radius-topleft:8px;-moz-border-radius-topright:8px;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;}
+.ZAppTabBorder .ZLeftIcon{padding-left:5px;}
+.ZAppTabBorder .ZWidgetTitle{padding-right:10px;}
+.ZSelectedPrev .ZAppTabBorder{border-right-color:#d7cfbe;}
+.ZAppTabSpacer{height:30px;}
+.ZSelectedPrev .ZTabBorder{border-right-color:#d7cfbe;}
+.ZSelectedNext .ZTabBorder{border-right-color:#aca598;}
+.ZTabBarPrefix{border:solid #aca598;border-width:0 1px 1px 0;text-align:center;white-space:nowrap;overflow:hidden;width:10px;padding:0;border-right-width:0;}
+.ZTabBarSuffix{border:solid #aca598;border-width:0 1px 1px 0;text-align:center;white-space:nowrap;overflow:hidden;width:100%;border-right-width:0;}
+.quotaBar{height:8px;}
+.quotaLabel{font-size:9px;text-align:right;}
+.ZmInviteToolBar .ZToolbarTable,.ZmShareToolBar .ZToolbarTable{height:100%;}
+.ZmNetworkStatus{font-weight:bold;}
+.ZmNetworkStatusIcon{cursor:pointer;}
+.DwtInputField INPUT[type="text"],.DwtInputField INPUT[type="password"],.DwtSimpleInput{height:20px;padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField TEXTAREA{padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField-error INPUT[type="text"],.DwtInputField-error INPUT[type="password"],.DwtSimpleInput-error{height:20px;padding:2px 4px;cursor:text;color:black;background-color:#f3f1bf;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField-error TEXTAREA{padding:2px 4px;cursor:text;color:black;background-color:#f3f1bf;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField-focused INPUT[type="text"],.DwtInputField-focused INPUT[type="password"],.DwtSimpleInput-focused{height:20px;padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField-focused TEXTAREA{padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}
+.DwtInputField-disabled INPUT[type="text"],.DwtInputField-disabled INPUT[type="password"],.DwtSimpleInput-disabled{height:20px;padding:2px 4px;cursor:text;color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
+.DwtInputField-disabled TEXTAREA{padding:2px 4px;cursor:text;color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
+.DwtInputField-hint INPUT[type="text"],.DwtInputField-hint INPUT[type="password"],.DwtInputField-hint INPUT,.DwtSimpleInput-hint{height:20px;padding:2px 4px;cursor:text;color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;color:#6b675f;font-style:italic;}
+.DwtInputField-hint TEXTAREA{padding:2px 4px;cursor:text;color:#6b675f;font-style:italic;}
+.DwtInputField-errorhint INPUT[type="text"],.DwtInputField-errorhint INPUT[type="password"],.DwtSimpleInput-errorhint{height:20px;padding:2px 4px;cursor:text;color:black;background-color:#f3f1bf;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;color:#6b675f;font-style:italic;}
+.DwtInputField-errorhint TEXTAREA{color:black;background-color:#f3f1bf;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;color:#ccc;}
+TEXTAREA .BannerBar *{font-size:9px;}
+.BannerBar{padding-top:1px;}
+.BannerBar TD{padding-right:0;}
+.BannerTextQuota{text-align:center;vertical-align:top;}
+.BannerTextUser,.BannerTextQuota{cursor:default;}
+.BannerTextQuota-MultiAccount{padding-top:5px;}
+INPUT[type="text"],INPUT[type="password"]{border:1px solid;border-color:#2f2e2a #a7a194 #a7a194 #2f2e2a;}
+SELECT{border:1px solid;border-color:#2f2e2a #a7a194 #a7a194 #2f2e2a;}
+.TabSpacer{display:none;}
+.Tab{white-space:nowrap;height:30px;padding-right:5px!important;}
+.TbTop{border-width:0 1 1 0!important;padding-right:5px!important;}
+.TbBottom{border-width:0 1 1 0!important;padding-right:5px!important;}
+.TabFiller{width:100%;}
+.List .Header TH{border-right:1px solid #a7a194;}
+.ZhSubTabs{background-color:#d7cfbe;padding-top:2px;}
+.ZhSubTabs{padding:5px!important;}
+.ZhSubTabs .TabSelected{background-color:#fdfcfa;border-bottom-color:#fdfcfa;-moz-border-radius-topleft:5px;-moz-border-radius-topright:5px;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;color:#000;cursor:pointer;}
+.ZhRow TD,.ZhRowOdd TD{border-width:0 0 1 0!important;padding-left:3px!important;}
+IMG{border:none;vertical-align:middle;}
+LEGEND{color:#5f5c54;}
+SUBMIT,.tbButton,.searchButton{-moz-border-radius:1px;background-color:#d7cfbe;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;text-align:center;color:#000;font-size:11px;}
+.ZhAppLinks{vertical-align:middle;white-space:nowrap;}
+.ZhAppLinks a:link,.ZhAppLinks a:visited{text-decoration:none;font-weight:bold;color:darkblue;}
+.ZhAppSwitchLink{white-space:nowrap;}
+.ZhAppSwitchLink a,.ZhAppSwitchLink a:link,.ZhAppSwitchLink a:visited{font-size:10px;font-weight:normal;}
+.Tabs{margin-right:10px;}
+.Tab{padding:2px;}
+.Tab SPAN{vertical-align:middle;padding-left:5px;padding-right:5px;}
+.Tab .icon{padding-right:0;}
+.Tab IMG{position:relative;top:-1px;left:4px;}
+.TabFiller{background-color:#d7cfbe;border:solid 1px #aca598;text-align:center;white-space:nowrap;overflow:hidden;border-left-width:0;}
+.TabSpacer{padding:2px;width:2px;border:none;}
+.TabNormal{border:solid 1px #aca598;text-align:center;white-space:nowrap;overflow:hidden;background-color:#d7cfbe;color:#000;}
+.TabSelected{border:solid 1px #aca598;text-align:center;white-space:nowrap;overflow:hidden;border-bottom-color:#bccbd6;color:#000;background-color:#bccbd6;}
+.Tabs A:link,.Tabs A:visited{color:#000;text-decoration:none;}
+.Overview{width:170px;padding:0 6px 0 6px;}
+.Tree{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;width:100%;height:100%;height:auto;}
+.Tree TD{height:18px;cursor:pointer;padding:2px 0 2px 10px;}
+.Tree TH{background-color:#d7cfbe;border-bottom:1px solid #a7a194;}
+.Tree .Header{text-align:left;font-weight:bold;height:18px;padding:1px 5px 0 0;}
+.Tree a:link,.Tree a:visited{color:#000;text-decoration:none;}
+.ZhTISelected{background-color:#ddd!important;}
+.List{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;border-top-width:0;}
+.ZhRow TD{height:18px;cursor:pointer;border-style:solid;border-width:1px 0;border-color:#f8f5ed;background-color:#fefdfc;border-top-color:#fefdfc;padding-right:6px;}
+.ZhRowOdd TD{height:18px;cursor:pointer;border-style:solid;border-width:1px 0;border-color:#f8f5ed;background-color:#fbf9f4;border-top-color:#fbf9f4;padding-right:6px;}
+.List TH{text-align:left;padding-left:3px;white-space:nowrap;overflow:hidden;cursor:pointer;border-bottom:1px solid #a7a194;padding-top:1px;background-color:#d7cfbe;}
+.List A:link,.List A:visited{color:#000;text-decoration:none;}
+.List TH A:link,.List TH A:visited{text-decoration:underline;}
+.List .Img{width:20px;padding-right:0;}
+.List .ImgNarrow{width:12px;padding-right:0;}
+.List .CB{width:20px;padding-right:0;}
+.List .Radio{width:20px;padding-right:0;text-align:center;}
+.RuleList TD{padding:8px;}
+.ZhDisplayRuleContent{background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.ZhEditRuleContent{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;}
+.RuleList{background-color:#fbf9f4;}
+.RuleHint{color:#5f5c54;font-size:9px;}
+.RuleList A:link,.RuleList A:visited{color:#000;text-decoration:underline;}
+.MsgStatusImg{width:20px;padding-right:6px;}
+A:visited{color:blue;}
+.ConvSummary A{color:#000;text-decoration:none;}
+.TopContent{padding:0 15px 0 0;}
+.Tree .ZhTreeEdit a:link,.Tree .ZhTreeEdit a:visited{color:#000;text-decoration:underline;}
+.ZhTreeEdit{color:#ccc;font-size:11px;padding-right:4px;font-weight:normal;text-decoration:underline;}
+.ZhAppContent2{background-color:#fbf9f4;}
+.Conv2Tb{background-color:#bccbd6;}
+.ZhAppContent{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;}
+.ZhAppColContent{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;border-width:1px;}
+.ZhAppViewContent{background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;border-top-width:0;}
+.SearchBar{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;-moz-border-radius:5px;height:31px;padding:3px 5px 2px 5px;padding:5px;}
+.TbTop INPUT,.TbBottom INPUT{padding:0;margin:0;border:none;cursor:pointer;text-align:left;font-size:11px;color:#000;background-color:#bccbd6;}
+.TbTop{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;}
+.TbBottom{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;margin-bottom:5px;}
+.Tb a:link,.Tb a:visited{text-decoration:none;font-weight:normal;color:#000;}
+.Tb2{background-color:#bccbd6;}
+.TbBt{padding:2px;}
+.TbBt A{padding:0 5px 0 5px;}
+.TbBt#caltb a:link,.TbBt#caltb a:visited{color:#000;text-decoration:none;}
+.Tb SPAN{vertical-align:middle;}
+.Tags SPAN{vertical-align:middle;padding-right:5px;}
+.Unread{font-weight:bold;}
+.RowSelected TD{background-color:#bccbd6!important;}
+.RowMatched TD{background-color:#e3da93;}
+.Folder{padding-bottom:2px;}
+.Folder SPAN{vertical-align:middle;padding-left:3px;}
+.Paging{padding:0 5px 0 5px;}
+.Compose{background-color:#fdfcfa;border:solid #77736a;border-width:0 1px 1px 0;border-left-width:1px;}
+.Compose .tobutton{width:50px;}
+.ConvSummary{background-color:#d7cfbe;border-bottom:1px solid #a7a194;padding:5px 0 5px 0;}
+.ConvSummary2{border-bottom:1px solid #a7a194;background-color:#bccbd6;padding:5px 0 5px 5px;}
+.ConvSummary SPAN,.CompOrigAtt SPAN{vertical-align:middle;}
+.MsgHdr{background-color:#d7cfbe;border-bottom:1px solid #a7a194;padding:3px;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.MsgHdr TABLE{background-color:#d7cfbe;padding:5px 0 5px 0;}
+.MsgOps{background-color:#bccbd6;}
+.MsgHdrName{width:10%;padding:3px 0 3px 0;vertical-align:top;text-align:right;font-weight:bold;white-space:nowrap;}
+.MsgHdrValue{padding:3px 3px 3px 3px;vertical-align:top;overflow:hidden;}
+.MsgHdrValue IMG{vertical-align:top;}
+.MsgHdrSub{font-size:15px;font-weight:bold;}
+.MsgHdrSender{font-size:13px;font-weight:bold;padding:3px 3px 3px 3px;vertical-align:top;overflow:hidden;}
+.MsgHdrSent{padding:3px 3px 3px 3px;vertical-align:top;overflow:hidden;white-space:nowrap;}
+.MsgHdrAttAnchor{padding:3px 3px 3px 3px;vertical-align:top;overflow:hidden;white-space:nowrap;}
+.MsgHdrAttAnchor A,.CompOrigAtt A{color:#000;text-decoration:none;}
+.MsgBody{border:2px solid;-moz-border-left-colors:#a7a194 #77736a;-moz-border-top-colors:#a7a194 #77736a;-moz-border-bottom-colors:#d7cfbe #a7a194;-moz-border-right-colors:#d7cfbe #a7a194;background-color:#FFF;font-family:monospace;font-size:13px;padding:10px;overflow:auto;}
+.MsgBody .zUrl{font-family:monospace;font-size:13px;}
+.MsgCompose{font-family:monospace;font-size:13px;width:99%;}
+.Fragment{color:gray;font-weight:normal;}
+.contactLabel{color:#000;white-space:nowrap;overflow:hidden;width:1%;text-align:right;}
+.editContactLabel{color:#000;white-space:nowrap;overflow:hidden;width:18em;text-align:right;}
+.editContactGroupLabel{width:18em;color:#000;white-space:nowrap;overflow:hidden;text-align:left;}
+.editContactGroupHintLabel{color:gray;white-space:nowrap;overflow:hidden;text-align:right;}
+.optionSectionLabel{color:#000;white-space:nowrap;overflow:hidden;font-size:15px;font-weight:bold;}
+.sectionLabel{color:#000;white-space:nowrap;overflow:hidden;border-bottom:1px solid #8597a7;font-size:15px;font-weight:bold;}
+.companyName{font-size:15px;font-weight:bold;}
+.companyFolder{font-size:13px;white-space:nowrap;overflow:hidden;width:1%;}
+.contactHeaderRow{background-color:#E9E9E9;height:36px;}
+.contactTagsRow{background-color:#E9E9E9;}
+.contactHeader,.ZhFolderHeader{font-size:18px;font-weight:bold;color:#000;overflow:hidden;padding:3 0 3 2;}
+.ZhFolderHeader{white-space:nowrap;}
+.ZhSchedularTbl{margin:0 10 10 10;}
+.ZhSchedularTbl .allAttShDiv{border-bottom:1px solid gray!important;}
+.ZhSchedularTbl .attName{border:1px solid #CDCDCD;padding:0 10px;white-space:nowrap;}
+.ZhSchedularTbl .hourLblDiv{width:22px;height:22px;}
+.ZhSchedularTbl .gridDiv{width:11px;height:22px;}
+.ZhSchedularTbl .halfHour{width:11px;height:22px;border:1px solid silver;border-left:0;}
+.ZhSchedularTbl .anHour{border-right:1px solid #aaa;}
+.ZhSchedularTbl .firstDiv{border-left:1px solid silver;}
+.ZhSchedularTbl .start{border-left:3px solid green;}
+.ZhSchedularTbl .end{border-left:3px solid darkred;}
+.ZmScheduler-F{background-color:#FFF;}
+.ZmScheduler-B{background-color:#900;}
+.ZmScheduler-T{background-color:#F30;}
+.ZmScheduler-O{background-color:#FC0;}
+.ZmScheduler-U{background-color:#FFF5CC;}
+.keyDiv{width:13px;height:13px;border:2px inset #77736a;}
+.searchField{-moz-box-sizing:border-box;height:20px;padding:2px 4px;cursor:text;height:auto;width:99%;}
+.YsearchField{-moz-box-sizing:border-box;height:20px;padding:2px 4px;cursor:text;height:auto;width:97%;}
+.SearchFieldWidth{width:100%;padding-right:5px;}
+.NoResults{text-align:center;padding:20px 0 20px 0;font-weight:bold;}
+.InitialContactSearch{text-align:center;padding:20px 0 20px 0;color:gray;}
+.ImgDisabled{opacity:.4;}
+.Displayimages{cursor:pointer;background-color:#FFC;padding:7px;font-size:10pt;border-bottom:1px solid #777;}
+.AttachmentImage{width:120px;height:80px;}
+.ShowAllImageName{font-weight:bold;font-size:16px;}
+.Status{padding:2px 0 2px 0;}
+.StatusEmpty{padding:8px 0 6px 0;}
+.Status DIV{padding:2px 25px 4px 25px;font-weight:bold;}
+.StatusInfo{background-color:#55e386;border-color:darkgreen;-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;opacity:.95;border:2px solid;border-top:none;background-color:#dde5ea;border-color:#838e95;}
+.StatusWarning{background-color:#FFB;border-color:gold;-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;opacity:.95;border:2px solid;border-top:none;background-color:#dde5ea;border-color:#838e95;}
+.StatusCritical{background-color:#F5BFBF;border-color:red;-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;opacity:.95;border:2px solid;border-top:none;background-color:#dde5ea;border-color:#838e95;}
+.shortcutIntro{background-color:#FFC;padding:7px;border-bottom:1px solid #777;}
+.shortcutList{width:100%;border-collapse:collapse;margin-bottom:10px;}
+.shortcutListHeader{border:1px solid #999;}
+.shortcutKeys{text-align:right;padding:6px 0;vertical-align:top;border:1px solid #a7a194;font-weight:bold;color:#5f5c54;}
+.shortcutDescription{border:1px solid #a7a194;padding:5px;width:auto;}
+.shortcutKeyCombo{white-space:nowrap;padding:5px;}
+.shortcutKey{border:1px solid #a7a194;color:#000;font-weight:bold;padding:2px 4px 2px 4px;margin:1px 1px 1px 1px;line-height:22px;}
+.shortcutTable{table-layout:fixed;border-collapse:collapse;margin-bottom:10px;border:1px solid #999;}
+.shortcutTable TH{font-size:11px;text-align:left;font-weight:bold;padding-left:5px;color:#666;border-bottom:1px solid #999;}
+.SubHead,.PanelHead{font-size:12px;font-weight:bold;padding:3 10 5 7;}
+.PanelHead{background-color:#bab09a;}
+.ZhSubTabs{padding-top:10px;}
+.ZhEditFolderContent,.ZhEditAddressBookContent,.ZhEditCalendarContent,.ZhEditTagContent{background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;}
+.ZhCalType,.ZhABType,.ZhFolderType{color:#5f5c54;}
+.ZhCalMonthHeaderRow{background-color:#d7cfbe;}
+.ZhCalMonthTable{border-collapse:collapse;border-spacing:0;padding:0;background-color:#fbf9f4;}
+.ZhCalMonthHeaderMonth{background-color:#d7cfbe;color:#000;font-size:18px;font-weight:bold;color:#000;overflow:hidden;white-space:nowrap;text-align:center;}
+.ZhCalMonthHeaderCellsText{background-color:#d7cfbe;color:#000;font-size:13px;padding:2px;border-bottom:1px solid #a7a194;color:#000;overflow:hidden;white-space:nowrap;text-align:center;}
+.ZhCalMonthDay,.ZhCalMonthDaySelected{border:1px solid #a7a194;white-space:nowrap;overflow:hidden;vertical-align:top;cursor:pointer;}
+.ZhCalMonthDaySelected{background-color:#bccbd6!important;}
+.ZhCalDayHeader,.ZhCalDayHeaderToday{background-color:#d7cfbe;color:#000;font-size:13px;color:#000;overflow:hidden;white-space:nowrap;text-align:center;border-bottom:1px solid #a7a194;line-height:2.0em;}
+.ZhCalPager{color:#000;font-size:13px;color:#000;overflow:hidden;white-space:nowrap;text-align:center;}
+.ZhCalMonthHeaderRow a:link,.ZhCalMonthHeaderRow a:visited{color:#000;}
+.ZhCalDayHeaderToday,.ZhCalDayHeaderToday a:link,.ZhCalDayHeaderToday a:visited{color:darkred;}
+.ZhCalDOM,.ZhCalDOMT,.ZhCalDOMO,.ZhCalDOMOT{white-space:nowrap;overflow:hidden;font-size:13px;padding-left:3px;padding-right:3px;text-align:right;}
+.ZhCalMonthTable a:link,.ZhCalMonthTable a:visited,.ZhCalMiniContainer a:link,.ZhCalMiniContainer a:visited,.ZhCalMonthHeaderRow a:link,.ZhCalMonthHeaderRow a:visited{text-decoration:none;color:inherit;}
+.ZhCalDOM,.ZhCalDOM a:link,.ZhCalDOM a:visited{color:#000;}
+.ZhCalDOMT,.ZhCalDOMT a:link,.ZhCalDOMT:visited{color:darkred;}
+.ZhCalDOMO,.ZhCalDOMO a:link,.ZhCalDOMO a:visited{color:#5f5c54;}
+.ZhCalDOMOT,.ZhCalDOMOT a:link,.ZhCalDOMOT a:visited{color:#5f5c54;color:darkred;}
+.ZhCalMiniContainer{background-color:#fbf9f4;border:2px solid;-moz-border-left-colors:#a7a194 #f0e9d8;-moz-border-top-colors:#a7a194 #f0e9d8;-moz-border-bottom-colors:#77736a #bfb8a9;-moz-border-right-colors:#77736a #bfb8a9;height:135px;padding-bottom:5px;}
+.ZhCalMDS{background-color:#bccbd6!important;}
+.ZhCalMDOM,.ZhCalMDOMT,.ZhCalMDOMO,.ZhCalMDOMOT{white-space:nowrap;overflow:hidden;font-size:10px;padding-left:3px;padding-right:3px;padding:2px;border:0;text-align:center;}
+.ZhCalMDOMT{padding:1px;border:1px solid darkred;}
+.ZhCalMDHA{font-weight:bold;}
+.ZhCalMDOMOT,.ZhCalMDOMOT a:link,.ZhCalMDOMOT a:visited{padding:1px;border:1px solid darkred;}
+.ZhCalMDOM a:link,.ZhCalMDOM a:visited,ZhCalMDOMT a:link,.ZhCalMDOMT a:visited{color:#000;}
+.ZhCalMiniTitlebar{height:29px;padding-top:2px;background-color:#bccbd6;border:solid #96a2ab;border-width:0 1px 1px 1px;border-right-width:0;height:16px;}
+.ZhCalMiniTitleCell{white-space:nowrap;color:#000;width:auto;cursor:pointer;font-weight:normal;}
+.ZhCalMiniTitleCell a:link,.ZhCalMiniTitleCell a:visited{color:#000;}
+.ZhCalMiniDow{color:#5f5c54;text-align:center;font-weight:normal;}
+.ZhCalMonthAppt{padding:0 5px 0 5px;}
+.ZhApptSel{border:1px dashed black;}
+.ZhCalMonthAllDayAppt,.ZhCalMonthAllDayApptNew,.ZhCalDayAllDayAppt,.ZhCalDayAllDayApptNew{border:2px solid #333;-moz-border-radius:2 2 2 2;border-top-width:1px;border-bottom-width:1px;}
+.ZhCalMonthAllDayAppt,.ZhCalMonthAllDayApptNew{padding:0 5px 0 5px;}
+.ZhCalDayAllDayAppt,.ZhCalDayAllDayApptNew{padding:1 5px 1 5px;cursor:pointer;}
+.ZhCalDayAppt,.ZhCalDayApptNew{border:1px solid;border-color:#AAA #333333 #333 #AAAAAA;cursor:pointer;}
+.ZhCalDayApptNew,.ZhCalDayAllDayApptNew,.ZhCalMonthAllDayApptNew{color:white;}
+.ZhCalDayApptEnd,.ZhCalTimeZone{color:#5f5c54;}
+.ZhCalDayHour{background-color:#fbf9f4;color:#000;padding:2px;border-bottom:1px solid #a7a194;color:#000;overflow:hidden;white-space:nowrap;text-align:center;}
+.ZhCalDayHS{border-right:1px solid #a7a194;}
+.ZhCalAllDayDS{border-left:1px solid #a7a194;}
+.ZhCalDayHSB{border-right:1px solid #a7a194;border-bottom:1px solid #a7a194;}
+.ZhCalDayHHB{border-bottom:1px solid #cbc4b4;border-bottom-style:dashed;}
+.ZhCalDayHB{border-bottom:1px solid #cbc4b4;}
+.ZhCalDayADB{border-bottom:1px solid #cbc4b4;border-bottom-width:4px;}
+.ZhCalDaySEP{border-left:1px solid #a7a194;}
+.ZhCalDayADHS{border-right:1px solid #a7a194;border-bottom:1px solid #cbc4b4;border-bottom-width:4px;}
+.ZhCalDayGrid{background-color:#fbf9f4;}
+.ZhCalDayUnionSEP{border-left:1px solid #a7a194;border-right:1px solid #a7a194;}
+.ZhCalSchedUnion{text-align:center;background-color:#D90000;color:#000;width:25px;}
+.apptHeaderRow{height:28px;}
+.apptHeader{font-size:18px;font-weight:bold;color:#000;overflow:hidden;}
+.ZhCalDayGrid A:link,.ZhCalDayGrid A:visited,.ZhCalMonthTable A:link,.ZhCalMonthTable A:visited{color:inherit;text-decoration:none;}
+.ZhBottomSep{border-bottom:1px solid #a7a194;}
+.ZhApptRecurrInfo{cursor:pointer;background-color:#FFC;padding:7px 0;font-size:10pt;border-bottom:1px solid #777;}
+.ZhCallListPrintView{padding:10px;}
+.ZhCallListPrintTable TH{font-weight:bold;}
+.ZhCallListPrintTable TD,.ZhCallListPrintTable TH{padding-left:20;padding-right:20;border-bottom:1px solid;text-align:left;}
+.ZhZimbraTitle{font-size:18px;font-weight:bold;}
+.ZhOptVoice .List TD,.ZhOptVoice .List TH{padding-left:20px;}
+.ZhOptVoiceCBCell{width:23;}
+.ZhOptVoiceRemove{padding:0;margin:0;border:none;cursor:pointer;font-size:11px;color:#000;background-color:transparent;text-decoration:underline;}
+.Selection{background-color:#ADD6D6;}
+.SelectionDark{background-color:#91C8C8;}
+.SelectionLight{background-color:#C8E4E4;}
+.SelectionBg{background-color:#E3F1F1;}
+.Red{background-color:#E34040;}
+.RedDark{background-color:#D90000;}
+.RedLight{background-color:#EC8080;}
+.RedBg{background-color:#F5BFBF;}
+.RedC{color:#E34040;}
+.RedDarkC{color:#D90000;}
+.RedLightC{color:#EC8080;}
+.RedBgC{color:#F5BFBF;}
+.Pink{background-color:#F492BF;}
+.PinkDark{background-color:#F06EA9;}
+.PinkLight{background-color:#F8B7D4;}
+.PinkBg{background-color:#FBDBE9;}
+.PinkC{color:#F492BF;}
+.PinkDarkC{color:#F06EA9;}
+.PinkLightC{color:#F8B7D4;}
+.PinkBgC{color:#FBDBE9;}
+.Orange{background-color:#FF9940;}
+.OrangeDark{background-color:#F70;}
+.OrangeLight{background-color:#FFBB80;}
+.OrangeBg{background-color:#FFDDBF;}
+.OrangeC{color:#FF9940;}
+.OrangeDarkC{color:#F70;}
+.OrangeLightC{color:#FFBB80;}
+.OrangeBgC{color:#FFDDBF;}
+.Yellow{background-color:#FFE640;}
+.YellowDark{background-color:#FD0;}
+.YellowLight{background-color:#FFEE80;}
+.YellowBg{background-color:#FFF6BF;}
+.YellowC{color:#FFE640;}
+.YellowDarkC{color:#FD0;}
+.YellowLightC{color:#FFEE80;}
+.YellowBgC{color:#FFF6BF;}
+.Green{background-color:#40A05F;}
+.GreenDark{background-color:#00802A;}
+.GreenLight{background-color:#80C095;}
+.GreenBg{background-color:#BFDFCA;}
+.GreenC{color:#40A05F;}
+.GreenDarkC{color:#00802A;}
+.GreenLightC{color:#80C095;}
+.GreenBgC{color:#BFDFCA;}
+.Cyan{background-color:#40D9D9;}
+.CyanDark{background-color:#0CC;}
+.CyanLight{background-color:#80E6E6;}
+.CyanBg{background-color:#BFF2F2;}
+.CyanC{color:#40D9D9;}
+.CyanDarkC{color:#0CC;}
+.CyanLightC{color:#80E6E6;}
+.CyanBgC{color:#BFF2F2;}
+.Blue{background-color:#4073D9;}
+.BlueDark{background-color:#04C;}
+.BlueLight{background-color:#80A2E6;}
+.BlueBg{background-color:#BFD0F2;}
+.BlueC{color:#4073D9;}
+.BlueDarkC{color:#04C;}
+.BlueLightC{color:#80A2E6;}
+.BlueBgC{color:#BFD0F2;}
+.Purple{background-color:#7940A0;}
+.PurpleDark{background-color:#4C0080;}
+.PurpleLight{background-color:#A680C0;}
+.PurpleBg{background-color:#D2BFDF;}
+.PurpleC{color:#7940A0;}
+.PurpleDarkC{color:#4C0080;}
+.PurpleLightC{color:#A680C0;}
+.PurpleBgC{color:#D2BFDF;}
+.Gray{background-color:#BFBFBF;}
+.GrayDark{background-color:#A9A9A9;}
+.GrayLight{background-color:#D4D4D4;}
+.GrayBg{background-color:#E9E9E9;}
+.GrayC{color:#BFBFBF;}
+.GrayDarkC{color:#A9A9A9;}
+.GrayLightC{color:#D4D4D4;}
+.GrayBgC{color:#E9E9E9;}
+.ZhAC{position:relative;}
+.ZhACB{font-weight:bold;}
+.ZhACCont{position:absolute;bottom:0;}
+.ZhACCont .yui-ac-content{position:absolute;border:1px solid #404040;background:#fff;overflow:hidden;z-index:9050;}
+.ZhACCont .yui-ac-shadow{position:absolute;margin:.3em;background:#a0a0a0;z-index:9010;}
+.ZhACCont ul{margin:0;padding:1px 0;list-style:none;}
+.ZhACCont li{margin:0;padding:0 1px;cursor:default;white-space:nowrap;}
+.ZhACCont li.yui-ac-highlight{background-color:#bccbd6!important;}
+.ZhACCont li.yui-ac-prehighlight{background:#FFC;}
+.ZhACTo{z-index:9050;}
+.ZhACCc{z-index:9040;}
+.ZhACBcc{z-index:9030;}
+.ZOptionsHeader{font-size:15px;font-weight:bold;color:white;}
+.ZHeader{font-size:13px;font-weight:bold;}
+.ZOptionsHint{color:#5f5c54;}
+.ZOptionsSectionMain{background-color:#efe7d4;padding:1em;}
+.ZOptionsLabel,.ZOptionsLabelTop,.ZOptionsLabelNarrow,.ZOptionsTableLabel{width:150px;font-weight:bold;white-space:nowrap;text-align:right;vertical-align:middle;line-height:20px;}
+.ZOptionsSectionTable LABEL{white-space:nowrap;}
+.ZOptionsLabelTop{vertical-align:top;line-height:20px;}
+.ZOptionsLabelNarrow{width:auto;}
+.ZOptionsInfo{color:#5f5c54;}
+.ZhDateHint{color:#5f5c54;padding-left:5px;}
+.ZhHomeVoiceCell{padding:0;}
+.ZhHomeVoiceIframe{background-color:#FFF;width:100%;height:240px;}
+.ZhHomeVoiceBody{background-color:#FFF;width:100%;height:100%;}
+.ZhHomeVoiceTable{background-color:#FFF;width:100%;}
+.ZhHomeVoiceTable .ZhHomeCell{padding-left:15px;}
+.ZhHomeRow{height:40px;}
+.ZhHomeCell{border-bottom:1px solid #ccc;padding:5px;}
+.ZhHomeTextLink{color:#000;text-decoration:none;}
+.ZhContainingBox{float:left;background-color:#fff;}
+.ZhThumbnailItem{background-color:transparent;background-repeat:no-repeat;cursor:pointer;float:left;height:120px;margin:8px;vertical-align:middle;width:100px;}
+.ZhThumbnailItem .ZhThumbnailIcon{background-color:transparent;border:2px solid #CCC;font-size:1px;height:100px;line-height:100px;text-align:center;width:96px;}
+.ZhThumbnailItem .ZhThumbnailName{display:block;font-size:11px;font-family:Verdana,Arial,serif;margin:3px 0 0 0;text-align:center;height:14px;overflow:hidden;}
+.ZhThumbnailImg{margin:26px 24px;}
+.yui-skin-sam .yui-toolbar-container .yui-toolbar-subcont{padding:0 1.5em .5em 1em!important;border-bottom:1px solid #808080;}
+.yui-toolbar-group-indentlist,.yui-toolbar-group-alignment{width:125px!important;}
+/*input[type="text"],input[type="password"]{color:black;background-color:white;border:1px solid;border-color:#3b3935 #d7cfbe #d7cfbe #3b3935;}*/
+input[disabled]{color:#5f5c54;background-color:transparent;border:1px solid #d7cfbe;}
