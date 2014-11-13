@@ -1,0 +1,253 @@
+
+-------------------------
+2013-11-01 2:00:57 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 2:01:15 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:16:09 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:26:33 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:30:28 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:32:50 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:33:23 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => foo
+    [1] => bar
+)
+
+-------------------------
+2013-11-01 2:36:41 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 2:39:21 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 2:40:56 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 2:42:10 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 2:42:40 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:15:10 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:16:09 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:16:33 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:21:59 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:23:17 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:25:33 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:27:17 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:27:23 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:27:44 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:28:23 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:28:28 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:53:01 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+)
+
+-------------------------
+2013-11-01 3:53:20 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:55:00 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:56:25 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staf
+)
+
+-------------------------
+2013-11-01 3:56:29 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
+
+-------------------------
+2013-11-01 3:57:55 pm
+File: /var/www/dev.hsolc.org/sites/default/modules/announcements/announcements.module
+Function: ttail
+Array
+(
+    [0] => staff
+)
