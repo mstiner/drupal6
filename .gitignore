@@ -3,6 +3,9 @@
 .htaccess
 robots.txt
 errorlog.txt
+php_errors.txt
+php_errors.log
+
 
 log/
 log/*
