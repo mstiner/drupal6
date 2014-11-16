@@ -4,6 +4,8 @@
 robots.txt
 errorlog.txt
 
+log/
+log/*
 
 CHANGELOG.txt
 COPYRIGHT.txt
@@ -24,6 +26,12 @@ local/*
 
 tools/
 tools/*
+
+php_mail/
+php_mail/*
+
+tmp/
+tmp/*
 
 sites/all/modules/devel
 sites/all/modules/devel/*
