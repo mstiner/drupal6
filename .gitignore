@@ -9,7 +9,7 @@ php_errors.log
 
 log/
 log/*
-
+*.txt
 CHANGELOG.txt
 COPYRIGHT.txt
 INSTALL.mysql.txt
@@ -18,7 +18,8 @@ LICENSE.txt
 MAINTAINERS.txt
 UPGRADE.txt
 
-
+index2.php
+php_errors.log
 
 
 index.php
