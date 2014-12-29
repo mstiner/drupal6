@@ -1,0 +1,82 @@
+<?php
+
+use PhpUtilities\UtilityArray;
+use Drupal\Nodes\AnnouncementNode;
+use Drupal\Forms\NodeEditForm;
+use Drupal\Forms\InvalidFormException;
+use Drupal\Forms\InvalidNodeEditFormException;
+use Drupal\JS\ScriptManager;
+use Drupal\JS\JavaScript;
+use Drupal\JS\ScriptFile;
+
+define('ISODATE_NODE_TYPES','announcement');
+/**
+ * @file
+ * Defines date/time field types for the Content Construction Kit (CCK).
+ */
+
+/**
+ * Implementation of hook_boot().
+ */
+function isodate_init() {
+  if(arg(2)!='edit') return;
+	$scripts = array(
+		"sites/all/libraries/jquery.ui/ui/minified/ui.core.min.js",
+		"sites/all/libraries/jquery.ui/ui/minified/ui.datepicker.min.js",
+		"sites/all/modules/date/date_popup/lib/jquery.timeentry.pack.js",
+		"sites/all/modules/date/date_popup/date_popup.js",
+	);
+	$ScriptManager = new ScriptManager('header');
+  foreach($scripts as $script){
+  	$s = new ScriptFile($script);
+  	$ScriptManager->add($s);
+  }
+  $ScriptManager->add("jQuery(function(){jQuery('#edit-iso-date').datepicker();});");
+}
+
+/**
+ *
+ * and hook_nodeapi() is used to read and write those values to and from the database.
+ */
+function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
+	$type = $node->type;
+	if(!UtilityArray::StringToArray(ISODATE_NODE_TYPES)->has($node->type)) return;
+	$class = "Drupal\\Nodes\\".ucwords($type) . 'Node';
+	$thisNode = new $class($node);
+	// lp("Class is: ".get_class($this->getDefaultDate()));
+	// lp("Default date is: ".$thisNode->getDefaultDate());
+	switch($op){
+		case 'prepare':
+			$node->AnnouncementNode=$thisNode;
+			break;
+		case 'update':
+			$thisNode->doapi($op);
+			break;
+		case 'insert':
+			$thisNode->doapi($op);
+			break;
+		case 'load':
+			break;
+		case 'view':
+			$thisNode->addContent('iso_date',"<h4>{$thisNode->getDisplayDate()}</h4>");
+			break;
+	}
+}
+
+
+function isodate_form_alter(&$form, &$form_state, $form_id) {
+	try {
+		$thisForm = new NodeEditForm($form,$form_id);
+	} catch(InvalidNodeEditFormException $e){
+		drupal_set_message($e->getMessage(),'warning',false);
+		return;
+	}
+	
+	$node=$thisForm->getNode();
+	$announcementNode=$node->AnnouncementNode;
+	// print get_class($node->AnnouncementNode);exit;
+	$thisForm->addElement('Fieldset')->name('iso_date')->value('Announcement Date')->weight(-10)
+		->addElement('IsoDate')->name('iso_announcement_date')->value($announcementNode->getDisplayDate());
+	//	print_r($thisForm->getForm());exit;
+	$form=$thisForm->rebuildForm();    
+} 

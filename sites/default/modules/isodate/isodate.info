@@ -1,0 +1,7 @@
+name = ISO Date
+description = Defines CCK date field in ISO format.
+dependencies[] = content
+dependencies[] = autoloader
+package = Clickpdx modules
+core = 6.x
+
