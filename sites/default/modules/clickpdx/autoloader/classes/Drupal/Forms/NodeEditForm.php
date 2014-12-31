@@ -36,7 +36,7 @@ class NodeEditForm extends Form {
 			$elem = new $type();
 			$elem->setForm($this);
   	} catch(Exception $e){
-  		drupal_set_message($e->getMessage(),'warning',false);
+  		// drupal_set_message($e->getMessage(),'warning',false);
   		// class not found exception
   	}
 		$this->elements[] = $elem;

@@ -82,6 +82,10 @@ function isodate_form_alter(&$form, &$form_state, $form_id) {
 		// drupal_set_message($e->getMessage(),'warning',false);
 		return;
 	}
+	catch(Exception $e){
+		// drupal_set_message($e->getMessage(),'warning',false);
+		return;
+	}
 	
 	$node=$thisForm->getNode();
 	$announcementNode=$node->AnnouncementNode;
