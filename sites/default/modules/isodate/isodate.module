@@ -86,8 +86,9 @@ function isodate_form_alter(&$form, &$form_state, $form_id) {
 	$node=$thisForm->getNode();
 	$announcementNode=$node->AnnouncementNode;
 	// print get_class($node->AnnouncementNode);exit;
-	$thisForm->addElement('Fieldset')->setName('iso_date')->value('Announcement Date')->weight(-10)
-		->addElement('IsoDate')->setName('iso_announcement_date')->value($announcementNode->getDisplayDate());
+	$thisForm->addElement('Fieldset')->setName('iso_date')->setTitle('Announcement Date')->value('Announcement Date')->weight(-10)
+	->addElement('IsoDate')->setTitle('Announcement Date')->setName('iso_announcement_date')->value($announcementNode->getDisplayDate());
+	// $thisForm->addElement('IsoDate')->setTitle('Announcement Date')->setName('iso_announcement_date')->value($announcementNode->getDisplayDate());
 	//	print_r($thisForm->getForm());exit;
 	$form=$thisForm->rebuildForm();    
 } 

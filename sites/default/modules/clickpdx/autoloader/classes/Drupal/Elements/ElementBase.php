@@ -13,6 +13,8 @@ class ElementBase {
 	
 	protected $value;
 	
+	protected $title;
+	
 	protected $default_value;
 	
 	protected $weight = 0;
@@ -34,6 +36,13 @@ class ElementBase {
 	}
 	public function getName($name){
 		return $this->name;
+	}
+	public function setTitle($title){
+		$this->title=$title;
+		return $this;
+	}
+	public function getTitle(){
+		return $this->title;
 	}
 	public function value($value){
 		$this->default_value=$value;

@@ -18,7 +18,7 @@ class FieldsetElement extends ElementBase {//implements DrupalRenderable {
     $fieldset=array(
     	$this->getName() => array(
 				'#type' => 'fieldset',
-				'#title' => t('!title',array('!title'=>$this->value)),
+				'#title' => t('!title',array('!title'=>$this->title)),
 				'#description' => t('!description',array('!description'=>$this->description)),
 				'#collapsible' => true,
 				'#collapsed' => false,

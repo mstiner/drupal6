@@ -10,6 +10,7 @@ class IsoDateElement extends ElementBase {
 	public function toDrupal(){
     return array(
     	'iso_date' => array(
+    		'#title' => t('!title',array('!title'=>$this->title)),
 				'#type' => $this->type,
 				'#default_value' => $this->default_value,
 				'#maxlength' => 25,
