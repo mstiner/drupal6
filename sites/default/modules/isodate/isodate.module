@@ -79,7 +79,7 @@ function isodate_form_alter(&$form, &$form_state, $form_id) {
 		$thisForm = new NodeEditForm($form,$form_id);
 		if($thisForm->getNode()->type!= 'announcement') return;
 	} catch(InvalidNodeEditFormException $e){
-		drupal_set_message($e->getMessage(),'warning',false);
+		// drupal_set_message($e->getMessage(),'warning',false);
 		return;
 	}
 	
