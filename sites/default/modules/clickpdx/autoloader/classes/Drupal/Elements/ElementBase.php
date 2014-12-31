@@ -28,7 +28,7 @@ class ElementBase {
 	public function setForm(NodeEditForm $form){
 		$this->form=$form;
 	}
-	public function name($name){
+	public function setName($name){
 		$this->name=$name;
 		return $this;
 	}

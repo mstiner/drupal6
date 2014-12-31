@@ -31,6 +31,16 @@ function isodate_init() {
   	$s = new ScriptFile($script);
   	$ScriptManager->add($s);
   }
+	drupal_add_css(
+		'sites/all/libraries/jquery.ui/themes/base/jquery-ui.css',
+		'module',
+		'all',
+		false);
+	drupal_add_css(
+		'sites/all/modules/date/date_popup/themes/datepicker.1.7.css',
+		'module',
+		'all',
+		false);
   $ScriptManager->add("jQuery(function(){jQuery('#edit-iso-date').datepicker();});");
 }
 
@@ -58,7 +68,7 @@ function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
 		case 'load':
 			break;
 		case 'view':
-			$thisNode->addContent('iso_date',"<h4>{$thisNode->getDisplayDate()}</h4>");
+			$thisNode->addContent('iso_date',"<h5 class='cck cck-field-date'>{$thisNode->getDisplayDate()}</h5>");
 			break;
 	}
 }
@@ -67,6 +77,7 @@ function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
 function isodate_form_alter(&$form, &$form_state, $form_id) {
 	try {
 		$thisForm = new NodeEditForm($form,$form_id);
+		if($thisForm->getNode()->type!= 'announcement') return;
 	} catch(InvalidNodeEditFormException $e){
 		drupal_set_message($e->getMessage(),'warning',false);
 		return;
@@ -75,8 +86,8 @@ function isodate_form_alter(&$form, &$form_state, $form_id) {
 	$node=$thisForm->getNode();
 	$announcementNode=$node->AnnouncementNode;
 	// print get_class($node->AnnouncementNode);exit;
-	$thisForm->addElement('Fieldset')->name('iso_date')->value('Announcement Date')->weight(-10)
-		->addElement('IsoDate')->name('iso_announcement_date')->value($announcementNode->getDisplayDate());
+	$thisForm->addElement('Fieldset')->setName('iso_date')->value('Announcement Date')->weight(-10)
+		->addElement('IsoDate')->setName('iso_announcement_date')->value($announcementNode->getDisplayDate());
 	//	print_r($thisForm->getForm());exit;
 	$form=$thisForm->rebuildForm();    
 } 
