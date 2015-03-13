@@ -120,7 +120,7 @@ function module_grants_menu_alter(&$items) {
   $items['node/%node/delete']['access callback'] = 'module_grants_node_access';
   $items['node/%node/delete']['module'] = 'module_grants';
   $items['node/%node/delete']['file'] = 'module_grants.pages.inc';
-  unset($items['node/%node/delete']['file_path']);
+  $items['node/%node/delete']['file path'] = drupal_get_path('module', 'module_grants');
 
   // ---- Revision-related access callbacks
   $items['node/%node/revisions']['access callback'] = 'module_grants_node_revision_access';
@@ -228,7 +228,7 @@ function module_grants_node_access($node_op, $node = NULL, $account = NULL) {
     $may_view = module_invoke('revisioning', 'user_node_access', 'view revisions', $node)
       || user_access('view revisions');
     if (!$may_view) {
-      if (!$uid || $uid != $node->uid) {
+      if ($uid != $node->uid) {
         // Not the author: no permission to view this unpublished content.
         return $access["$uid:$nid:$node_op"] = FALSE;
       }

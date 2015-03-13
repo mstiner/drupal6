@@ -28,9 +28,9 @@ function module_grants_admin_configure() {
   );
   $form['module_grants_multiple_modules']['module_grants_OR_modules'] = array(
     '#type' => 'checkbox',
-    '#title' => t('OR rather than AND the access grants from multiple modules, i.e. behave like core does (for published content).'),
+    '#title' => t('OR rather than AND the access grants from multiple modules.'),
     '#default_value' => variable_get('module_grants_OR_modules', FALSE),
-    '#description' => t('Note that normally core behaviour is <strong>not</strong> what you want -- it is the reason Module Grants was written in the first place.')
+    '#description' => t('Normally you would <strong>not</strong> tick this box, except for testing purposes. To "OR" access grants coming from multiple modules means that content is being made accessible by one module when access has already been restricted by another. "OR" is core-behaviour and is undesirable in most cases. Bad cORe behaviour is the reason Module Grants was written in the first place.')
   );
   $form['show_taxonomy_terms'] = array(
     '#type' => 'checkbox',

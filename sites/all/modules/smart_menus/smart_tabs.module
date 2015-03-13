@@ -1,5 +1,4 @@
 <?php
-// $Id: smart_tabs.module,v 1.17 2010/09/21 03:58:14 rdeboer Exp $
 
 /**
  * @file
@@ -241,11 +240,11 @@ function _smart_tabs_user_profile_form($edit) {
  *   Themed output corresponding to the tabs of the requested level.
  */
 function _smart_tabs_menu_local_tasks($level = 0) {
-  static $tabs;
   if (!_smart_tabs_user_has_smart_tabs_enabled()) {
     return menu_local_tasks($level);
   }
 
+  static $tabs;
   if (!isset($tabs)) {
     $router_item = menu_get_item();
     if (!$router_item || !$router_item['access']) {
@@ -266,8 +265,12 @@ function _smart_tabs_menu_local_tasks($level = 0) {
       $tasks[$item['path']] = $item;
     }
     $path = $router_item['path']; // $path may include % whereas href won't
-    $is_included = _smart_tabs_auto_select_tab($path, $router_item['href'], $tasks);
-
+    $is_included = TRUE;
+    if (!isset($_GET['x'])) { // link is not excluded
+      // _smart_tabs_auto_select_tab is where a redirect to a previously
+      // visited tab may occur
+      $is_included = _smart_tabs_auto_select_tab($path, $router_item['href'], $tasks);
+    }
     $tabs = array();
     // Find all tabs below the current path.
     // Tab parenting may skip levels, so number of parts in the path may not
@@ -351,7 +354,11 @@ function _smart_tabs_menu_local_tasks($level = 0) {
 
 function _smart_tabs_user_has_smart_tabs_enabled() {
   global $user;
-  return !($user->profile_smart_tabs_disable);
+
+  if (!user_is_anonymous()) {
+    return empty($user->profile_smart_tabs_disable);
+  }
+  return variable_get('smart_tabs_enable_anonymous', TRUE);
 }
 
 function _smart_tabs_auto_select_tab($path, $href, $tasks) {
@@ -386,7 +393,7 @@ function _smart_tabs_auto_select_tab($path, $href, $tasks) {
         // It would be nicer if we could execute this code BEFORE loading the
         // page, but until this is dealt with properly in the core architecture
         // we'll have to just work around it.
-        // @TODO change @tab_name to be the localised (translated) tab name.
+        // @TODO change %tab_name to be the localised (translated) tab name.
         _st_debug_info(t('Auto-selecting previously active %tab_name tab at %tab_href', array(
           '%tab_name' => drupal_ucfirst(_smart_tabs_leaf($new_active_href)),
           '%tab_href' => _smart_tabs_parent_path($new_active_href))));
@@ -481,6 +488,14 @@ function _smart_tabs_derive_new_active_href($clicked_path, $tasks) {
     $new_tab = $tasks[$active_child];
   }
   else {
+    if ($clicked_path == 'node/%' && $active_child == 'node/%/edit') {
+      // We get here after user has pressed Save on the Edit form. Don't want to
+      // redirect back to Edit form. However we also get here when user does NOT
+      // save the Edit form and clicks another node. In this case we *may* want
+      // to go to the Edit form of the new node...
+      // @TODO revisit and make a decision.
+      return '';
+    }
     // eg accessible-content for 2nd time, get the child or grandchild
     $active_grandchild = $_SESSION['active-tabs'][$active_child];
     $new_tab = $tasks[empty($active_grandchild) ? $active_child : $active_grandchild];
@@ -549,28 +564,35 @@ function _smart_tabs_parent_path($path) {
 
 function _smart_tabs_generate_link($item, $tasks) {
   // In order to distinguish the parent menu item from the default tab (e.g.
-  // user/7/edit and user/7/edit/account), it is preferable to not use the 
-  // alias for the default tab, as it will stop us from returning to the
-  // default tab (we'll end up at the last selected non-default tab instead).
-  // However for node aliases this is less of an issue, so we can be more
-  // user-friendly and dispaly the alias.
-  // The exception are modules that auto-expand path aliases (subpath_alias and
-  // path_alias_xt), as they again cause the non-default tabs, like
-  // node/123/edit, to appear like a child of the default node/123, thus
-  // causing a redirect whenever the View tab is clicked.
-  // These modules take care of the aliases themselves so no need to interfere.
-  // 
-  if ($item['type'] == MENU_DEFAULT_LOCAL_TASK && substr($item['href'], 0, 5) == 'node/' && !module_exists('path_alias_xt')) {
+  // user/7/edit and user/7/edit/account or node/123 and node/123/view), it is
+  // preferable to not use the short cut parent name (node/123) or the alias
+  // ("about-us") for the tab link, as either will resolve to node/123, rather
+  // than node/123/view, so we'll end up at the previously selected non-default
+  // tab rather than the clicked tab.
+  // The default call theme('menu_item_link', $item) uses the full href, so
+  // results in the correct behaviour.
+  // However not showing the alias is taking something away from core behaviour.
+  // So instead we append a parameter to the tab link, eg "about-us?x" to
+  // distinguish it from the parent page alias "about-us".
+  //
+  // Modules that auto-expand path aliases (subpath_alias and path_alias_xt)
+  // take care of the aliases themselves so no need to interfere.
+
+  if ($item['type'] == MENU_DEFAULT_LOCAL_TASK && !module_exists('path_alias_xt')) {
     // When the tab is the default, replace its href by the href of
     // the first parent that is NOT a default task, so that alias
     // substitution can take place inside theme_menu_item_link().
     $parent_href = _smart_tabs_get_parent_href($tasks, $item['tab_parent']);
     $link = theme('menu_item_link', array('href' => $parent_href) + $item);
+    if (preg_match('{(.+href=".+?)(".+)}', $link, $matches)) {
+      // Note ? to force match on first rather than last double-quote.
+      // Append '?x' to href to exclude it from redirection, see
+      // _smart_tabs_menu_local_tasks()
+      $link = "$matches[1]?x$matches[2]";
+      return $link;
+    }
   }
-  else {
-    $link = theme('menu_item_link', $item);
-  }
-  return $link;
+  return theme('menu_item_link', $item);
 }
 
 function _smart_tabs_get_parent_href($tasks, $path) {

@@ -296,6 +296,7 @@ function _revisioning_delete_revision(&$node, $vid = NULL) {
   $node_revision = is_object($node) ? $node : node_load($node, $vid);
   module_invoke_all('revisionapi', 'pre delete', $node_revision);
   db_query("DELETE FROM {node_revisions} WHERE nid = %d AND vid = %d", $node_revision->nid, $node_revision->vid);
+  db_query("DELETE FROM {term_node} WHERE nid = %d AND vid = %d", $node_revision->nid, $node_revision->vid);
   node_invoke_nodeapi($node_revision, 'delete revision');
   watchdog('content', '@type: deleted %title revision %revision.', array('@type' => $node_revision->type, '%title' => $node_revision->title, '%revision' => $node_revision->vid));
 }
@@ -345,7 +346,14 @@ function _revisioning_publish_revision(&$node, $vid = NULL, $clear_cache = TRUE)
   }
   $node_revision->status = 1;
   $node_revision->bypass_nodeapi = TRUE; // avoid revisioning_nodeapi() doing stuff
-  $node_revision->pathauto_perform_alias = FALSE; // avoid pathauto_nodeapi() doing stuff
+  $node_revision->nodewords = FALSE; // avoid nodewords_nodeapi() doing stuff
+  // On the first save of a node we should allow pathauto_nodeapi() to create the
+  // alias as normal. Otherwise, the alias will not be created if a node is set
+  // to be immediately published during creation. See [#1635542].
+  if (empty($node->is_new)) {
+    $node_revision->pathauto_perform_alias = FALSE; // avoid pathauto_nodeapi() doing stuff
+  }
+
   node_invoke_nodeapi($node_revision, 'update');
   // Update the node access table for this node.
   node_access_acquire_grants($node_revision);
@@ -424,6 +432,7 @@ function revisioning_get_number_of_archived_revisions($node) {
  * Delete all revisions with a vid less than the current.
  */
 function revisioning_delete_archived_revisions($node) {
+  db_query('DELETE FROM {term_node} WHERE nid = %d AND vid < %d', $node->nid, $node->current_revision_id);
   return db_query('DELETE FROM {node_revisions} WHERE nid = %d AND vid < %d', $node->nid, $node->current_revision_id);
 }
 

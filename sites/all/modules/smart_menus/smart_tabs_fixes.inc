@@ -1,5 +1,4 @@
 <?php
-// $Id: smart_tabs_fixes.inc,v 1.7 2010/09/21 02:56:59 rdeboer Exp $
 
 /**
  * @file

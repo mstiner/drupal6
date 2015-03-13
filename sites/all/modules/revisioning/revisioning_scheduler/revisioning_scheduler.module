@@ -101,6 +101,13 @@ function revisioning_scheduler_revisionapi($op, $node) {
         drupal_set_message(t('Revision has been set to be published at %time on %date', array('%time' => $time, '%date' => $date)));
         return FALSE;
       }
+      break;
+
+    // Node revision is being deleted. If it is scheduled for publishing,
+    // remove the scheduler entry.
+    case 'pre delete';
+      revisioning_scheduler_check($node->vid, $node->nid);
+      break;
   }
 }
 

@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Drupal\Forms;
 
 class NodeEditForm extends Form {

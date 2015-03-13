@@ -6,12 +6,15 @@ class NodeBase {
 
 	protected $nid;
 	
+	protected $vid;
+	
 	protected $node;
 	
 	protected $content;
 	
 	public function __construct($node){
 		$this->nid = $node->nid;
+		$this->vid = $node->vid;
 		$this->node = $node;
 		$this->content = &$node->content;
 	}

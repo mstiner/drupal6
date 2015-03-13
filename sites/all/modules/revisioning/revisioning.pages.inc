@@ -39,11 +39,13 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
     // Change the meaning of the 'Delete (all revisions)' button when editing
     // a revision to be the deletion of the viewed revision, rather than the
     // node.
-    $nid = $form['#node']->nid;
-    $vid = $form['#node']->vid;
-    if (isset($form['buttons']['delete']) && user_access('delete revisions') && $vid != node_tools_get_current_node_revision_id($nid)) {
-      $form['buttons']['delete']['#value'] =  t('Delete this revision');
-      $form['buttons']['delete']['#submit'][] = '_revisioning_delete_submit';
+    if (isset($form['#node']->nid) && isset($form['#node']->vid)) {
+      $nid = $form['#node']->nid;
+      $vid = $form['#node']->vid;
+      if (isset($form['buttons']['delete']) && user_access('delete revisions') && $vid != node_tools_get_current_node_revision_id($nid)) {
+        $form['buttons']['delete']['#value'] =  t('Delete this revision');
+        $form['buttons']['delete']['#submit'][] = '_revisioning_delete_submit';
+      }
     }
   }
 }
@@ -291,11 +293,13 @@ function _revisioning_set_info_message() {
  * revision we've just edited, so we get latest revision id from the database.
  */
 function _revisioning_form_submit($form, &$form_state) {
-  $nid = $form['#node']->nid; // Don't use $form_state['nid'], will NOT be empty for a new node
-  // Don't redirect when creating new node or when the displayed vid is the current
-  if (!empty($nid) && ($vid = revisioning_get_latest_revision_id($nid)) &&
-    $vid != node_tools_get_current_node_revision_id($nid)) {
-      $form_state['redirect'] = "node/$nid/revisions/$vid/view";
+  if (isset($form['#node']->nid)) {
+    $nid = $form['#node']->nid; // Don't use $form_state['nid'], will NOT be empty for a new node
+    // Don't redirect when creating new node or when the displayed vid is the current
+    if (($vid = revisioning_get_latest_revision_id($nid)) &&
+      $vid != node_tools_get_current_node_revision_id($nid)) {
+        $form_state['redirect'] = "node/$nid/revisions/$vid/view";
+    }
   }
 }
 

@@ -389,7 +389,7 @@ function revisioning_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
 
     case 'alter': // called from node_view() after $node is fully built for display
       if (!$teaser && $node->nid == arg(1) && // don't show msg on page with many nodes
-        $node->revision_moderation && user_access('view revision status messages')) {
+        !empty($node->revision_moderation) && user_access('view revision status messages')) {
         drupal_set_message(_revisioning_node_info_msg($node));
       }
       break;
@@ -403,7 +403,7 @@ function revisioning_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
       break;
 
     case 'presave': // for edits, called from node_save(), prior to _node_save_revision()
-      if ($node->revision_moderation) { // Tick-box on edit form
+      if (!empty($node->revision_moderation)) { // Tick-box on edit form
         $node->is_pending = _revisioning_node_is_pending($node);
         if ($node->revision && $node->is_pending && variable_get('new_revisions_'. $node->type, NEW_REVISION_WHEN_NOT_PENDING) == NEW_REVISION_WHEN_NOT_PENDING) {
           drupal_set_message(t('Updating existing copy, not creating new revision as this one is still pending.'));
@@ -445,13 +445,13 @@ function revisioning_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
       break;
 
     case 'insert': // new node, called from node_save(), after _node_save_revision()
-      if ($node->revision_moderation) {
+      if (!empty($node->revision_moderation)) {
         _revisioning_insert_msg($node);
       }
       break;
 
     case 'update':  // edited node, called from node_save(), after _node_save_revision()
-      if ($node->revision_moderation && $node->current_revision_id // i.e. set and not 0
+      if (!empty($node->revision_moderation) && $node->current_revision_id // i.e. set and not 0
           && $node->current_revision_id != $node->vid) {
         // Resetting title and vid back to their originial values, thus creating pending revision.
         db_query("UPDATE {node} SET vid=%d, title='%s' WHERE nid=%d", $node->current_revision_id, $node->current_title, $node->nid);
@@ -885,6 +885,19 @@ function _revisioning_title_for_tab($node, $edit = FALSE) {
  * Callback to view a particular revision.
  */
 function _revisioning_view_revision($node) {
+  if (isset($node->nid)) {
+    $router_item = menu_get_item('node/' . $node->nid);
+    if (!empty($router_item['file'])) {
+      $path = $_SERVER['DOCUMENT_ROOT'] . base_path();
+      require_once $path . $router_item['file'];
+    }
+    // Call whatever function is assigned to the main node path but pass the
+    // current node as an argument. This approach allows for the reuse of Panel
+    // definition acting on node/%node. See [#1567880].
+    if (isset($router_item['page_callback'])) {
+      return $router_item['page_callback']($node);
+    }
+  }
   return node_page_view($node);
 }
 

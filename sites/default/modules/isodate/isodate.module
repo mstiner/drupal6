@@ -55,6 +55,8 @@ function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
 	$thisNode = new $class($node);
 	// lp("Class is: ".get_class($this->getDefaultDate()));
 	// lp("Default date is: ".$thisNode->getDefaultDate());
+	$msg = "Nodeapi op will be: {$op}.";
+	drupal_set_message($msg);
 	switch($op){
 		case 'prepare':
 			$node->AnnouncementNode=$thisNode;
@@ -66,6 +68,7 @@ function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
 			$thisNode->doapi($op);
 			break;
 		case 'load':
+			$node->AnnouncementNode=$thisNode;
 			break;
 		case 'view':
 			$thisNode->addContent('iso_date',"<h5 class='cck cck-field-date'>{$thisNode->getDisplayDate()}</h5>");
@@ -79,11 +82,13 @@ function isodate_form_alter(&$form, &$form_state, $form_id) {
 		$thisForm = new NodeEditForm($form,$form_id);
 		if($thisForm->getNode()->type!= 'announcement') return;
 	} catch(InvalidNodeEditFormException $e){
-		// drupal_set_message($e->getMessage(),'warning',false);
+		if(ISODATE_SHOW_ERROR_MESSAGES) 
+		drupal_set_message($e->getMessage(),'warning',false);
 		return;
 	}
 	catch(Exception $e){
-		// drupal_set_message($e->getMessage(),'warning',false);
+		if(ISODATE_SHOW_ERROR_MESSAGES) 
+		drupal_set_message($e->getMessage(),'warning',false);
 		return;
 	}
 	

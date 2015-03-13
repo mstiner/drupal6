@@ -1,4 +1,3 @@
-$Id: README.txt,v 1.5 2010/09/21 02:56:59 rdeboer Exp $
 
 SMART MENUS, SMART TABS
 =======================

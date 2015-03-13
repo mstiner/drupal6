@@ -1,5 +1,4 @@
 <?php
-// $Id: smart_menus.install,v 1.8 2010/09/21 04:52:28 rdeboer Exp $
 
 /**
  * @file
@@ -11,7 +10,7 @@
  */
 function smart_menus_install() {
   drupal_set_message(st('Please configure your Smart menu blocks <a href="@blocks_page">here</a>.',
-    array('@blocks_page' => url('admin/build/block')))); 
+    array('@blocks_page' => url('admin/build/block'))));
 }
 
 /**

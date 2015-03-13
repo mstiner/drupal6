@@ -18,7 +18,7 @@ function node_tools_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
   switch ($op) {
     case 'presave':
     case 'load': // get here immediately after the node is fetched from db
-      if (!isset($node->current_revision_id)) {
+      if (!isset($node->current_revision_id) && isset($node->nid)) {
         $node->current_revision_id = node_tools_get_current_node_revision_id($node->nid);
         $node->is_current = node_tools_revision_is_current($node);
         $node->num_revisions = node_tools_get_number_of_revisions($node->nid);
@@ -82,7 +82,7 @@ function node_tools_content_is_moderated($content_type) {
  * Implementation of hook_form_alter().
  */
 function node_tools_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['#id']) && $form['#id'] == 'node-form') {
+  if (isset($form['#id']) && $form['#id'] == 'node-form' && isset($form['#node']->nid)) {
     $nid = $form['#node']->nid;
     if (isset($form['buttons']['delete']) && node_tools_get_number_of_revisions($nid) > 1) {
       // Special treatment for Delete button when there's multiple revisions.
@@ -161,7 +161,7 @@ function node_tools_get_nodes($op, $is_published = -1, $creator_uid = -1, $modif
   }
   $sql = $sql_select . $sql_from . $sql_where . $sql_order;
 //drupal_set_message($sql);
-  $node_query_result = db_query_range($sql, 0, $max);
+  $node_query_result = db_query($sql);
   $nodes = array();
   while ($node = db_fetch_object($node_query_result)) {
     //@todo: expres node_tools_content_is_moderated() as WHERE clause, ie. let SQL do the filtering a priori
@@ -185,7 +185,7 @@ function node_tools_get_nodes($op, $is_published = -1, $creator_uid = -1, $modif
       }
     }
   }
-  return $nodes;
+  return array_splice($nodes, 0, $max);
 }
 
 /**
@@ -201,7 +201,9 @@ function _node_tools_extract_order_clause_from_URI() {
   // from theme_table() is meant to look after it, but it's got a bug [#480382].
   // Note: this function is secure, as we're only allowing recognised values,
   //       all unknown values, result in a descending sort by 'timestamp'.
-  switch ($order_by = drupal_strtolower($_REQUEST['order'])) {
+
+  $order = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
+  switch ($order_by = drupal_strtolower($order)) {
     case 'creator':
       $order_by = 'n.uid';
       break;
@@ -223,6 +225,7 @@ function _node_tools_extract_order_clause_from_URI() {
       $order_by = 'timestamp';
       break;
   }
-  $direction = (drupal_strtolower($_REQUEST['sort'])== 'asc') ? 'ASC' : 'DESC';
+  $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
+  $direction = (drupal_strtolower($sort)== 'asc') ? 'ASC' : 'DESC';
   return "$order_by $direction";
 }

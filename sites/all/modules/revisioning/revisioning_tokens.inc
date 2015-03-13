@@ -45,7 +45,7 @@ function revisioning_token_values($type, $object = NULL, $options = array()) {
     case 'node':
       $values['vid'] = $object->vid;
       $values['revision-title'] = $object->title;
-      $values['revision-log'] = $object->log;
+      $values['revision-log'] = isset($object->log) ? $object->log : '';
       if (empty($object->revision_uid)) { // Can happen in Rules context
         $object->revision_uid = revisioning_get_revision_uid($object->vid);
       }
@@ -61,7 +61,7 @@ function revisioning_token_values($type, $object = NULL, $options = array()) {
           $revision = node_load($nid, node_tools_get_current_node_revision_id($nid));
           $values['vid'] = $revision->vid;
           $values['revision-title'] = $revision->title;
-          $values['revision-log'] = $revision->log;
+          $values['revision-log'] = isset($revision->log) ? $revision->log : '';
           _set_revision_author_values($revision->revision_uid, $values);
       }
       break;
