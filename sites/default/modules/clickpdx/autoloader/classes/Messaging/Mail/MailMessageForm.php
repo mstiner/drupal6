@@ -5,7 +5,7 @@ use Http\HttpRequest;
 class MailMessageForm extends \Http\HttpRequest {
 
 
-	private $recipients;
+	protected $recipients;
 	
 	private $from;
 	
@@ -27,8 +27,12 @@ class MailMessageForm extends \Http\HttpRequest {
 	{
 		parent::__construct();
 		$this->action = isset($_POST['action']) ? $_POST['action'] : 'view';
+		$this->recipients = isset($_POST['recipients']) ? $_POST['recipients'] : null;
 	}
-	
+	protected function get($prop){
+		if(isset($this->{$prop})) return $this->{$prop};
+		else return false;
+	}
 	public function action(){
 		return $this->action;
 	}

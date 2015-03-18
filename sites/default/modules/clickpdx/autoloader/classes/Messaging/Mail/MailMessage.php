@@ -22,30 +22,36 @@ class MailMessage {
 
 	public function __construct()
 	{
-
+		$this->headers = array(
+		 'MIME-Version' => '1.0',
+		 'Content-Transfer-Encoding' => '8Bit'
+		);
 	}
 	
 	public function multipart($boolean)
 	{
-		if(isset($boolean))
+		if(isset($boolean)&&!$boolean)
+		{
+			$this->multipart = $boolean;
+		}
+		else if(isset($boolean)&&$boolean)
 		{
 			$this->multipart = $boolean;
 			$this->boundary = '----=_NextPart_';
+		 	$this->addMailHeader(
+		 		'Content-Type',
+		 		'multipart/alternative; boundary="'.$this->boundary.'"'
+		 	);
 		}
 		return $this->multipart;
 	}
-	protected function getHeaders()
+	protected function getMailHeaders()
 	{
-		$params = array(
-		 'MIME-Version' => '1.0',
-		 'Content-Type' => 'multipart/alternative; boundary="'.$this->boundary.'"',
-		 'Content-Transfer-Encoding' => '8Bit'
-		);
-		return $params;
+		return $this->headers;
 	}
-	protected function formatHeaders(){
+	protected function formatMailHeaders(){
 		$out = '';
-		foreach($this->getHeaders() as $header=>$value)
+		foreach($this->getMailHeaders() as $header=>$value)
 		{
 			$out .= $header.':'.$value ."\r\n";
 		}
@@ -58,6 +64,14 @@ class MailMessage {
 	public function htmlBody($str)
 	{
 		$this->htmlBody = $str;
+	}
+	protected function addMailHeader($name,$value)
+	{
+		if(!is_array($name))
+		{
+			$arr = array($name=>$value);
+			$this->headers=array_merge($this->headers,$arr);
+		}
 	}
 	protected function getMultiBody()
 	{
@@ -88,7 +102,7 @@ Content-Transfer-Encoding: 8bit
 	}
 	protected function sendWithParameters($to,$subject,$body)
 	{
-		return mail($to,$subject,$body,$this->formatHeaders());
+		return mail($to,$subject,$body,$this->formatMailHeaders());
 	}
 	protected function send()
 	{

@@ -4,11 +4,12 @@ use Messaging\Mail\MailMessage;
 
 class HsolcAnnouncementMailMessage extends \Messaging\Mail\MailMessage {
 
-	public function __construct()
+	public function __construct($to)
 	{
 		parent::__construct();
-		$this->recipients = 'jbernal.web.dev@gmail.com, mstiner@hsolc.org, sbower@hsolc.org';
+		$this->recipients = $to;
 		$this->subject = 'HSOLC Announcements';
+		$this->addMailHeader('From','HSOLC Admin');
 	}
 	
 	public function sendAnnouncements()

@@ -9,13 +9,41 @@ class HsolcAnnouncementMailMessageForm extends \Messaging\Mail\MailMessageForm {
 		parent::__construct();
 		$this->textBody(getTextBody());
 		$this->htmlBody(getHtmlBody());
-		$this->action = $this->action == 'Send Mail Now' ? 'sendMail' : 'view';
+		$this->action = $this->action == 'Send Mail Now' ? 'sendAnnouncements' : 'viewAnnouncements';
+		$this->init();
 	}
+	public function getRecipients()
+	{
+		return $this->recipients;
+	}
+	private function init()
+	{
+		switch($this->get('recipients'))
+		{
+			case 'sami':
+				$r= 'sbower@hsolc.org';
+				break;
+			case 'jose':
+				$r= 'jbernal.web.dev@gmail.com';
+				break;
+			case 'test_group':
+				$r= 'sbower@hsolc.org,mstiner@hsolc.org,jbernal.web.dev@gmail.com';
+				break;
+			case 'everyone':
+				$r = 'everyone@hsolc.org';
+				break;
+			default:
+				$r = 'jbernal.web.dev@gmail.com';
+		}
+		$this->recipients = $r;
+	}
+	
 	public function render()
 	{
 		$form = "<form onsubmit='return mailFormChecker();' method='post'>";
-		$form .= "<div class='form-item'><label for='emailGroup'>Send to:</label><select id='emailGroup'>
-		<option disabled='disabled' value='sami'>Sami only</option> 
+		$form .= "<div class='form-item'><label for='emailGroup'>Send to:</label><select id='recipients' name='recipients'>
+		<option value='sami'>Sami only</option> 
+		<option value='jose'>José only</option> 
 		<option selected='selected' value='test_group'>Sami, Mel and José</option>
 		<option disabled='disabled' value='everyone'>HSOLC Staff</option>
 		</select></div>";

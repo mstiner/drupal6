@@ -24,8 +24,8 @@ $out = $request->render();
 
 // print "Action is: ".$request->action();
 
-if($request->action()=='sendMail'){
-	$mailMessage = new HsolcAnnouncementMail($from,$subject);
+if($request->action()=='sendAnnouncements'){
+	$mailMessage = new HsolcAnnouncementMail($request->getRecipients());
 	$mailMessage->multipart(true);
 	$mailMessage->textBody($request->getMailMessageTextBody());
 	$mailMessage->htmlBody($request->getMailMessageHtmlBody());
