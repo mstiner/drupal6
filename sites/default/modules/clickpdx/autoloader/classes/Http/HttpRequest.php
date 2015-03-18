@@ -1,8 +1,8 @@
 <?php
-namespace Request;
+namespace Http;
 
 
-class HtmlRequest
+class HttpRequest
 {
 
 

@@ -4,18 +4,21 @@ namespace Messaging\Mail;
 class MailMessage {
 
 
-	private $recipients;
-	private $from;
-	private $subject;
-	private $headers;
+	protected $recipients;
 	
-	private $htmlBody;
+	protected $from;
 	
-	private $textBody;
+	protected $subject;
 	
-	private $boundary; 
+	protected $headers;
 	
-	private $multipart = false;
+	protected $htmlBody;
+	
+	protected $textBody;
+	
+	protected $boundary; 
+	
+	protected $multipart = false;
 
 	public function __construct()
 	{
@@ -31,7 +34,7 @@ class MailMessage {
 		}
 		return $this->multipart;
 	}
-	private function getHeaders()
+	protected function getHeaders()
 	{
 		$params = array(
 		 'MIME-Version' => '1.0',
@@ -40,7 +43,7 @@ class MailMessage {
 		);
 		return $params;
 	}
-	private function formatHeaders(){
+	protected function formatHeaders(){
 		$out = '';
 		foreach($this->getHeaders() as $header=>$value)
 		{
@@ -56,7 +59,7 @@ class MailMessage {
 	{
 		$this->htmlBody = $str;
 	}
-	private function getMultiBody()
+	protected function getMultiBody()
 	{
 $multi_body="
 
@@ -72,13 +75,22 @@ Content-Transfer-Encoding: 8bit
 --{$this->boundary}
 Content-Type: text/html; charset=UTF-8; format=flowed; 
 Content-Transfer-Encoding: 8bit
-
+<html>
+<head>
+<title>Head Start of Lane County</title>
+</head>
+<body>
 {$this->htmlBody}
+</body>
+</html>
 ";
 	return $multi_body;
 	}
-	
-	public function send()
+	protected function sendWithParameters($to,$subject,$body)
+	{
+		return mail($to,$subject,$body,$this->formatHeaders());
+	}
+	protected function send()
 	{
 		return mail('jbernal.web.dev@gmail.com','HSOLC Announcements', $this->getMultiBody(), $this->formatHeaders());
 	}
