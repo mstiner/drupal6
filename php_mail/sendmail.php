@@ -5,6 +5,9 @@ ini_set('memory_limit','256M');
 ini_set("log_errors", 1);
 ini_set("error_log", "/var/www/www.hsolc.org-php_errors.log");
 require('includes.php');
+define('ANNOUNCEMENT_EMAIL_TEST_MODE',true);
+
+
 /**
 get and set the location of a template file for to be used to send HTML email
 define a set of tokens that are to be replaced within the template file
@@ -21,43 +24,32 @@ $t="HSOLC Announcements";
 
 
 // $e='everyone@hsolc.org';
-$e = $_GET['test'] == 'true' ? 'jbernal.web.dev@gmail.com, sbower@hsolc.org' : 'everyone@hsolc.org';
+$test = (isset($_GET['test']) || strtolower($_GET['test']) == 'true') ? true : false;
+$test = ANNOUNCEMENT_EMAIL_TEST_MODE;
+
+$e = $test ? 'jbernal.web.dev@gmail.com, sbower@hsolc.org' : 'everyone@hsolc.org';
 /* Look-up seminar id here and insert the data in the rideshare table, if necessary */
 
 
-
-//variables used
-//$_POST["title"], description, email, location
-
-//connect to the database and set these fields
-//after inserting make sure the id is saved to the email links using str_replace
+print getHtmlBody();
 
 
 
-//if($_SERVER['HTTP_REFERER']!="http://oip.uoregon.edu/iss/orientation/register.php") {echo "not able to send mail"; exit;}
+
+function getHtmlBody(){
+	$html = file_get_contents('template.html', true);
+	$text_body = file_get_contents('template.txt', true);
+	$boundary = '----=_NextPart_';
+
+	//for HTML
+	//$body = str_replace("[Title]",$t,$html);
+	$htmlBody = str_replace("[Announcements]", getAnnouncements(), $html);
+	return $htmlBody;
+}
 
 
 
-/*MAKE EMAIL BODY*/
-
-
-//print_r($_SERVER);
-
-
-
-/*$wd_was = getcwd();
-chdir("/inetpub/ocdla/sqlconn");
-require('sql_conn.php');
-chdir("/inetpub/ocdla/php_mail");
-*/
-$html = file_get_contents('template.html', true);
-$text_body = file_get_contents('template.txt', true);
-$boundary = '----=_NextPart_';
-
-//for HTML
-//$body = str_replace("[Title]",$t,$html);
-$body = str_replace("[Announcements]", getAnnouncements(), $html);
-
+$htmlBody = getHtmlBody();
 // for text file
 $text_body = str_replace("[Announcements]",getAnnouncements( "text" ),$text_body);
 //$text_body = str_replace("[Title]",$t,$text_body);
@@ -77,44 +69,16 @@ $text_body
 Content-Type: text/html; charset=UTF-8; format=flowed; 
 Content-Transfer-Encoding: 8bit
 
-$body
+$htmlBody
 
 
 ";
 
 
-//echo $body;
-class Mail {
-
-
-	private $recipients;
-	private $from;
-	private $subject;
-	private $headers;
-	
-
-	public function __construct() {
-		$headers='MIME-Version: 1.0'."\r\n".'Content-type: text/plain; charset=iso-8859-1'."\r\n".'Content-Disposition: inline'."\r\n".'From: web@pacinfo.com'."\r\n";
-
-	}
-	
-	public function send() {
-	
-		$sent = mail($e, $subject, $multi_body, $headers);
-	}//method send
-}//class Mail
-
-
 
 $headers='From: HSOLC <' . $from . '>'."\r\n".'MIME-Version: 1.0'."\r\n".'Content-Type: multipart/alternative; boundary="'.$boundary.'"'."\r\n".'Content-Transfer-Encoding: 8Bit'."\r\n";
  
-/*Make sure the Content-type parameter's value is all on one line!!!
-$params = array(
- 'MIME-Version' => '1.0',
- 'Content-Type' => 'multipart/alternative; boundary="'.$boundary.'"',
- 'Content-Transfer-Encoding' => '8Bit');
-*/
- 
+
  
 $sent2 = mail($e, $subject, $multi_body, $headers);
 
