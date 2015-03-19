@@ -45,7 +45,7 @@ class HsolcAnnouncementMailMessageForm extends \Messaging\Mail\MailMessageForm {
 		<option value='sami'>Sami only</option> 
 		<option value='jose'>José only</option> 
 		<option selected='selected' value='test_group'>Sami, Mel and José</option>
-		<option disabled='disabled' value='everyone'>HSOLC Staff</option>
+		<option value='everyone'>HSOLC Staff</option>
 		</select></div>";
 		$form .= "<div class='form-item'><input style='font-size:18px;padding:5px;' type='submit' id='action' name='action' value='Send Mail Now' /></div>";
 		$form .= "<div class='form-item'><label for='mailMessageBodyPreview'>A Preview of your mail message appears below:</label><div style='border:1px solid #666; padding:5px; width:60%;height:400px;overflow:scroll;' id='mailMessageBodyPreview'>".$this->getMailMessageHtmlBody()."</div></div>";

@@ -10,19 +10,10 @@ define('ANNOUNCEMENT_EMAIL_TEST_MODE',true);
 $from = "admin@hsolc.org";
 $subject = "HSOLC Announcements";
 
-// $e='everyone@hsolc.org';
-$test = (isset($_GET['test']) && strtolower($_GET['test']) == 'true') ? true : false;
-$test = ANNOUNCEMENT_EMAIL_TEST_MODE;
-
-$e = $test ? 'jbernal.web.dev@gmail.com, sbower@hsolc.org' : 'everyone@hsolc.org';
-/* Look-up seminar id here and insert the data in the rideshare table, if necessary */
-
 
 $request = new Hsolc\Messaging\Mail\HsolcAnnouncementMailMessageForm();
 $messages = '';
 $out = $request->render();
-
-// print "Action is: ".$request->action();
 
 if($request->action()=='sendAnnouncements'){
 	$mailMessage = new HsolcAnnouncementMail($request->getRecipients());
@@ -46,6 +37,7 @@ if($request->action()=='sendAnnouncements'){
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="mail-form.css" rel="stylesheet" type="text/css" />
+	<script src="mail-form.js" type="text/javascript"></script>
 </head>
 <body>
 	<p class='messages'><?php print $messages; ?></p>

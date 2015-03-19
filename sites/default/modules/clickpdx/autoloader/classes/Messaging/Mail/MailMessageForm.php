@@ -29,11 +29,13 @@ class MailMessageForm extends \Http\HttpRequest {
 		$this->action = isset($_POST['action']) ? $_POST['action'] : 'view';
 		$this->recipients = isset($_POST['recipients']) ? $_POST['recipients'] : null;
 	}
-	protected function get($prop){
+	protected function get($prop)
+	{
 		if(isset($this->{$prop})) return $this->{$prop};
 		else return false;
 	}
-	public function action(){
+	public function action()
+	{
 		return $this->action;
 	}
 	public function textBody($str)
@@ -44,7 +46,6 @@ class MailMessageForm extends \Http\HttpRequest {
 	{
 		$this->htmlBody = $str;
 	}
-
 	protected function submit()
 	{
 		// $this new mail message blah blah blah...
