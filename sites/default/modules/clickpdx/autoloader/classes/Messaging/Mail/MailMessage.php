@@ -37,7 +37,8 @@ class MailMessage {
 		else if(isset($boolean)&&$boolean)
 		{
 			$this->multipart = $boolean;
-			$this->boundary = '----=_NextPart_';
+			// $this->boundary = '----=_NextPart_';
+			$this->boundary = '_NextPart_';
 		 	$this->addMailHeader(
 		 		'Content-Type',
 		 		'multipart/alternative; boundary="'.$this->boundary.'"'
@@ -74,6 +75,32 @@ class MailMessage {
 		}
 	}
 	protected function getMultiBody()
+	{
+$multi_body="
+
+This is a multi-part message in MIME format.
+
+--{$this->boundary}
+Content-Type: text/plain; charset=UTF-8; format=flowed;
+
+{$this->textBody}
+
+
+--{$this->boundary}
+Content-Type: text/html; charset=UTF-8; format=flowed;
+
+<html>
+<head>
+<title>Head Start of Lane County</title>
+</head>
+<body>
+{$this->htmlBody}
+</body>
+</html>
+";
+	return $multi_body;
+	}
+	protected function getMultiBody2()
 	{
 $multi_body="
 

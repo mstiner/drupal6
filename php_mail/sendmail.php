@@ -1,4 +1,5 @@
 <?php
+// opcache_reset();
 require('bootstrap.php');
 require('includes.php');
 use Messaging\Mail\MailMessage as MailMessage;
