@@ -21,13 +21,13 @@ class HsolcAnnouncementMailMessageForm extends \Messaging\Mail\MailMessageForm {
 		switch($this->get('recipients'))
 		{
 			case 'sami':
-				$r= 'sbower@hsolc.org';
+				$r= 'sbower@hsolc.org,lfallen1@q.com';
 				break;
 			case 'jose':
 				$r= 'jbernal.web.dev@gmail.com';
 				break;
 			case 'test_group':
-				$r= 'sbower@hsolc.org,mstiner@hsolc.org,jbernal.web.dev@gmail.com';
+				$r= 'sbower@hsolc.org,mstiner@hsolc.org,jbernal.web.dev@gmail.com,lfallen1@q.com';
 				break;
 			case 'everyone':
 				$r = 'everyone@hsolc.org';
