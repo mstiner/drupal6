@@ -52,7 +52,7 @@ function isodate_init() {
  * and hook_nodeapi() is used to read and write those values to and from the database.
  */
 function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
-	ini_set('display_errors','1');
+	// ini_set('display_errors','1');
 	$classType = NodeBase::normalizeNodeTypeString($node->type) . 'Node';
 	
 	if(!UtilityArray::StringToArray(ISODATE_NODE_TYPES)->has($node->type)) return;
