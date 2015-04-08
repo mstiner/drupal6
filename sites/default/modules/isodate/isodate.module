@@ -4,6 +4,7 @@ use PhpUtilities\UtilityArray;
 use Drupal\Nodes\NodeBase;
 use Drupal\Nodes\AnnouncementNode;
 use Drupal\Nodes\CommitteeMinutesNode;
+use Drupal\Nodes\DocumentsForms;
 use Drupal\Forms\NodeEditForm;
 use Drupal\Forms\InvalidFormException;
 use Drupal\Forms\InvalidNodeEditFormException;
@@ -11,7 +12,7 @@ use Drupal\JS\ScriptManager;
 use Drupal\JS\JavaScript;
 use Drupal\JS\ScriptFile;
 
-define('ISODATE_NODE_TYPES','announcement,committee_minutes');
+define('ISODATE_NODE_TYPES','announcement,committee_minutes,documents_forms');
 /**
  * @file
  * Defines date/time field types for the Content Construction Kit (CCK).
@@ -51,7 +52,7 @@ function isodate_init() {
  * and hook_nodeapi() is used to read and write those values to and from the database.
  */
 function isodate_nodeapi(&$node, $op, $a3 = null, $a4 = null){
-	// ini_set('display_errors','1');
+	ini_set('display_errors','1');
 	$classType = NodeBase::normalizeNodeTypeString($node->type) . 'Node';
 	
 	if(!UtilityArray::StringToArray(ISODATE_NODE_TYPES)->has($node->type)) return;

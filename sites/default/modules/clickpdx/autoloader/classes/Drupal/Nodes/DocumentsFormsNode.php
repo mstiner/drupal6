@@ -5,7 +5,7 @@ namespace Drupal\Nodes;
 use PhpUtilities\Date\USDate as USDate;
 use PhpUtilities\DateFormats\DateFormat;
 
-class CommitteeMinutesNode extends NodeBase {
+class DocumentsFormsNode extends NodeBase {
 
 	protected $date;
 	
@@ -21,8 +21,8 @@ class CommitteeMinutesNode extends NodeBase {
 
 	public function formAlter($form){
 		// $form->addElement('Fieldset')->setName('iso_date')->setTitle('Meeting Date')->value('Announcement Date')->weight(-10)
-		$form->addElement('Fieldset')->setName('iso_date')->setTitle('Meeting Date')->weight(-10)
-		->addElement('IsoDate')->setTitle('Meeting Date')
+		$form->addElement('Fieldset')->setName('iso_date')->setTitle('Revision Date')->weight(-10)
+		->addElement('IsoDate')->setTitle('Revision Date')
 
 		->setName('iso_date')->value($this->getDisplayDate());
 	}
