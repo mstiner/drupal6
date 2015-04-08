@@ -30,4 +30,11 @@ class NodeBase {
 			'#weight' => -10,
 		);
 	}
+	public static function normalizeNodeTypeString($typeStr){
+		$tmp = str_replace('_',' ',$typeStr);
+		$tmp = str_replace('-',' ',$tmp);
+		$tmp = ucwords($tmp);
+		$tmp = str_replace(' ','',$tmp);
+		return $tmp;
+	}
 }

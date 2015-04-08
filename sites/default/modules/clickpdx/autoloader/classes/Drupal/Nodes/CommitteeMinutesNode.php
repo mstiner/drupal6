@@ -5,7 +5,7 @@ namespace Drupal\Nodes;
 use PhpUtilities\Date\USDate as USDate;
 use PhpUtilities\DateFormats\DateFormat;
 
-class AnnouncementNode extends NodeBase {
+class CommitteeMinutesNode extends NodeBase {
 
 	private $date;
 	
@@ -56,9 +56,11 @@ class AnnouncementNode extends NodeBase {
 		}
 	}
 	public function formAlter($form){
-		$form->addElement('Fieldset')->setName('iso_date')->setTitle('Announcement Date')->value('Announcement Date')->weight(-10)
-		->addElement('IsoDate')->setTitle('Announcement Date')->setName('iso_date')->value($this->getDisplayDate());
-		//	print_r($thisForm->getForm());exit;
+		// $form->addElement('Fieldset')->setName('iso_date')->setTitle('Meeting Date')->value('Announcement Date')->weight(-10)
+		$form->addElement('Fieldset')->setName('iso_date')->setTitle('Meeting Date')->weight(-10)
+		->addElement('IsoDate')->setTitle('Meeting Date')
+
+		->setName('iso_date')->value($this->getDisplayDate());
 	}
 	public function load(){
 		$dateString=\db_result(\db_query("SELECT isodate FROM {clickpdx_iso_date} WHERE vid = %d",$this->vid));
