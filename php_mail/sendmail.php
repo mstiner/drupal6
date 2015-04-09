@@ -37,6 +37,7 @@ if($request->action()=='sendAnnouncements'){
 	<title>Mail Form</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8" />
   <link href="mail-form.css" rel="stylesheet" type="text/css" />
 	<script src="mail-form.js" type="text/javascript"></script>
 </head>

@@ -18,6 +18,7 @@ function getTextBody(){
 
 function getAnnouncements( $style = "html" ) {
 	$connection = mysql_connect('localhost','jbernal','8a9F313a57');
+	mysql_query('SET NAMES utf8');
 	//if(!$connection) $error_msg="Unable to connect to database.";
 	$use = mysql_query('use drupal');	
 
