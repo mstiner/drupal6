@@ -22,7 +22,7 @@ function getAnnouncements( $style = "html" ) {
 	//if(!$connection) $error_msg="Unable to connect to database.";
 	$use = mysql_query('use drupal');	
 
-	$query = "SELECT n.nid, n.title, a.isodate AS _date from node n JOIN node_revisions v ON (n.vid=v.vid) JOIN clickpdx_iso_date a ON(n.vid=a.vid) WHERE n.status=1 ORDER BY _date DESC LIMIT 10";
+	$query = "SELECT n.nid, n.title, a.isodate AS _date from node n JOIN node_revisions v ON (n.vid=v.vid) JOIN clickpdx_iso_date a ON(n.vid=a.vid) WHERE n.status=1 AND n.type='announcement' ORDER BY _date DESC LIMIT 10";
 
 	$exec = mysql_query( $query );
 	
