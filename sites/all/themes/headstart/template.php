@@ -57,6 +57,20 @@ function headstart_preprocess_page(&$vars) {
   
   $vars['styles'] = drupal_get_css();
 
+$alias = drupal_get_path_alias($_GET['q']);
+  if ($alias == 'hsolc-videos')
+  {
+//  	print "<h2>{$alias}</h2>";exit;
+		$vars['template_files'][] = 'page-html5--videos';
+		drupal_add_js(
+			drupal_get_path('theme','headstart').'/js/youtube.js',
+			'theme',
+			'header',
+			false,
+			false,
+			false
+		);
+  }
 
 /*
 	echo "<h1>{$vars['node']->type}</h1>";
@@ -64,7 +78,7 @@ function headstart_preprocess_page(&$vars) {
       print_r($vars['template_files']);
 	echo '</pre>';
 */ 
-}//end method headstart_preprocess_page
+}
 
 
 function headstart_preprocess_node( &$vars ) {
