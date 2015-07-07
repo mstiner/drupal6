@@ -35,6 +35,7 @@ stylesheets[all][] = css/style-7-menus.css
 stylesheets[all][] = css/style-8-admin.css
 stylesheets[all][] = css/style-9-system.css
 stylesheets[all][] = css/style-20-modules.css
+stylesheets[all][] = css/homepage.css
 
 ; Add a stylesheets for screen and projector media
 ;stylesheets[screen, projector][] = theScreenProjectorStyle.css

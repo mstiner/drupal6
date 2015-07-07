@@ -1,0 +1,16 @@
+.video-thumb-container
+{
+ width:390px;
+ height:240px;
+ border:1px solid #ccc;
+}
+
+.video-title-homepage
+{
+	text-decoration:none;
+}
+
+.video-title-homepage h3
+{
+	margin-top:15px;
+}

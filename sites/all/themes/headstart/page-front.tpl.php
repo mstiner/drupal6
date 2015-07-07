@@ -53,9 +53,12 @@
 
 
 
-<?php if($staff_menu) { ?>
-<?php print $staff_menu; ?>
-<? } ?>
+<?php
+if($staff_menu)
+{
+	print $staff_menu;
+}
+?>
 
 
 
@@ -80,6 +83,21 @@
       <!--</div>-->
     </td>
     <td id="content_right" valign="top" align="right">
+    	<div id="hsolc-videos">
+    		<h2>NEW HSOLC Videos</h2>
+    		<a href="/hsolc-videos" title="View this video" class="video-title-homepage"><h3>Head Start - It's More Than You Think</h3></a>
+    		<div class="video-thumb-container">
+    			<a href="/hsolc-videos" title="View this video">
+    				<img alt="HSOLC Video thumbnail" src="/sites/default/files/images/thumbs/hsolc-video-thumb-1.png" />
+    			</a>
+    		</div>
+    		<a href="/hsolc-videos" title="View this video" class="video-title-homepage"><h3>It's the Best Job</h3></a>
+    		<div class="video-thumb-container">
+    			<a href="/hsolc-videos" title="View this video">
+    				<img alt="HSOLC Video thumbnail" src="/sites/default/files/images/thumbs/hsolc-video-thumb-2.png" />
+    			</a>
+    		</div>
+    	</div>
     	<?php print $content_right ?>
     </td>
     
